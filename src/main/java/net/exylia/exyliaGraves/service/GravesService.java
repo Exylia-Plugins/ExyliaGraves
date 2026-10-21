@@ -52,12 +52,12 @@ import java.util.concurrent.TimeUnit;
  * through {@link DeathDrops} — gets no grave: those drops are that plugin's.
  *
  * <h2>Collecting is one click and one delete</h2>
- * There is no window onto a grave's real contents; a preview is a copy nothing
- * can leave. A click claims the row; if the claim wins, the items and the
- * experience go to the player by their id through the reward store — into
- * their inventory, or queued for their next join when they are full, dead (a
- * grave can stand in lava), gone or on another server. Nothing is ever
- * half-collected, and nothing is handed over twice.
+ * Collecting claims the row; if the claim wins, the items and the experience
+ * go to the player by their id through the reward store — into their
+ * inventory, or queued for their next join when they are full, dead (a grave
+ * can stand in lava), gone or on another server. Taking a stack at a time goes
+ * through {@link GraveWindows}, by the same rule: only a write that landed hands
+ * anything over, and nothing is handed over twice.
  */
 public final class GravesService {
 
@@ -66,10 +66,17 @@ public final class GravesService {
 
     private final ExyliaGraves core;
     private final GravesManager manager;
+    private final GraveWindows windows;
 
     public GravesService(ExyliaGraves core, GravesManager manager) {
         this.core = core;
         this.manager = manager;
+        this.windows = new GraveWindows(core, manager, this);
+        manager.onGone(windows::gone);
+    }
+
+    public GraveWindows windows() {
+        return windows;
     }
 
     // -------------------------------------------------------------- dying
@@ -267,30 +274,46 @@ public final class GravesService {
     /**
      * Somebody clicked a grave.
      *
-     * @param preview whether they asked to look inside rather than collect
-     * @return whether the click was on a grave at all, so the caller can
-     *         cancel the interaction
+     * @param use what that click is set to do
+     * @return whether the click was on a grave at all and did something, so the
+     *         caller can cancel the interaction
      */
-    public boolean collect(Player player, Block block, boolean preview) {
+    public boolean use(Player player, Block block, GraveSettings.Use use) {
+        if (use == GraveSettings.Use.NONE) return false;
         GraveEntity grave = manager.at(block).orElse(null);
         if (grave == null) return false;
-        if (preview) {
-            preview(player, grave);
-            return true;
+        switch (use) {
+            case PREVIEW -> preview(player, grave);
+            case OPEN -> {
+                if (allowed(player, grave)) windows.open(player, grave);
+            }
+            default -> {
+                if (allowed(player, grave)) collect(player, grave);
+            }
         }
+        return true;
+    }
 
-        if (!mayOpen(player, grave)) {
-            long until = grave.protectedUntil();
-            core.getMessages().send(player, until < 0
-                            ? GraveMessages.get().protectedGraveForever()
-                            : GraveMessages.get().protectedGrave(),
-                    Values.of()
-                            .put("player", grave.ownerName())
-                            .put("time_left", GravesManager.time(Math.max(0L, until - System.currentTimeMillis()))));
-            return true;
-        }
+    /** Whether this player may open this grave, telling them why not when they may not. */
+    private boolean allowed(Player player, GraveEntity grave) {
+        if (mayOpen(player, grave)) return true;
+        long until = grave.protectedUntil();
+        core.getMessages().send(player, until < 0
+                        ? GraveMessages.get().protectedGraveForever()
+                        : GraveMessages.get().protectedGrave(),
+                Values.of()
+                        .put("player", grave.ownerName())
+                        .put("time_left", GravesManager.time(Math.max(0L, until - System.currentTimeMillis()))));
+        return false;
+    }
 
-        manager.claim(grave).whenComplete((won, failure) -> {
+    /**
+     * Takes everything left in a grave for a player who may open it.
+     *
+     * @return completes with whether this call took it
+     */
+    public CompletableFuture<Boolean> collect(Player player, GraveEntity grave) {
+        return manager.claim(grave).whenComplete((won, failure) -> {
             if (failure != null) {
                 core.getTasks().runAtEntity(player, () -> core.getMessages().send(player, GraveMessages.get().claimFailed()));
             } else if (!Boolean.TRUE.equals(won)) {
@@ -299,7 +322,6 @@ public final class GravesService {
                 deliver(player, grave);
             }
         });
-        return true;
     }
 
     /** Whether this player may open this grave right now. */
@@ -361,6 +383,7 @@ public final class GravesService {
      * @return what is left to deliver
      */
     static List<ItemStack> equip(PlayerInventory inventory, List<ItemStack> stacks) {
+        if (stacks.isEmpty()) return stacks;
         List<ItemStack> rest = new ArrayList<>(stacks.size());
         for (ItemStack stack : stacks) {
             EquipmentSlot slot = slotFor(stack);
@@ -373,7 +396,7 @@ public final class GravesService {
         return rest;
     }
 
-    private static EquipmentSlot slotFor(ItemStack stack) {
+    static EquipmentSlot slotFor(ItemStack stack) {
         EquipmentSlot slot = stack.getType().getEquipmentSlot();
         return switch (slot) {
             case HEAD, CHEST, LEGS, FEET, OFF_HAND -> slot;
@@ -381,7 +404,7 @@ public final class GravesService {
         };
     }
 
-    private static boolean isEmpty(ItemStack item) {
+    static boolean isEmpty(ItemStack item) {
         return item == null || item.getType().isAir();
     }
 
@@ -396,7 +419,7 @@ public final class GravesService {
     }
 
     /** Items and experience, as rewards the store can hold for later. */
-    private static List<RewardEntry> contents(List<ItemStack> stacks, int experience) {
+    static List<RewardEntry> contents(List<ItemStack> stacks, int experience) {
         List<RewardEntry> owed = new ArrayList<>();
         for (ItemStack item : stacks) {
             owed.add(RewardEntry.item(Rewards.snapshot(item)).fixedAmount(item.getAmount()).build());
@@ -405,7 +428,7 @@ public final class GravesService {
         return owed;
     }
 
-    private static String describe(GraveEntity grave) {
+    static String describe(GraveEntity grave) {
         return Logs.items(grave.items() == null ? List.of() : Arrays.asList(grave.items()))
                 + (grave.experience() > 0 ? ", " + grave.experience() + " xp" : "");
     }
@@ -417,9 +440,9 @@ public final class GravesService {
      *
      * @return completes with whether this call took it
      */
-    public CompletableFuture<Boolean> restore(CommandSender staff, GraveEntity grave) {
-        return manager.claim(grave).thenApply(won -> {
-            if (!Boolean.TRUE.equals(won)) return false;
+    public CompletableFuture<Boolean> restore(CommandSender staff, GraveEntity seen) {
+        return claimCurrent(seen).thenApply(grave -> {
+            if (grave == null) return false;
             core.getLogs().record("grave-restore", staff, grave.owner(), grave.ownerName(), describe(grave));
             core.getRewards().deliver(grave.owner(), contents(stacks(grave), grave.experience()));
             return true;
@@ -432,12 +455,24 @@ public final class GravesService {
      *
      * @return completes with whether this call took it
      */
-    public CompletableFuture<Boolean> remove(CommandSender staff, GraveEntity grave) {
-        return manager.claim(grave).thenApply(won -> {
-            if (!Boolean.TRUE.equals(won)) return false;
+    public CompletableFuture<Boolean> remove(CommandSender staff, GraveEntity seen) {
+        return claimCurrent(seen).thenApply(grave -> {
+            if (grave == null) return false;
             core.getLogs().record("grave-remove", staff, grave.owner(), grave.ownerName(), describe(grave));
             return true;
         });
+    }
+
+    /**
+     * Takes a grave as it stands now rather than as staff saw it: stacks taken
+     * from its window since then are not handed out a second time.
+     *
+     * @return completes with the grave this call took, or {@code null}
+     */
+    private CompletableFuture<GraveEntity> claimCurrent(GraveEntity seen) {
+        return manager.find(seen.id()).thenCompose(found -> found
+                .map(grave -> manager.claim(grave).thenApply(won -> Boolean.TRUE.equals(won) ? grave : null))
+                .orElseGet(() -> CompletableFuture.completedFuture(null)));
     }
 
     // ------------------------------------------------------------ expiring

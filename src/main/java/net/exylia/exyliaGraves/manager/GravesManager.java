@@ -18,6 +18,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -29,13 +30,16 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 /**
  * Every grave standing on this server, where it stands, and the one way one is taken.
  *
  * <p>A grave is taken by deleting its row, and only whoever is told the delete
- * removed something gets the items. Two players clicking the same head on the
+ * removed something gets the items. A stack is taken by rewriting the row
+ * without it. Both only land while the row's revision is still the one the
+ * caller read, so a copy that is behind a take never hands that take out again. Two players clicking the same head on the
  * same tick, the sweep expiring it while its owner opens it, staff on another
  * server handing it back while a looter clicks it: every race is decided by the
  * database once.
@@ -109,6 +113,10 @@ public final class GravesManager {
     /** When an expiry that failed may be tried again, by grave id. */
     private final Map<String, Long> retryAt = new ConcurrentHashMap<>();
 
+    /** Told about every grave that stops standing here, however it went. */
+    private volatile Consumer<GraveEntity> onGone = grave -> {
+    };
+
     public GravesManager(ExyliaGraves core, PluginDatabase database) {
         this.core = core;
         this.repo = database.repository(GraveEntity.class);
@@ -157,7 +165,11 @@ public final class GravesManager {
     /** A row another server changed: still there, or taken there, in which case it comes down here. */
     private void recheck(GraveEntity grave) {
         repo.findFresh(grave.id()).thenAccept(row -> {
-            if (row.isPresent() || claiming.contains(grave.id())) return;
+            if (row.isPresent()) {
+                graves.replace(grave.id(), row.get());
+                return;
+            }
+            if (claiming.contains(grave.id())) return;
             forget(grave);
             takeDown(grave);
         });
@@ -181,7 +193,7 @@ public final class GravesManager {
     }
 
     private void forget(GraveEntity grave) {
-        graves.remove(grave.id());
+        if (graves.remove(grave.id()) != null) onGone.accept(grave);
         retryAt.remove(grave.id());
         String world = grave.worldName();
         if (world == null) return;
@@ -256,19 +268,64 @@ public final class GravesManager {
         if (writing.contains(grave.id()) || !claiming.add(grave.id())) {
             return CompletableFuture.completedFuture(false);
         }
-        return repo.delete(grave.id()).whenComplete((removed, failure) -> {
+        return deleteIf(grave).whenComplete((removed, failure) -> {
             claiming.remove(grave.id());
             if (failure != null) {
                 core.getDebug().error("Could not remove the grave " + grave.id(), failure);
                 return;
             }
-            // Gone either way: a row another server removed is not standing
-            // here any more either.
+            if (!removed) {
+                // Removed elsewhere, or a take moved it on since the caller read it.
+                recheck(grave);
+                return;
+            }
             if (graves.containsKey(grave.id())) {
                 forget(grave);
                 takeDown(grave);
             }
         });
+    }
+
+    /** Deletes the row only while it is at the revision this copy was read at. */
+    private CompletableFuture<Boolean> deleteIf(GraveEntity grave) {
+        if (grave.revision() == 0) {
+            // A row from before revisions: stamped first, by the same compare-and-set, so it can be named.
+            GraveEntity stamped = grave.withRevision(1);
+            return repo.updateIf(stamped, "revision", null)
+                    .thenCompose(won -> won ? deleteIf(stamped) : CompletableFuture.completedFuture(false));
+        }
+        return repo.where("id", grave.id()).where("revision", grave.revision()).delete()
+                .thenApply(removed -> removed > 0);
+    }
+
+    /**
+     * Takes part of a grave: rewrites its row to hold only this, while it is
+     * still at the revision this copy was read at.
+     *
+     * <p>Whoever is answered with the new grave owns what it no longer holds.
+     * Never a row that is gone, never one being taken or still being written.
+     *
+     * @return completes with the grave as it now stands, or empty when the take
+     *         did not land; exceptionally when the database could not be asked
+     */
+    public CompletableFuture<Optional<GraveEntity>> take(GraveEntity grave, ItemStack[] items, int experience) {
+        if (writing.contains(grave.id()) || claiming.contains(grave.id())) {
+            return CompletableFuture.completedFuture(Optional.empty());
+        }
+        GraveEntity next = grave.withContents(items, experience);
+        return repo.updateIf(next, "revision", grave.storedRevision()).thenApply(won -> {
+            if (!won) {
+                recheck(grave);
+                return Optional.empty();
+            }
+            graves.replace(grave.id(), next);
+            return Optional.of(next);
+        });
+    }
+
+    /** Who to tell when a grave stops standing here; on whatever thread it went. */
+    public void onGone(Consumer<GraveEntity> listener) {
+        onGone = listener;
     }
 
     /** Leaves an expiry that failed alone for a while, instead of failing again every second. */
@@ -282,6 +339,11 @@ public final class GravesManager {
     public CompletableFuture<Optional<GraveEntity>> find(String id) {
         GraveEntity here = graves.get(id);
         return here != null ? CompletableFuture.completedFuture(Optional.of(here)) : repo.findFresh(id);
+    }
+
+    /** A grave standing on this server as it was last written, or {@code null}. */
+    public GraveEntity get(String id) {
+        return graves.get(id);
     }
 
     /** The grave standing on a block, if one is. */

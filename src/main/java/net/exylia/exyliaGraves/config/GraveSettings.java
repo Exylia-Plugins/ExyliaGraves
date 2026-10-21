@@ -146,18 +146,57 @@ public record GraveSettings(
         }
     }
 
+    /** What a click on a grave does. */
+    public enum Use {
+        /** Opens its window: the real contents, a stack per click, the same window for everybody looking. */
+        OPEN,
+        /** Takes everything at once. */
+        COLLECT,
+        /** Shows a copy nothing can leave. Needs {@code exyliagraves.preview}. */
+        PREVIEW,
+        /** Nothing; the click goes on as if the grave were not there. */
+        NONE;
+
+        static Use parse(String name, Use fallback) {
+            try {
+                return name == null ? fallback : valueOf(name.trim().toUpperCase(Locale.ROOT));
+            } catch (IllegalArgumentException unknown) {
+                return fallback;
+            }
+        }
+    }
+
     /** The {@code collect} section. */
     public record Collect(
             @Comment("Whether the owner's armour and offhand go straight back on, into empty slots,")
             @Comment("when they collect their grave themselves.")
             boolean autoEquip,
 
-            @Comment("Whether sneaking while clicking a grave looks inside instead of collecting it.")
-            @Comment("Needs exyliagraves.preview.")
-            boolean sneakToPreview) {
+            @Comment("What each click on a grave does:")
+            @Comment("  OPEN    its window, where everybody looking sees the same contents and takes a stack per click")
+            @Comment("  COLLECT everything at once")
+            @Comment("  PREVIEW a copy nothing can leave (needs exyliagraves.preview)")
+            @Comment("  NONE    nothing")
+            String rightClick,
+            String sneakRightClick,
+            String leftClick,
+            String sneakLeftClick,
+
+            @Comment("Whether several players may have the same grave open at once, all seeing the same")
+            @Comment("contents as they change. false = one at a time.")
+            boolean sharedWindow,
+
+            @Comment("Whether the window has a button that takes everything left in one click.")
+            boolean takeAllButton) {
 
         public Collect() {
-            this(true, true);
+            this(true, "OPEN", "COLLECT", "OPEN", "COLLECT", true, true);
+        }
+
+        /** What this click does, by the hand that clicked and whether the player was sneaking. */
+        public Use use(boolean right, boolean sneaking) {
+            if (right) return sneaking ? Use.parse(sneakRightClick, Use.COLLECT) : Use.parse(rightClick, Use.OPEN);
+            return sneaking ? Use.parse(sneakLeftClick, Use.COLLECT) : Use.parse(leftClick, Use.OPEN);
         }
     }
 

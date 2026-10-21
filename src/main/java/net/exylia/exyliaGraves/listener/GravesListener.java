@@ -1,11 +1,11 @@
 package net.exylia.exyliaGraves.listener;
 
 import net.exylia.exyliaGraves.ExyliaGraves;
-import net.exylia.exyliaGraves.Permissions;
 import net.exylia.exyliaGraves.config.GraveMessages;
 import net.exylia.exyliaGraves.config.GraveSettings;
 import net.exylia.exyliaGraves.manager.GravesManager;
 import net.exylia.exyliaGraves.manager.PreviewHolder;
+import net.exylia.exyliaGraves.service.GraveWindows;
 import net.exylia.exyliaGraves.service.GravesService;
 import net.exylia.lib.text.Values;
 import org.bukkit.Location;
@@ -25,12 +25,14 @@ import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.Inventory;
 
 import java.util.List;
 
@@ -65,18 +67,17 @@ public final class GravesListener implements Listener {
         service.onDeathSettled(event);
     }
 
-    /** A click on the head collects it; sneaking looks inside instead. Main hand only. */
+    /** A click on the head does what {@code collect} sets for that click. Main hand only. */
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onInteract(PlayerInteractEvent event) {
         if (event.getHand() != EquipmentSlot.HAND) return;
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.LEFT_CLICK_BLOCK) return;
         Block block = event.getClickedBlock();
         if (block == null || !manager.isGrave(block)) return;
-        event.setCancelled(true);
         Player player = event.getPlayer();
-        boolean preview = player.isSneaking() && GraveSettings.get().collect().sneakToPreview()
-                && (player.hasPermission(Permissions.PREVIEW) || player.hasPermission(Permissions.ADMIN_VIEW));
-        service.collect(player, block, preview);
+        GraveSettings.Use use = GraveSettings.get().collect()
+                .use(event.getAction() == Action.RIGHT_CLICK_BLOCK, player.isSneaking());
+        if (service.use(player, block, use)) event.setCancelled(true);
     }
 
     /** A grave is not a block you mine. */
@@ -131,26 +132,44 @@ public final class GravesListener implements Listener {
         return false;
     }
 
-    /** Nothing moves in a preview, from either inventory, by any click. */
+    /**
+     * Nothing moves in a preview or a grave's window, from either inventory, by
+     * any click: a window hands a stack over only once its row says so.
+     */
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPreviewClick(InventoryClickEvent event) {
-        if (event.getView().getTopInventory().getHolder() instanceof PreviewHolder) event.setCancelled(true);
+        if (isGraveView(event.getView().getTopInventory())) event.setCancelled(true);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPreviewDrag(InventoryDragEvent event) {
-        if (event.getView().getTopInventory().getHolder() instanceof PreviewHolder) event.setCancelled(true);
+        if (isGraveView(event.getView().getTopInventory())) event.setCancelled(true);
     }
 
-    /** Again last, over any plugin in between that un-cancelled the click. */
+    /** Again last, over any plugin in between that un-cancelled the click; then the window acts on it. */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPreviewClickLast(InventoryClickEvent event) {
-        if (event.getView().getTopInventory().getHolder() instanceof PreviewHolder) event.setCancelled(true);
+        Inventory top = event.getView().getTopInventory();
+        if (!isGraveView(top)) return;
+        event.setCancelled(true);
+        if (top.getHolder() instanceof GraveWindows.Window window) service.windows().click(event, window);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPreviewDragLast(InventoryDragEvent event) {
-        if (event.getView().getTopInventory().getHolder() instanceof PreviewHolder) event.setCancelled(true);
+        if (isGraveView(event.getView().getTopInventory())) event.setCancelled(true);
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onWindowClose(InventoryCloseEvent event) {
+        if (event.getInventory().getHolder() instanceof GraveWindows.Window window
+                && event.getPlayer() instanceof Player player) {
+            service.windows().closed(player, window);
+        }
+    }
+
+    private static boolean isGraveView(Inventory top) {
+        return top.getHolder() instanceof PreviewHolder || top.getHolder() instanceof GraveWindows.Window;
     }
 
     /** Back on their feet: where the newest grave is, and the compass pointed at it. */

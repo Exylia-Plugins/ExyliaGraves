@@ -14,8 +14,8 @@ Graves where a player died, kept in the database and collected exactly once acro
 
 ## Grave safety (read before touching `manager/` or `service/`)
 
-- A grave's items live only in its row. The only way one leaves is `GravesManager.claim`, which deletes the row; only a `true` answer may hand anything over. Never re-save a grave row: a save after another server's delete recreates it.
+- A grave's items live only in its row. They leave only through `GravesManager.claim` (deletes the row) or `GravesManager.take` (rewrites it holding less), both conditional on the row's `revision` being the one the caller read; only a landed answer may hand anything over. Never re-save a grave row: a save after another server's delete recreates it. Always claim the freshest copy (`manager.find`), never one a menu read earlier.
 - Contents go out through `PluginRewards.deliver` by UUID, with `runAtEntity(player, work, retired)` so a player gone before their thread runs is still paid.
-- Previews are `PreviewHolder`: every click and drag is cancelled at `LOWEST`. Never give them a writable path.
+- Previews (`PreviewHolder`) and windows (`GraveWindows.Window`): every click and drag is cancelled at `LOWEST` and again at `HIGHEST`. A window acts on a click only after cancelling it, and only through `take`/`claim`. Never give either a writable path.
 - Each server indexes and draws only graves whose location names its own server id. A head is removed only for a grave this server indexes; remote deletes arrive through `onRemoteChange`.
 - Deaths held by `Sessions` or claimed through `DeathDrops` (duel rooms) are left alone.

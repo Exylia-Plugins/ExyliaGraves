@@ -87,6 +87,7 @@ public final class ExyliaGraves {
                 .action("grave-create", "SKELETON_SKULL")
                 .action("grave-collect", "PLAYER_HEAD")
                 .action("grave-loot", "IRON_SWORD")
+                .action("grave-take", "HOPPER")
                 .action("grave-expire", "CLOCK")
                 .action("grave-delete", "LAVA_BUCKET")
                 .action("grave-restore", "CHEST")
@@ -139,9 +140,11 @@ public final class ExyliaGraves {
 
     /** Takes the floating text down. The rows and the heads stay, and are drawn again on the next start. */
     public void shutdown() {
-        // A preview outlives its listener otherwise, and its copies could be taken out.
+        // A preview or a window outlives its listener otherwise, and what it shows could be taken out.
         for (org.bukkit.entity.Player online : plugin.getServer().getOnlinePlayers()) {
-            if (online.getOpenInventory().getTopInventory().getHolder() instanceof net.exylia.exyliaGraves.manager.PreviewHolder) {
+            Object holder = online.getOpenInventory().getTopInventory().getHolder();
+            if (holder instanceof net.exylia.exyliaGraves.manager.PreviewHolder
+                    || holder instanceof net.exylia.exyliaGraves.service.GraveWindows.Window) {
                 online.closeInventory();
             }
         }

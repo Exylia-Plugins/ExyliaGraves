@@ -39,9 +39,16 @@ public record GraveMessages(
         String expiredDeleted,
 
         @Comment("")
-        @Comment("Looking inside a grave without taking anything.")
+        @Comment("Looking inside a grave: its window, and the copy nothing can leave. Both use the title.")
+        @Comment("%items% how many stacks are left, %experience% how many points.")
         String previewTitle,
         String cannotPreview,
+        String windowBusy,
+        String inventoryFull,
+        String windowExperienceName,
+        List<String> windowExperienceLore,
+        String windowTakeAllName,
+        List<String> windowTakeAllLore,
 
         @Comment("")
         @Comment("Teleporting to a grave. %cost% is formatted in the currency.")
@@ -93,7 +100,7 @@ public record GraveMessages(
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}This is {highlight}%player%{error}'s grave. {letters}It opens to everybody in {highlight}%time_left% ⌚{letters}.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}This is {highlight}%player%{error}'s grave. {letters}Only they can open it.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}That grave is gone.",
-                "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Click the grave to collect it; it cannot be broken.",
+                "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Click the grave to open it; it cannot be broken.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}The grave could not be opened right now. {letters}It is still there; try again in a moment.",
                 "[sound:ENTITY_EXPERIENCE_ORB_PICKUP|1.0|1.2]%prefix% {success}%amount% {letters}item(s) from your graves were handed to you.",
                 "%prefix% {letters}Your grave is at {highlight}%x%, %y%, %z% {letters_black}({letters}%world%{letters_black}){letters}. {letters_black}Your compass points to it.",
@@ -102,6 +109,27 @@ public record GraveMessages(
                 "%prefix% {warning}One of your graves expired and its {highlight}%items% {warning}item(s) are gone.",
                 "{primary}&lGRAVE {letters_black}» {highlight}%player%",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}You cannot look inside that grave.",
+                "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Somebody is already looking inside this grave.",
+                "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Your inventory is full.",
+                "{primary}&lEXPERIENCE &8[{info}%experience%&8]",
+                List.of("",
+                        "{secondary}Information:",
+                        " {letters_black}▎ {letters}The experience kept in this grave.",
+                        "",
+                        "{warning}➥ Click {letters_black}» {letters}take it",
+                        ""),
+                "{primary}&lTAKE ALL",
+                List.of("",
+                        "{secondary}Information:",
+                        " {letters_black}▎ {letters}Everything left in this grave,",
+                        " {letters_black}▎ {letters}items and experience, in one go.",
+                        "",
+                        "{secondary}Status:",
+                        " {letters_black}▎ {letters}Items {letters_black}» {info}%items%",
+                        " {letters_black}▎ {letters}Experience {letters_black}» {info}%experience%",
+                        "",
+                        "{warning}➥ Click {letters_black}» {letters}take everything",
+                        ""),
                 "[sound:ENTITY_ENDERMAN_TELEPORT|1.0|1.2]%prefix% {success}Taking you to your grave. {letters_black}Cost: {highlight}%cost%{letters_black}.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}You cannot teleport to a grave; you have to walk.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Teleporting to a grave costs {highlight}%cost%{error}.",

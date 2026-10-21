@@ -1,5 +1,6 @@
 package net.exylia.exyliaGraves.service;
 
+import net.exylia.exyliaGraves.config.GraveSettings;
 import net.exylia.exyliaGraves.database.GraveEntity;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GraveRulesTest {
@@ -17,7 +19,7 @@ class GraveRulesTest {
 
     private static GraveEntity grave(long expiresAt, long protectedUntil) {
         return new GraveEntity("g", OWNER.toString(), "Owner", KILLER.toString(), null, "AIR", null, 0,
-                System.currentTimeMillis(), expiresAt, protectedUntil);
+                System.currentTimeMillis(), expiresAt, protectedUntil, 0L);
     }
 
     @Test
@@ -48,6 +50,26 @@ class GraveRulesTest {
         assertFalse(grave(-1L, -1L).canOpen(KILLER, true));
         assertTrue(grave(-1L, -1L).canOpen(OWNER, false));
         assertTrue(grave(-1L, 0L).canOpen(STRANGER, false));
+    }
+
+    @Test
+    void everyTakeMovesTheRevisionOn() {
+        GraveEntity legacy = grave(-1L, 0L);
+        // A row from before revisions holds an empty column, and is compared as one.
+        assertNull(legacy.storedRevision());
+        GraveEntity taken = legacy.withContents(null, 5);
+        assertEquals(1L, taken.storedRevision());
+        assertEquals(2L, taken.withContents(null, 0).revision());
+        assertEquals(5, taken.experience());
+    }
+
+    @Test
+    void clicksFallBackToTheirDefaults() {
+        GraveSettings.Collect collect = new GraveSettings.Collect(true, "preview", "nonsense", "NONE", null, true, true);
+        assertEquals(GraveSettings.Use.PREVIEW, collect.use(true, false));
+        assertEquals(GraveSettings.Use.COLLECT, collect.use(true, true));
+        assertEquals(GraveSettings.Use.NONE, collect.use(false, false));
+        assertEquals(GraveSettings.Use.COLLECT, collect.use(false, true));
     }
 
     @Test

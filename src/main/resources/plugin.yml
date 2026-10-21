@@ -30,7 +30,7 @@ permissions:
     description: List your graves on every server with /graves.
     default: true
   exyliagraves.preview:
-    description: Look inside a grave you may open without taking anything (sneak-click it, or right-click it in /graves).
+    description: Look inside a grave you may open without taking anything (right-click it in /graves, or a click set to PREVIEW).
     default: true
   exyliagraves.teleport:
     description: Teleport to your graves from /graves, when teleporting is on.

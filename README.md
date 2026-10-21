@@ -1,15 +1,17 @@
 # ExyliaGraves
 
-Free, open-source graves for Paper and Folia: **dying leaves a head where you fell, holding exactly what you dropped, collected with one click and handed over exactly once anywhere on a network**.
+Free, open-source graves for Paper and Folia: **dying leaves a head where you fell, holding exactly what you dropped, looted a stack at a time or all at once, and handed over exactly once anywhere on a network**.
 
 Built so a grave can never duplicate an item: not with two players clicking the same head, not with two servers, not with staff handing it back while somebody loots it.
 
 ## Features
 
 - **A grave where you died**: a player head with your face and a floating countdown. A death in water, lava or a hole finds the nearest free block above; a death in the void lands on the highest block of that column.
-- **One click to collect**: everything goes straight back into your inventory, your armour and offhand back on (`collect.auto-equip`). What does not fit waits for you and is handed over on your next join, on any server.
+- **Open it and take what you want**: right-click a grave to open its window and take a stack per click, or the experience, or everything with the take-all button. Everybody who opens the same grave sees the same window, updated live as things are taken (`collect.shared-window: false` lets one player in at a time).
+- **Or take it all at once**: sneak + right-click collects everything straight into your inventory, your armour and offhand back on (`collect.auto-equip`). What does not fit waits for you and is handed over on your next join, on any server.
+- **Every click is yours to set**: `collect.right-click`, `sneak-right-click`, `left-click` and `sneak-left-click` each `OPEN`, `COLLECT`, `PREVIEW` or `NONE`; the take-all button can be turned off (`collect.take-all-button`).
 - **Protection**: only the owner may open a grave for a while (or for good), optionally the killer too. Staff with `exyliagraves.bypass.protection` open any.
-- **Look before you take**: sneak-click a grave, or right-click it in `/graves`, to see what it holds in a window nothing can leave.
+- **Look from afar**: right-click a grave in `/graves` (or set a click to `PREVIEW`) to see what it holds in a window nothing can leave.
 - **Experience kept**: none, what vanilla would have dropped, or everything the player had, levels included; at the percentage you choose.
 - **Item rules**: materials that never go into a grave, and materials the player keeps through death.
 - **Expiry**: a grave lasts as long as you set (longer by rank with `exyliagraves.expire.<minutes>`), then drops its contents where it stood or deletes them. The owner is told, wherever they are.
@@ -17,15 +19,15 @@ Built so a grave can never duplicate an item: not with two players clicking the 
 - **/graves**: every grave you have on every server of the network, with live countdowns, and an optional paid teleport (refunded if it does not happen, refused in combat).
 - **Back on your feet**: after respawning your compass points to your newest grave and you are told where it is.
 - **Notices**: the owner hears when somebody loots their grave or it expires, online on any server or on their next join.
-- **Staff tools**: anybody's graves on any server (`/gravesadmin list`), look inside, teleport, hand back to the owner or remove; hand back all of a player's graves at once (`/gravesadmin restore`). Every grave created, collected, looted, expired, handed back or removed goes to the ExyliaLib audit log (`/exylialib logs`) with its contents.
+- **Staff tools**: anybody's graves on any server (`/gravesadmin list`), look inside, teleport, hand back to the owner or remove; hand back all of a player's graves at once (`/gravesadmin restore`). Every grave created, collected, looted, taken from stack by stack, expired, handed back or removed goes to the ExyliaLib audit log (`/exylialib logs`) with its contents.
 - **Plays well with others**: a death another plugin owns (arenas through ExyliaLib sessions, ExyliaSurvivalCore duel rooms) gets no grave; regions and plugins that keep the inventory are respected.
 - **Placeholders**: `%exyliagraves_count%`, `%exyliagraves_latest_world%`, `%exyliagraves_latest_x%`, `_y`, `_z`, `%exyliagraves_latest_time%`.
 - **Six languages**: English, Spanish, Portuguese, French, Russian and Turkish, every message and menu editable.
 
 ## How it stays dupe-free
 
-- The drops leave the death event and go into **one database row, and only there**. There is no container holding a grave's items; a preview is a copy every click and drag is cancelled in.
-- A grave is taken **by deleting its row**. Only the call whose delete removed it gets the items, so two players, two servers, an expiry and a staff action racing for one grave hand it over once.
+- The drops leave the death event and go into **one database row, and only there**. There is no container holding a grave's items: its window and its preview are pictures every click and drag is cancelled in.
+- A stack is taken **by rewriting the row without it**, and the rest **by deleting the row**, both only while the row's revision is the one the taker read. Only a write that landed hands anything over, so two players clicking the same stack, two servers, an expiry and a staff action racing for one grave hand each item over once.
 - A grave whose write failed is removed again before its items go back on the floor; one whose write might have landed is left standing rather than dropped on top of it.
 - Contents are handed over **by player id** through ExyliaLib's reward store, so a player who dies, quits or switches servers between the click and the delivery still gets everything, once.
 - A head is only ever removed on the server it stands on; a grave taken from another server is taken down there through Redis.

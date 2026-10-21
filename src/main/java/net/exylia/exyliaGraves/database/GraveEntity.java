@@ -14,14 +14,17 @@ import java.util.UUID;
  * What somebody dropped when they died, kept where they died.
  *
  * <h2>The row is the items</h2>
- * The drops leave the death event and go here, and here only. There is no
- * window onto a grave — collecting it is one click that deletes this row and
- * acts on whether the delete removed anything — so the items are never in two
- * places, not even for a tick.
+ * The drops leave the death event and go here, and here only. Taking a stack
+ * rewrites the row without it, and taking the rest deletes the row; both only
+ * while {@code revision} still holds what the taker read, and only a write that
+ * landed hands anything over. So the items are never in two places, not even
+ * for a tick.
  *
  * @param originalBlock the material that stood where the grave's block now
  *                      stands, put back when it goes; {@code "AIR"} for most
  * @param killerUuid    who made the kill, or {@code null} for a fall or a mob
+ * @param revision      bumped by every write after the first; {@code 0} only on
+ *                      rows from before it existed, whose column is empty
  */
 @Table("sc_graves")
 public record GraveEntity(
@@ -35,7 +38,8 @@ public record GraveEntity(
         @Column int experience,
         @Column("created_at") long createdAt,
         @Column long expiresAt,
-        @Column long protectedUntil) {
+        @Column long protectedUntil,
+        @Column long revision) {
 
     public GraveEntity(String server, UUID owner, String ownerName, UUID killer, Location where, String originalBlock,
                        ItemStack[] items, int experience, long expiresAt, long protectedUntil) {
@@ -49,7 +53,25 @@ public record GraveEntity(
                 experience,
                 System.currentTimeMillis(),
                 expiresAt,
-                protectedUntil);
+                protectedUntil,
+                1L);
+    }
+
+    /** This grave holding less, one revision on. */
+    public GraveEntity withContents(ItemStack[] items, int experience) {
+        return new GraveEntity(id, ownerUuid, ownerName, killerUuid, location, originalBlock, items, experience,
+                createdAt, expiresAt, protectedUntil, revision + 1);
+    }
+
+    /** The same grave at another revision. */
+    public GraveEntity withRevision(long revision) {
+        return new GraveEntity(id, ownerUuid, ownerName, killerUuid, location, originalBlock, items, experience,
+                createdAt, expiresAt, protectedUntil, revision);
+    }
+
+    /** What the revision column holds for this row as read: empty on a row from before it existed. */
+    public Long storedRevision() {
+        return revision == 0 ? null : revision;
     }
 
     public UUID owner() {
