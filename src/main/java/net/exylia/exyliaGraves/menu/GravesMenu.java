@@ -52,7 +52,9 @@ public final class GravesMenu {
             for (GraveEntity grave : graves) rows.add(row(core.getGraves(), grave, actions));
             Values context = Values.of()
                     .put("owner_name", ownerName)
-                    .put("graves", graves.size());
+                    .put("owner_id", owner.toString())
+                    .put("graves", graves.size())
+                    .put("restore_all", admin && !graves.isEmpty() && viewer.hasPermission(Permissions.ADMIN_RESTORE));
             core.getMenus().open(viewer, admin ? ADMIN_ID : ID, context.map(), rows);
         }));
     }

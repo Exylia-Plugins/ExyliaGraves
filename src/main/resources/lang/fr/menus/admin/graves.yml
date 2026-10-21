@@ -3,7 +3,7 @@
 # Réécrit depuis le plugin à chaque démarrage : copie-le sous un autre nom
 # si tu veux garder une personnalisation.
 #
-# Valeurs : %owner_name% %graves%
+# Valeurs : %owner_name% %owner_id% %graves%
 # Chaque tombe : %grave_id% %grave_owner% %grave_items% %grave_experience%
 #             %grave_server% %grave_world% %grave_x% %grave_y% %grave_z%
 #             %grave_age% %grave_time_left% %grave_protection% et
@@ -98,3 +98,20 @@ items:
       - "{secondary}Statut :"
       - " {letters_black}▎ {letters}Sur pied {letters_black}» {info}%graves%"
       - ""
+
+  restore-all:
+    slot: 45
+    material: TOTEM_OF_UNDYING
+    name: "{error}&lTOUT RENDRE"
+    condition: "%restore_all%"
+    lore:
+      - ""
+      - "{secondary}Informations :"
+      - " {letters_black}▎ {letters}Rend toutes les tombes de {highlight}%owner_name%"
+      - " {letters_black}▎ {letters}à leur propriétaire, sur tous les serveurs."
+      - ""
+      - "{error}➥ Clique pour tout rendre"
+      - "{letters_black}Une confirmation te sera demandée."
+      - ""
+    actions:
+      - "exyliagraves:restore_all %owner_id% %owner_name%"

@@ -2,20 +2,17 @@ package net.exylia.exyliaGraves.command;
 
 import net.exylia.exyliaGraves.ExyliaGraves;
 import net.exylia.exyliaGraves.Permissions;
+import net.exylia.exyliaGraves.action.GraveActions;
 import net.exylia.exyliaGraves.config.GraveMessages;
-import net.exylia.exyliaGraves.database.GraveEntity;
+import net.exylia.exyliaGraves.menu.AdminPlayersMenu;
 import net.exylia.exyliaGraves.menu.GravesMenu;
 import net.exylia.lib.player.ExyliaPlayer;
-import net.exylia.lib.text.Values;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import revxrsal.commands.annotation.Command;
 import revxrsal.commands.annotation.CommandPlaceholder;
 import revxrsal.commands.annotation.Subcommand;
 import revxrsal.commands.bukkit.annotation.CommandPermission;
-
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * Staff tools over anybody's graves, online, offline or on another server.
@@ -26,9 +23,20 @@ import java.util.concurrent.CompletableFuture;
 @Command({"gravesadmin", "graveadmin"})
 public class GravesAdminCommand {
 
+    private final GraveActions actions;
+
+    public GravesAdminCommand(GraveActions actions) {
+        this.actions = actions;
+    }
+
+    /** Players get the online players to pick from; the console gets the usage. */
     @CommandPlaceholder
     @CommandPermission(Permissions.ADMIN_VIEW)
     public void usage(CommandSender sender) {
+        if (sender instanceof Player admin) {
+            AdminPlayersMenu.open(admin);
+            return;
+        }
         ExyliaGraves.get().getMessages().send(sender, GraveMessages.get().adminUsage(), null);
     }
 
@@ -43,35 +51,7 @@ public class GravesAdminCommand {
     @Subcommand("restore")
     @CommandPermission(Permissions.ADMIN_RESTORE)
     public void restore(Player admin, ExyliaPlayer target) {
-        ExyliaGraves core = ExyliaGraves.get();
-        core.getGraves().ofEverywhere(target.id()).whenComplete((graves, failure) -> core.getTasks().runAtEntity(admin, () -> {
-            Values values = Values.of().put("player", target.name()).put("count", graves == null ? 0 : graves.size());
-            if (failure != null) {
-                core.getMessages().send(admin, GraveMessages.get().claimFailed());
-                return;
-            }
-            if (graves.isEmpty()) {
-                core.getMessages().send(admin, GraveMessages.get().noGraves(), values);
-                return;
-            }
-            core.getInputs().answered(admin, core.getInputs().confirm(admin, values.apply(GraveMessages.get().restorePrompt()))
-                            .dangerous().open(),
-                    yes -> {
-                        if (Boolean.TRUE.equals(yes)) restoreAll(core, admin, target, graves);
-                    },
-                    null);
-        }));
-    }
-
-    private static void restoreAll(ExyliaGraves core, Player admin, ExyliaPlayer target, List<GraveEntity> graves) {
-        List<CompletableFuture<Boolean>> taken = graves.stream()
-                .map(grave -> core.getService().restore(admin, grave).exceptionally(failure -> false))
-                .toList();
-        CompletableFuture.allOf(taken.toArray(CompletableFuture[]::new)).thenRun(() -> {
-            long count = taken.stream().filter(future -> Boolean.TRUE.equals(future.join())).count();
-            core.getTasks().runAtEntity(admin, () -> core.getMessages().send(admin, GraveMessages.get().restoredAll(),
-                    Values.of().put("player", target.name()).put("count", count)));
-        });
+        actions.restoreAll(admin, target.id(), target.name(), () -> { });
     }
 
     @Subcommand("reload")

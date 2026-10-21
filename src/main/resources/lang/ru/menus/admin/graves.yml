@@ -3,7 +3,7 @@
 # Перезаписывается плагином при каждом запуске: скопируй файл под другим
 # именем, если хочешь сохранить своё оформление.
 #
-# Значения: %owner_name% %graves%
+# Значения: %owner_name% %owner_id% %graves%
 # Каждая могила: %grave_id% %grave_owner% %grave_items% %grave_experience%
 #             %grave_server% %grave_world% %grave_x% %grave_y% %grave_z%
 #             %grave_age% %grave_time_left% %grave_protection% и
@@ -98,3 +98,20 @@ items:
       - "{secondary}Состояние:"
       - " {letters_black}▎ {letters}Активных {letters_black}» {info}%graves%"
       - ""
+
+  restore-all:
+    slot: 45
+    material: TOTEM_OF_UNDYING
+    name: "{error}&lВЕРНУТЬ ВСЕ"
+    condition: "%restore_all%"
+    lore:
+      - ""
+      - "{secondary}Информация:"
+      - " {letters_black}▎ {letters}Возвращает все могилы игрока {highlight}%owner_name%"
+      - " {letters_black}▎ {letters}владельцу, на всех серверах."
+      - ""
+      - "{error}➥ Нажми, чтобы вернуть все"
+      - "{letters_black}Потребуется подтверждение."
+      - ""
+    actions:
+      - "exyliagraves:restore_all %owner_id% %owner_name%"

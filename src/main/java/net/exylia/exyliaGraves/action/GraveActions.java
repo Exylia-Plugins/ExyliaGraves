@@ -10,6 +10,8 @@ import net.exylia.lib.action.PluginActions;
 import net.exylia.lib.text.Values;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -50,12 +52,75 @@ public final class GraveActions {
                     GraveMessages.get().restored(), (staff, target) -> core.getService().restore(staff, target)));
             return ActionResult.success();
         });
+        actions.registerSync("restore_all", Permissions.ADMIN_RESTORE, (ctx, args) -> {
+            Player player = ctx.player();
+            UUID owner = uuid(args.string(0, ""));
+            if (owner == null) return ActionResult.success();
+            String name = args.string(1, "?");
+            core.getMenus().close(player);
+            restoreAll(player, owner, name, () -> GravesMenu.open(player, owner, name, true));
+            return ActionResult.success();
+        });
+        actions.registerSync("admin_graves", Permissions.ADMIN_VIEW, (ctx, args) -> {
+            UUID owner = uuid(args.string(0, ""));
+            if (owner != null) GravesMenu.open(ctx.player(), owner, args.string(1, "?"), true);
+            return ActionResult.success();
+        });
         actions.registerSync("remove", Permissions.ADMIN_REMOVE, (ctx, args) -> {
             Player player = ctx.player();
             grave(player, args.string(0, ""), grave -> confirm(player, grave, GraveMessages.get().removePrompt(),
                     GraveMessages.get().removed(), (staff, target) -> core.getService().remove(staff, target)));
             return ActionResult.success();
         });
+    }
+
+    /**
+     * Hands every grave a player has, on every server, back to them after a confirmation,
+     * then runs {@code back} on the staff member's thread.
+     */
+    public void restoreAll(Player staff, UUID owner, String ownerName, Runnable back) {
+        core.getGraves().ofEverywhere(owner).whenComplete((graves, failure) -> core.getTasks().runAtEntity(staff, () -> {
+            Values values = Values.of().put("player", ownerName).put("count", graves == null ? 0 : graves.size());
+            if (failure != null) {
+                core.getMessages().send(staff, GraveMessages.get().claimFailed());
+                back.run();
+                return;
+            }
+            if (graves.isEmpty()) {
+                core.getMessages().send(staff, GraveMessages.get().noGraves(), values);
+                back.run();
+                return;
+            }
+            core.getInputs().answered(staff, core.getInputs().confirm(staff, values.apply(GraveMessages.get().restorePrompt()))
+                            .dangerous().open(),
+                    yes -> {
+                        if (Boolean.TRUE.equals(yes)) restoreEach(staff, ownerName, graves, back);
+                        else back.run();
+                    },
+                    back);
+        }));
+    }
+
+    private void restoreEach(Player staff, String ownerName, List<GraveEntity> graves, Runnable back) {
+        List<CompletableFuture<Boolean>> taken = graves.stream()
+                .map(grave -> core.getService().restore(staff, grave).exceptionally(failure -> false))
+                .toList();
+        CompletableFuture.allOf(taken.toArray(CompletableFuture[]::new)).thenRun(() -> {
+            long count = taken.stream().filter(future -> Boolean.TRUE.equals(future.join())).count();
+            core.getTasks().runAtEntity(staff, () -> {
+                core.getMessages().send(staff, GraveMessages.get().restoredAll(),
+                        Values.of().put("player", ownerName).put("count", count));
+                back.run();
+            });
+        });
+    }
+
+    private static UUID uuid(String raw) {
+        try {
+            return UUID.fromString(raw);
+        } catch (IllegalArgumentException invalid) {
+            return null;
+        }
     }
 
     /** Reads the grave a button names and hands it over on the player's thread, or says it is gone. */

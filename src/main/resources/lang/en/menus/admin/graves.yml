@@ -3,7 +3,7 @@
 # Rewritten from the plugin on every start: copy it under another name
 # if you want to keep a restyle.
 #
-# Values: %owner_name% %graves%
+# Values: %owner_name% %owner_id% %graves%
 # Each grave: %grave_id% %grave_owner% %grave_items% %grave_experience%
 #             %grave_server% %grave_world% %grave_x% %grave_y% %grave_z%
 #             %grave_age% %grave_time_left% %grave_protection% and
@@ -98,3 +98,20 @@ items:
       - "{secondary}Status:"
       - " {letters_black}▎ {letters}Standing {letters_black}» {info}%graves%"
       - ""
+
+  restore-all:
+    slot: 45
+    material: TOTEM_OF_UNDYING
+    name: "{error}&lRESTORE ALL"
+    condition: "%restore_all%"
+    lore:
+      - ""
+      - "{secondary}Information:"
+      - " {letters_black}▎ {letters}Hands every grave of {highlight}%owner_name%"
+      - " {letters_black}▎ {letters}back to them, on every server."
+      - ""
+      - "{error}➥ Click to restore all"
+      - "{letters_black}You will be asked to confirm."
+      - ""
+    actions:
+      - "exyliagraves:restore_all %owner_id% %owner_name%"

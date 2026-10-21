@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 /**
  * This plugin's screens: read once from the jar, opened cheaply.
@@ -26,7 +27,7 @@ import java.util.Optional;
  */
 public final class GraveMenus {
 
-    private static final List<String> IDS = List.of(GravesMenu.ID, GravesMenu.ADMIN_ID);
+    private static final List<String> IDS = List.of(GravesMenu.ID, GravesMenu.ADMIN_ID, AdminPlayersMenu.ID);
 
     private final ExyliaGraves core;
     private final PluginMenus menus;
@@ -88,6 +89,11 @@ public final class GraveMenus {
             return;
         }
         core.getTasks().runAtEntity(player, () -> menus.openNow(player, definition.get(), context, sections));
+    }
+
+    /** Opens a menu whose list is read again on every redraw, from any thread. */
+    public void open(Player player, String id, Map<String, Object> context, Supplier<List<UiEntry>> rows) {
+        menus.open(player, id, context, rows);
     }
 
     /** Closes whatever menu of this plugin the player has open. */

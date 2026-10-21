@@ -3,7 +3,7 @@
 # Reescrito pelo plugin a cada inicialização: copie com outro nome
 # se quiser manter uma personalização.
 #
-# Valores: %owner_name% %graves%
+# Valores: %owner_name% %owner_id% %graves%
 # Cada túmulo: %grave_id% %grave_owner% %grave_items% %grave_experience%
 #             %grave_server% %grave_world% %grave_x% %grave_y% %grave_z%
 #             %grave_age% %grave_time_left% %grave_protection% e
@@ -98,3 +98,20 @@ items:
       - "{secondary}Status:"
       - " {letters_black}▎ {letters}Ativos {letters_black}» {info}%graves%"
       - ""
+
+  restore-all:
+    slot: 45
+    material: TOTEM_OF_UNDYING
+    name: "{error}&lDEVOLVER TODOS"
+    condition: "%restore_all%"
+    lore:
+      - ""
+      - "{secondary}Informação:"
+      - " {letters_black}▎ {letters}Devolve todos os túmulos de {highlight}%owner_name%"
+      - " {letters_black}▎ {letters}ao dono, em todos os servidores."
+      - ""
+      - "{error}➥ Clique para devolver todos"
+      - "{letters_black}Será pedida uma confirmação."
+      - ""
+    actions:
+      - "exyliagraves:restore_all %owner_id% %owner_name%"

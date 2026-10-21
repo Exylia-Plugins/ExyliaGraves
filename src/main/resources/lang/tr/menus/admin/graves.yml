@@ -3,7 +3,7 @@
 # Her başlangıçta eklentiden yeniden yazılır: bir stil değişikliğini korumak
 # istiyorsan başka bir adla kopyala.
 #
-# Değerler: %owner_name% %graves%
+# Değerler: %owner_name% %owner_id% %graves%
 # Her mezar: %grave_id% %grave_owner% %grave_items% %grave_experience%
 #             %grave_server% %grave_world% %grave_x% %grave_y% %grave_z%
 #             %grave_age% %grave_time_left% %grave_protection% ve
@@ -98,3 +98,20 @@ items:
       - "{secondary}Durum:"
       - " {letters_black}▎ {letters}Duran {letters_black}» {info}%graves%"
       - ""
+
+  restore-all:
+    slot: 45
+    material: TOTEM_OF_UNDYING
+    name: "{error}&lHEPSİNİ İADE ET"
+    condition: "%restore_all%"
+    lore:
+      - ""
+      - "{secondary}Bilgi:"
+      - " {letters_black}▎ {highlight}%owner_name% {letters}oyuncusunun tüm mezarlarını"
+      - " {letters_black}▎ {letters}her sunucuda sahibine iade eder."
+      - ""
+      - "{error}➥ Hepsini iade etmek için tıkla"
+      - "{letters_black}Onay istenecek."
+      - ""
+    actions:
+      - "exyliagraves:restore_all %owner_id% %owner_name%"

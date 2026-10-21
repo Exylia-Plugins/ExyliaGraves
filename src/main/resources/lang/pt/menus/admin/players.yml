@@ -1,0 +1,86 @@
+# O painel da staff: todos os jogadores online neste servidor. /gravesadmin
+#
+# Reescrito pelo plugin a cada inicialização: copie com outro nome
+# se quiser manter uma personalização.
+#
+# Cada jogador: %player_name% %player_id%
+
+menu-version: 1
+
+title: "{primary}&lTÚMULOS {letters_black}» {highlight}Jogadores {muted}%current_page%/%total_pages%"
+size: 54
+type: PAGINATION
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+  pagination:
+    material: LIGHT_GRAY_STAINED_GLASS_PANE
+    name: "{muted}Não há mais jogadores"
+    lore:
+      - ""
+      - " {letters_black}▎ {letters}Ninguém mais está online aqui."
+      - ""
+    hide_tooltip: false
+
+pagination:
+  slots: '0-35'
+
+  item_template:
+    material: 'playerhead-%player_name%'
+    name: "{primary}&l%player_name%"
+    lore:
+      - ""
+      - "{secondary}Informação:"
+      - " {letters_black}▎ {letters}Todos os túmulos ativos deste jogador,"
+      - " {letters_black}▎ {letters}em qualquer servidor da rede."
+      - ""
+      - "{warning}➥ Clique para ver seus túmulos"
+      - ""
+    actions:
+      - "exyliagraves:admin_graves %player_id% %player_name%"
+
+  navigation:
+    previous:
+      slot: 48
+      sound: "minecraft:item.book.page_turn|1.0|1.0"
+      material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
+      name: '{error}&l← PÁGINA ANTERIOR'
+      lore:
+        - ""
+        - " {letters_black}▎ {letters}Página {info}%current_page%{letters_black}/{info}%total_pages%"
+        - ""
+      actions:
+        - "previous_page"
+    next:
+      slot: 50
+      sound: "minecraft:item.book.page_turn|1.0|1.0"
+      material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
+      name: '{success}&lPRÓXIMA PÁGINA →'
+      lore:
+        - ""
+        - " {letters_black}▎ {letters}Página {info}%current_page%{letters_black}/{info}%total_pages%"
+        - ""
+      actions:
+        - "next_page"
+
+items:
+  info:
+    slot: 49
+    material: BOOK
+    name: "{primary}&lJOGADORES ONLINE"
+    lore:
+      - ""
+      - "{secondary}Informação:"
+      - " {letters_black}▎ {letters}Jogadores online neste servidor."
+      - " {letters_black}▎ {letters}Para qualquer outro, use"
+      - " {letters_black}▎ {highlight}/gravesadmin list <player>"
+      - ""

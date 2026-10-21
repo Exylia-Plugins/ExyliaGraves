@@ -111,7 +111,8 @@ public final class ExyliaGraves {
         service = new GravesService(this, graves);
 
         actions = Actions.of(plugin, NAMESPACE);
-        new GraveActions(this).registerAll();
+        GraveActions graveActions = new GraveActions(this);
+        graveActions.registerAll();
         // After the actions: compiling a menu resolves every action its buttons name.
         menus = new GraveMenus(this, NAMESPACE);
         menus.load();
@@ -121,7 +122,7 @@ public final class ExyliaGraves {
 
         var lamp = PlayerArguments.install(BukkitLamp.builder(plugin)).build();
         lamp.register(new GravesCommand());
-        lamp.register(new GravesAdminCommand());
+        lamp.register(new GravesAdminCommand(graveActions));
 
         reloads = Reloads.of(plugin)
                 .step("configs", () -> {
