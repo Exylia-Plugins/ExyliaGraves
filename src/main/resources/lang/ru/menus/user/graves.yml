@@ -1,0 +1,99 @@
+# Твои могилы на всех серверах сети. /graves
+#
+# Оформление можно менять: правки сохраняются между обновлениями.
+# Если версии нужно изменить раскладку, она повышает menu-version ниже;
+# тогда файл заменяется, а прежний сохраняется рядом.
+#
+# Значения: %owner_name% %graves%
+# Каждая могила: %grave_id% %grave_owner% %grave_items% %grave_experience%
+#             %grave_server% %grave_world% %grave_x% %grave_y% %grave_z%
+#             %grave_age% %grave_time_left% %grave_protection% и
+#             %grave_actions% (действия по клику, доступные этому игроку, из messages.yml)
+
+menu-version: 1
+
+title: "{primary}&lМОГИЛЫ {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
+size: 54
+type: PAGINATION
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+  pagination:
+    material: LIGHT_GRAY_STAINED_GLASS_PANE
+    name: "{muted}Больше могил нет"
+    lore:
+      - ""
+      - " {letters_black}▎ {letters}Нигде не лежит ничего твоего."
+      - ""
+    hide_tooltip: false
+
+pagination:
+  slots: '0-35'
+
+  item_template:
+    material: 'playerhead-%grave_owner%'
+    name: "{primary}&lМОГИЛА {letters_black}» {highlight}%grave_world%"
+    lore:
+      - ""
+      - "{secondary}Информация:"
+      - " {letters_black}▎ {letters}Сервер {letters_black}» {info}%grave_server%"
+      - " {letters_black}▎ {letters}Где {letters_black}» {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
+      - " {letters_black}▎ {letters}Предметы {letters_black}» {info}%grave_items%"
+      - " {letters_black}▎ {letters}Опыт {letters_black}» {info}%grave_experience%"
+      - ""
+      - "{secondary}Состояние:"
+      - " {letters_black}▎ {letters}Смерть {letters_black}» {info}%grave_age% назад"
+      - " {letters_black}▎ {letters}Истекает через {letters_black}» {info}%grave_time_left% ⌚"
+      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - ""
+    actions:
+      - "left: exyliagraves:teleport %grave_id%"
+      - "right: exyliagraves:preview %grave_id%"
+
+  navigation:
+    previous:
+      slot: 48
+      sound: "minecraft:item.book.page_turn|1.0|1.0"
+      material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
+      name: '{error}&l← ПРЕДЫДУЩАЯ СТРАНИЦА'
+      lore:
+        - ""
+        - " {letters_black}▎ {letters}Страница {info}%current_page%{letters_black}/{info}%total_pages%"
+        - ""
+      actions:
+        - "previous_page"
+    next:
+      slot: 50
+      sound: "minecraft:item.book.page_turn|1.0|1.0"
+      material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
+      name: '{success}&lСЛЕДУЮЩАЯ СТРАНИЦА →'
+      lore:
+        - ""
+        - " {letters_black}▎ {letters}Страница {info}%current_page%{letters_black}/{info}%total_pages%"
+        - ""
+      actions:
+        - "next_page"
+
+items:
+  header:
+    slot: 49
+    material: 'playerhead-%owner_name%'
+    name: "{primary}&l%owner_name%"
+    lore:
+      - ""
+      - "{secondary}Информация:"
+      - " {letters_black}▎ {letters}Подойди к могиле и нажми на голову,"
+      - " {letters_black}▎ {letters}чтобы забрать всё обратно."
+      - ""
+      - "{secondary}Состояние:"
+      - " {letters_black}▎ {letters}Активных {letters_black}» {info}%graves%"
+      - ""

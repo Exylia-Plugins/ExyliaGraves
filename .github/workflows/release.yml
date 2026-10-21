@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    tags: [ 'v*' ]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew build
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          # The fixed name is what ExyliaLib's updater downloads: releases/latest/download/ExyliaGraves.jar.
+          cp "build/libs/ExyliaGraves-${version}.jar" build/libs/ExyliaGraves.jar
+          gh release create "$GITHUB_REF_NAME" "build/libs/ExyliaGraves-${version}.jar" build/libs/ExyliaGraves.jar \
+            --title "ExyliaGraves ${version}" --generate-notes
+
+  # Mirrors the release above to Modrinth; skipped while MODRINTH_TOKEN or the project id is unset.
+  modrinth:
+    needs: release
+    uses: Exylia-Plugins/.github/.github/workflows/modrinth.yml@main
+    with:
+      version: ${{ github.ref_name }}
+      name: ExyliaGraves
+      project-id: ${{ vars.MODRINTH_PROJECT_ID }}
+      loaders: '["folia","paper","purpur"]'
+      dependencies: '[{"project_id":"G0BDxMIG","dependency_type":"required"}]'
+    secrets: inherit

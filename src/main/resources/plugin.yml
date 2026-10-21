@@ -1,0 +1,97 @@
+name: ExyliaGraves
+version: '${version}'
+main: net.exylia.exyliaGraves.ExyliaGravesPlugin
+api-version: '1.21'
+authors: [ DiGround ]
+website: https://github.com/Exylia-Plugins/ExyliaGraves
+description: A grave where you died, holding what you dropped, collected exactly once across a whole network.
+
+# Kept up to date by ExyliaLib from this repository's GitHub releases.
+exylia-updates: Exylia-Plugins/ExyliaGraves
+# The oldest ExyliaLib this build runs on; ExyliaLib holds back an update that needs a newer one.
+exylia-lib: '${exyliaLibVersion}'
+
+folia-supported: true
+
+softdepend:
+  # Required, but soft so this plugin still starts without it: it then downloads ExyliaLib
+  # and asks for a restart.
+  - ExyliaLib
+  - PlaceholderAPI
+  # Teleporting to a grave charges the economy ExyliaLib is set to, so this plugin enables after them.
+  - ExyliaEconomy
+  - Vault
+
+permissions:
+  exyliagraves.use:
+    description: Get a grave when you die. Without it your drops fall as usual.
+    default: true
+  exyliagraves.menu:
+    description: List your graves on every server with /graves.
+    default: true
+  exyliagraves.preview:
+    description: Look inside a grave you may open without taking anything (sneak-click it, or right-click it in /graves).
+    default: true
+  exyliagraves.teleport:
+    description: Teleport to your graves from /graves, when teleporting is on.
+    default: true
+  exyliagraves.teleport.free:
+    description: Teleport to your graves without paying the teleport cost.
+    default: op
+  exyliagraves.bypass.protection:
+    description: Open anybody's grave, protected or not.
+    default: op
+  exyliagraves.admin.view:
+    description: List anybody's graves with /gravesadmin list, look inside them and teleport to them.
+    default: op
+  exyliagraves.admin.restore:
+    description: Hand graves back to their owner, from /gravesadmin list or with /gravesadmin restore.
+    default: op
+    children:
+      exyliagraves.admin.view: true
+  exyliagraves.admin.remove:
+    description: Remove a grave and everything in it, from /gravesadmin list.
+    default: op
+    children:
+      exyliagraves.admin.view: true
+  exyliagraves.admin.reload:
+    description: Reload the configuration, messages and menus with /gravesadmin reload.
+    default: op
+  exyliagraves.admin:
+    description: Every admin command.
+    default: op
+    children:
+      exyliagraves.admin.view: true
+      exyliagraves.admin.restore: true
+      exyliagraves.admin.remove: true
+      exyliagraves.admin.reload: true
+  exyliagraves.*:
+    description: Every ExyliaGraves permission.
+    default: op
+    children:
+      exyliagraves.use: true
+      exyliagraves.menu: true
+      exyliagraves.preview: true
+      exyliagraves.teleport: true
+      exyliagraves.teleport.free: true
+      exyliagraves.bypass.protection: true
+      exyliagraves.admin: true
+
+libraries:
+  # The same list ExyliaLib declares, in the same order and the same versions.
+  # The server's library loader fetches each one once and shares it, so a plugin
+  # naming a driver it never opens itself costs nothing, while a plugin missing
+  # one that ExyliaLib later needs is a server that starts and then cannot write.
+  # Aligned on purpose: two lists that drift are how a MariaDB server ended up
+  # being sent MySQL 8 syntax.
+  - 'io.github.revxrsal:lamp.common:4.0.0-rc.17'
+  - 'io.github.revxrsal:lamp.bukkit:4.0.0-rc.17'
+  - 'com.github.ben-manes.caffeine:caffeine:3.2.4'
+  - 'com.zaxxer:HikariCP:5.1.0'
+  - 'com.h2database:h2:2.2.224'
+  - 'com.mysql:mysql-connector-j:8.4.0'
+  - 'org.mariadb.jdbc:mariadb-java-client:3.4.1'
+  - 'org.postgresql:postgresql:42.7.4'
+  - 'org.mongodb:mongodb-driver-sync:4.11.1'
+  - 'redis.clients:jedis:5.1.0'
+  - 'org.apache.commons:commons-pool2:2.12.0'

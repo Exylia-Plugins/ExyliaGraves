@@ -1,0 +1,36 @@
+# Build output
+.gradle/
+build/
+bin/
+out/
+dist/
+target/
+*.class
+
+# IDE
+.settings/
+.project
+.classpath
+.factorypath
+.idea/
+*.iml
+.vscode/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+
+# Tooling
+.atl/
+.codegraph/
+
+# Credentials, never committed
+*.env
+*.key
+*.pem
+*.jks
+*.keystore
+*.p12
