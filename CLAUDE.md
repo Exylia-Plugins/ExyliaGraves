@@ -10,7 +10,7 @@ Graves where a player died, kept in the database and collected exactly once acro
 ## ExyliaLib
 
 - Always the newest: `build.gradle` resolves the latest GitHub release (or a newer one in mavenLocal) at build time, and that version becomes plugin.yml's `exylia-lib`. `-PexyliaLibVersion` pins one for a single build.
-- `ExyliaGravesPlugin` is the Bukkit entry point and touches no ExyliaLib type: without ExyliaLib it runs `bootstrap/ExyliaLibInstaller` and disables itself until the restart. With it, it hands over to the core, `ExyliaGraves`.
+- `ExyliaGravesPlugin` is the Bukkit entry point and touches no ExyliaLib type: without ExyliaLib it runs `bootstrap/ExyliaLibMissing` (logs where to download it; nothing is downloaded without the owner) and disables itself until the restart. With it, it hands over to the core, `ExyliaGraves`.
 
 ## Grave safety (read before touching `manager/` or `service/`)
 
