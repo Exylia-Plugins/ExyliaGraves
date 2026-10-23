@@ -205,12 +205,20 @@ public record GraveSettings(
             @Comment("Whether /graves lets a player go to one of theirs. Needs exyliagraves.teleport.")
             boolean enabled,
 
-            @Comment("What that teleport costs, in the currency set in ExyliaLib. 0 = free.")
-            @Comment("exyliagraves.teleport.free skips it.")
-            double cost) {
+            @Comment("What that teleport costs. 0 = free. exyliagraves.teleport.free skips it.")
+            double cost,
+
+            @Comment("The ExyliaLib currency id the cost is paid in (vault, gems, an item or xp currency...).")
+            @Comment("Empty = ExyliaLib's default currency.")
+            String currency) {
 
         public Teleport() {
-            this(false, 0.0);
+            this(false, 0.0, "");
+        }
+
+        /** The currency id to charge in, or {@code null} for the default one. */
+        public String currencyId() {
+            return currency == null || currency.isBlank() ? null : currency.trim();
         }
     }
 
