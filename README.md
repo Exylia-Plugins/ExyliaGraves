@@ -34,7 +34,7 @@ Built so a grave can never duplicate an item: not with two players clicking the 
 
 ## Requirements
 
-- Paper or Folia 1.21+, Java 21
+- Paper or Folia 1.21.4 or newer, Java 21
 - [ExyliaLib](https://modrinth.com/plugin/exylialib) ([GitHub releases](https://github.com/DiGround-s/ExyliaLib/releases)). Install it first; without it the plugin stays off and says where to get it.
 - For a network: every server on the same database (MySQL, MariaDB, PostgreSQL or MongoDB) in `plugins/ExyliaGraves/database.yml`, ideally with Redis enabled there too so a grave taken on one server disappears at once where it stands.
 
