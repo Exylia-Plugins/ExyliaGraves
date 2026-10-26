@@ -136,7 +136,7 @@ public final class GravesManager {
         // Only this server's graves: the table is shared across the network
         // and a grave dug on another server has no block here to draw.
         repo.findAll().thenApply(all -> all.stream()
-                .filter(grave -> grave.location() != null && grave.location().isSameServer(server))
+                .filter(grave -> grave.location() != null && core.getTeleports().isHere(grave.location()))
                 .toList()).whenComplete((stored, failure) -> {
             if (failure != null) {
                 core.getDebug().error("Could not read the graves; none are standing until a restart.", failure);
