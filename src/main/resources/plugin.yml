@@ -76,6 +76,12 @@ permissions:
       exyliagraves.teleport.free: true
       exyliagraves.bypass.protection: true
       exyliagraves.admin: true
+  # Numbers, granted as plain nodes (nothing to declare). A node only ever improves on the config.
+  #   exyliagraves.limit.<n>              graves standing at once, largest wins (default: graves.max-per-player)
+  #   exyliagraves.expire.<minutes>       how long graves last, largest wins (default: graves.expire-time)
+  #   exyliagraves.protection.<minutes>   how long only the owner may open them, largest wins (default: graves.protection-time)
+  #   exyliagraves.experience.<percent>   experience kept, largest wins (default: contents.experience-percent)
+  #   exyliagraves.teleport.cost.<amount> teleport cost, smallest wins (default: teleport.cost)
 
 libraries:
   # The same list ExyliaLib declares, in the same order and the same versions.

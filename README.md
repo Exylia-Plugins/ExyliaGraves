@@ -61,6 +61,9 @@ Aliases: `/grave`, `/graveadmin`.
 - `exyliagraves.menu`, `exyliagraves.preview`, `exyliagraves.teleport`: on by default.
 - `exyliagraves.limit.<n>`: graves standing at once (largest wins; `graves.max-per-player` without one).
 - `exyliagraves.expire.<minutes>`: how long their graves last (largest wins; `graves.expire-time` without one).
+- `exyliagraves.protection.<minutes>`: how long only they may open their graves (largest wins; `graves.protection-time` without one).
+- `exyliagraves.experience.<percent>`: experience their graves keep (largest wins; `contents.experience-percent` without one).
+- `exyliagraves.teleport.cost.<amount>`: what teleporting to a grave costs them (smallest wins; `teleport.cost` without one).
 - `exyliagraves.teleport.free`, `exyliagraves.bypass.protection`: operators by default.
 - `exyliagraves.admin.view`, `admin.restore`, `admin.remove`, `admin.reload`; `exyliagraves.admin` for all of them; `exyliagraves.*` for everything.
 

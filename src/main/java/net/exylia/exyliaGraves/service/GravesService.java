@@ -177,7 +177,7 @@ public final class GravesService {
         long now = System.currentTimeMillis();
         int expireMinutes = raised(player, Permissions.EXPIRE_PREFIX, settings.graves().expireTime());
         long expiresAt = expireMinutes > 0 ? now + TimeUnit.MINUTES.toMillis(expireMinutes) : -1L;
-        int protect = settings.graves().protectionTime();
+        int protect = raised(player, Permissions.PROTECTION_PREFIX, settings.graves().protectionTime());
         long protectedUntil = protect < 0 ? -1L : protect == 0 ? 0L : now + TimeUnit.MINUTES.toMillis(protect);
         UUID killer = player.getKiller() == null ? null : player.getKiller().getUniqueId();
 
@@ -229,7 +229,7 @@ public final class GravesService {
     /** The experience a grave keeps, by the configured mode and percentage. */
     private static int experience(PlayerDeathEvent event, Player player, GraveSettings.Contents contents) {
         if (event.getKeepLevel()) return 0;
-        int percent = Math.max(0, Math.min(100, contents.experiencePercent()));
+        int percent = Math.max(0, Math.min(100, raised(player, Permissions.EXPERIENCE_PREFIX, contents.experiencePercent())));
         long points = switch (contents.experienceMode()) {
             case NONE -> 0;
             case VANILLA -> event.getDroppedExp();
@@ -581,7 +581,8 @@ public final class GravesService {
         }
         UUID id = player.getUniqueId();
         BigDecimal cost = staff || player.hasPermission(Permissions.TELEPORT_FREE)
-                ? BigDecimal.ZERO : BigDecimal.valueOf(Math.max(0.0, settings.cost()));
+                ? BigDecimal.ZERO : BigDecimal.valueOf(Math.max(0.0, Math.min(settings.cost(),
+                        PermissionNumbers.lowest(player, Permissions.TELEPORT_COST_PREFIX, Integer.MAX_VALUE))));
         boolean charged = cost.signum() > 0;
         String currency = settings.currencyId();
         Values values = Values.of().put("cost", Economy.format(currency, cost));

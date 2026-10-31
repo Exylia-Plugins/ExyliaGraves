@@ -72,6 +72,7 @@ public record GraveSettings(
             String onExpire,
 
             @Comment("How long only the owner may open it. 0 = anybody from the start, -1 = only ever the owner.")
+            @Comment("exyliagraves.protection.<minutes> gives a rank longer; the largest number a player holds wins.")
             @Time(Time.Unit.MINUTES) int protectionTime,
 
             @Comment("Whether the player who made the kill may open it while it is protected.")
@@ -108,6 +109,7 @@ public record GraveSettings(
             String experience,
 
             @Comment("Of that experience, the percentage the grave keeps (0-100). The rest is lost.")
+            @Comment("exyliagraves.experience.<percent> gives a rank more; the largest number a player holds wins.")
             int experiencePercent,
 
             @Comment("Materials that never go into a grave: they drop on the floor as usual.")
@@ -206,6 +208,7 @@ public record GraveSettings(
             boolean enabled,
 
             @Comment("What that teleport costs. 0 = free. exyliagraves.teleport.free skips it.")
+            @Comment("exyliagraves.teleport.cost.<amount> makes it cheaper for a rank; the smallest number a player holds wins.")
             double cost,
 
             @Comment("The ExyliaLib currency id the cost is paid in (vault, gems, an item or xp currency...).")

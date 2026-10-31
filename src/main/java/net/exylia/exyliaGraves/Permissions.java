@@ -26,6 +26,15 @@ public final class Permissions {
     /** How many minutes their graves last: {@code exyliagraves.expire.<minutes>}, the largest wins. */
     public static final String EXPIRE_PREFIX = "exyliagraves.expire.";
 
+    /** How many minutes only the owner may open their graves: {@code exyliagraves.protection.<minutes>}, the largest wins. */
+    public static final String PROTECTION_PREFIX = "exyliagraves.protection.";
+
+    /** The percentage of experience their graves keep: {@code exyliagraves.experience.<percent>}, the largest wins. */
+    public static final String EXPERIENCE_PREFIX = "exyliagraves.experience.";
+
+    /** What teleporting to a grave costs them: {@code exyliagraves.teleport.cost.<amount>}, the smallest wins. */
+    public static final String TELEPORT_COST_PREFIX = "exyliagraves.teleport.cost.";
+
     /** Open anybody's grave, protected or not. */
     public static final String BYPASS_PROTECTION = "exyliagraves.bypass.protection";
 
