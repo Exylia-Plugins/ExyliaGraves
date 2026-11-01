@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'net.exylia'
-version = '1.5.0'
+version = '1.5.1'
 
 /*
  * ExyliaLib is always the newest one: the latest release on GitHub, or a newer one published to
