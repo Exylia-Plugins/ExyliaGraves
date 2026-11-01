@@ -7,6 +7,7 @@ import net.exylia.exyliaGraves.manager.GravesManager;
 import net.exylia.exyliaGraves.manager.PreviewHolder;
 import net.exylia.exyliaGraves.service.GraveWindows;
 import net.exylia.exyliaGraves.service.GravesService;
+import net.exylia.lib.respawn.Respawns;
 import net.exylia.lib.text.Values;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -28,7 +29,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -54,6 +54,25 @@ public final class GravesListener implements Listener {
         this.manager = core.getGraves();
         this.service = core.getService();
         core.getPlugin().getServer().getPluginManager().registerEvents(this, core.getPlugin());
+        Respawns.of(core.getPlugin()).after(this::onRespawned);
+    }
+
+    /** Back on their feet: where the newest grave is, and the compass pointed at it. */
+    private void onRespawned(Player player) {
+        GraveSettings.Respawn settings = GraveSettings.get().respawn();
+        if (!settings.pointCompass() && !settings.remind()) return;
+        manager.latest(player.getUniqueId()).ifPresent(grave -> {
+            Location where = grave.block();
+            if (where == null) return;
+            if (settings.pointCompass() && where.getWorld().equals(player.getWorld())) {
+                player.setCompassTarget(where);
+            }
+            if (settings.remind()) {
+                core.getMessages().send(player, GraveMessages.get().respawnReminder(), Values.of()
+                        .put("x", grave.blockX()).put("y", grave.blockY()).put("z", grave.blockZ())
+                        .put("world", grave.worldName()));
+            }
+        });
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
@@ -170,29 +189,6 @@ public final class GravesListener implements Listener {
 
     private static boolean isGraveView(Inventory top) {
         return top.getHolder() instanceof PreviewHolder || top.getHolder() instanceof GraveWindows.Window;
-    }
-
-    /** Back on their feet: where the newest grave is, and the compass pointed at it. */
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onRespawn(PlayerRespawnEvent event) {
-        Player player = event.getPlayer();
-        GraveSettings.Respawn settings = GraveSettings.get().respawn();
-        if (!settings.pointCompass() && !settings.remind()) return;
-        manager.latest(player.getUniqueId()).ifPresent(grave -> {
-            Location where = grave.block();
-            if (where == null) return;
-            // A tick later: the respawn location is only settled once the event is over.
-            core.getTasks().runAtEntity(player, () -> {
-                if (settings.pointCompass() && where.getWorld().equals(player.getWorld())) {
-                    player.setCompassTarget(where);
-                }
-                if (settings.remind()) {
-                    core.getMessages().send(player, GraveMessages.get().respawnReminder(), Values.of()
-                            .put("x", grave.blockX()).put("y", grave.blockY()).put("z", grave.blockZ())
-                            .put("world", grave.worldName()));
-                }
-            });
-        });
     }
 
     /** The picture is drawn where the world is, and only there. */
