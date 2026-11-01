@@ -16,6 +16,7 @@ import net.exylia.lib.action.PluginActions;
 import net.exylia.lib.config.Configs;
 import net.exylia.lib.database.Databases;
 import net.exylia.lib.database.PluginDatabase;
+import net.exylia.lib.database.wipe.Wipes;
 import net.exylia.lib.debug.Debug;
 import net.exylia.lib.input.Inputs;
 import net.exylia.lib.input.PluginInputs;
@@ -109,6 +110,8 @@ public final class ExyliaGraves {
         PluginDatabase database = Databases.of(plugin);
         graves = new GravesManager(this, database);
         service = new GravesService(this, graves);
+        // A reset player's rows are gone: their heads and text come down with them.
+        Wipes.of(plugin).onPlayerReset(graves::ownerReset);
 
         actions = Actions.of(plugin, NAMESPACE);
         GraveActions graveActions = new GraveActions(this);

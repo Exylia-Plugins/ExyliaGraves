@@ -371,6 +371,17 @@ public final class GravesManager {
         return mine;
     }
 
+    /**
+     * A player reset deleted this owner's rows: their graves come down here the
+     * way a grave taken on another server does, after reading that the row is gone.
+     */
+    public void ownerReset(UUID owner) {
+        String id = owner.toString();
+        for (GraveEntity grave : List.copyOf(graves.values())) {
+            if (grave.ownerUuid().equals(id)) recheck(grave);
+        }
+    }
+
     /** One player's newest grave on this server. */
     public Optional<GraveEntity> latest(UUID owner) {
         List<GraveEntity> mine = of(owner);

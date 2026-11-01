@@ -1,8 +1,10 @@
 package net.exylia.exyliaGraves.database;
 
 import net.exylia.lib.database.Column;
+import net.exylia.lib.database.DataKind;
 import net.exylia.lib.database.Id;
 import net.exylia.lib.database.Indexed;
+import net.exylia.lib.database.Owner;
 import net.exylia.lib.database.Table;
 import net.exylia.lib.util.teleport.ExyliaLocation;
 import org.bukkit.Location;
@@ -26,10 +28,10 @@ import java.util.UUID;
  * @param revision      bumped by every write after the first; {@code 0} only on
  *                      rows from before it existed, whose column is empty
  */
-@Table("sc_graves")
+@Table(value = "sc_graves", data = DataKind.WORLD)
 public record GraveEntity(
         @Id(length = 36) String id,
-        @Indexed @Column(length = 36) String ownerUuid,
+        @Owner @Indexed @Column(length = 36) String ownerUuid,
         @Column(length = 64) String ownerName,
         @Column(length = 36) String killerUuid,
         @Column(length = Column.UNBOUNDED) ExyliaLocation location,
