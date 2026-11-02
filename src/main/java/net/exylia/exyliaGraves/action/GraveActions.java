@@ -4,7 +4,9 @@ import net.exylia.exyliaGraves.ExyliaGraves;
 import net.exylia.exyliaGraves.Permissions;
 import net.exylia.exyliaGraves.config.GraveMessages;
 import net.exylia.exyliaGraves.database.GraveEntity;
+import net.exylia.exyliaGraves.menu.AdminPlayersMenu;
 import net.exylia.exyliaGraves.menu.GravesMenu;
+import net.exylia.lib.config.ConfigMenus;
 import net.exylia.lib.action.ActionResult;
 import net.exylia.lib.action.PluginActions;
 import net.exylia.lib.text.Values;
@@ -59,6 +61,11 @@ public final class GraveActions {
             String name = args.string(1, "?");
             core.getMenus().close(player);
             restoreAll(player, owner, name, () -> GravesMenu.open(player, owner, name, true));
+            return ActionResult.success();
+        });
+        actions.registerSync("settings", Permissions.ADMIN, (ctx, args) -> {
+            ConfigMenus.of(core.getPlugin()).permission(Permissions.ADMIN)
+                    .back(AdminPlayersMenu::open).open(ctx.player());
             return ActionResult.success();
         });
         actions.registerSync("admin_graves", Permissions.ADMIN_VIEW, (ctx, args) -> {

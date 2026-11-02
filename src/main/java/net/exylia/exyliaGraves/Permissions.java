@@ -49,6 +49,8 @@ public final class Permissions {
 
     /** Reload the files. */
     public static final String ADMIN_RELOAD = "exyliagraves.admin.reload";
+    /** Every admin permission; also what the settings screens ask for. */
+    public static final String ADMIN = "exyliagraves.admin";
 
     private Permissions() {
         throw new AssertionError("No instances.");

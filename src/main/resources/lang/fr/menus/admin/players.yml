@@ -84,3 +84,18 @@ items:
       - " {letters_black}▎ {letters}Pour quelqu'un d'autre, utilise"
       - " {letters_black}▎ {highlight}/gravesadmin list <player>"
       - ""
+
+  settings:
+    slot: 45
+    material: COMPARATOR
+    name: "{primary}&lRÉGLAGES"
+    lore:
+      - ""
+      - "{secondary}Informations :"
+      - " {letters_black}▎ {letters}Modifiez les réglages du plugin"
+      - " {letters_black}▎ {letters}sans éditer ses {highlight}fichiers{letters}."
+      - ""
+      - "{warning}➥ Clic {letters_black}» {letters}Ouvrir les réglages"
+      - ""
+    actions:
+      - "exyliagraves:settings"

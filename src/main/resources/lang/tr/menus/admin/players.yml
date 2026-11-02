@@ -84,3 +84,18 @@ items:
       - " {letters_black}▎ {letters}Başka biri için şunu kullan:"
       - " {letters_black}▎ {highlight}/gravesadmin list <player>"
       - ""
+
+  settings:
+    slot: 45
+    material: COMPARATOR
+    name: "{primary}&lAYARLAR"
+    lore:
+      - ""
+      - "{secondary}Bilgi:"
+      - " {letters_black}▎ {letters}Eklentinin ayarlarını"
+      - " {letters_black}▎ {letters}{highlight}dosyalarını {letters}açmadan değiştirin."
+      - ""
+      - "{warning}➥ Tık {letters_black}» {letters}Ayarları aç"
+      - ""
+    actions:
+      - "exyliagraves:settings"
