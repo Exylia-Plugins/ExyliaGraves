@@ -8,6 +8,7 @@ import net.exylia.exyliaGraves.database.GraveEntity;
 import net.exylia.exyliaGraves.manager.GravesManager;
 import net.exylia.exyliaGraves.manager.PreviewHolder;
 import net.exylia.lib.economy.Economy;
+import net.exylia.lib.economy.Transaction;
 import net.exylia.lib.log.Logs;
 import net.exylia.lib.session.DeathDrops;
 import net.exylia.lib.session.Sessions;
@@ -587,7 +588,7 @@ public final class GravesService {
         String currency = settings.currencyId();
         Values values = Values.of().put("cost", Economy.format(currency, cost));
         // Runs on the player's own thread (the action hops there), so item and xp currencies can be taken.
-        if (charged && (!Economy.isAvailable() || !Economy.of(currency == null ? "" : currency).charge(id, cost))) {
+        if (charged && (!Economy.isAvailable() || !Economy.of(currency == null ? "" : currency).charge(id, cost, Transaction.of("graves:teleport").by(id)))) {
             core.getMessages().send(player, GraveMessages.get().notEnoughMoney(), values);
             return;
         }
@@ -600,7 +601,7 @@ public final class GravesService {
                         return;
                     }
                     if (charged) {
-                        if (Economy.of(currency == null ? "" : currency).deposit(id, cost).isSuccess()) {
+                        if (Economy.of(currency == null ? "" : currency).deposit(id, cost, Transaction.of("graves:refund")).isSuccess()) {
                             core.getMessages().send(player, GraveMessages.get().teleportRefunded(), values);
                         } else {
                             core.getDebug().error("Could not refund " + cost + " to " + player.getName()
