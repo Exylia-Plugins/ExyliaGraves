@@ -42,13 +42,13 @@ pagination:
     lore:
       - "{letters_black}Tombe du joueur"
       - ""
-      - "{info}✦ Informations "
+      - "{info}✦ Informations"
       - "  {letters_black}· {info}{icon:ping} {letters}Serveur{letters_black}: {info}%grave_server%"
       - "  {letters_black}· {info}{icon:compass} {letters}Position{letters_black}: {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
       - "  {letters_black}· {info}{icon:diamond} {letters}Objets{letters_black}: {info}%grave_items%"
       - "  {letters_black}· {info}{icon:xp} {letters}Expérience{letters_black}: {info}%grave_experience%"
       - ""
-      - "{info}✦ Statut "
+      - "{info}✦ Statut"
       - "  {letters_black}· {info}{icon:deaths} {letters}Mort{letters_black}: {info}il y a %grave_age%"
       - "  {letters_black}· {info}{icon:clock} {letters}Expire dans{letters_black}: {info}%grave_time_left%"
       - "  {letters_black}· {info}{icon:key} {letters}Accès{letters_black}: %grave_protection%"
@@ -87,12 +87,12 @@ items:
     lore:
       - "{letters_black}Tombes du joueur"
       - ""
-      - "{primary}✎ Informations "
+      - "{primary}✎ Informations"
       - " {letters}Toutes les tombes sur pied"
       - " {letters}de ce joueur, sur n'importe"
       - " {letters}quel serveur du réseau."
       - ""
-      - "{primary}✦ Statut "
+      - "{primary}✦ Statut"
       - "  {letters_black}· {info}{icon:iron} {letters}Sur pied{letters_black}: {info}%graves%"
 
   restore-all:
@@ -103,7 +103,7 @@ items:
     lore:
       - "{letters_black}Zone dangereuse"
       - ""
-      - "{error}✎ Informations "
+      - "{error}✎ Informations"
       - " {letters}Rend toutes les tombes de"
       - " {highlight}%owner_name% {letters}à leur propriétaire,"
       - " {letters}sur tous les serveurs."

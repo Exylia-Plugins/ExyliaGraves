@@ -38,7 +38,7 @@ pagination:
     lore:
       - "{letters_black}Joueur en ligne"
       - ""
-      - "{info}✎ Informations "
+      - "{info}✎ Informations"
       - " {letters}Toutes les tombes sur pied"
       - " {letters}de ce joueur, sur n'importe"
       - " {letters}quel serveur du réseau."
@@ -75,7 +75,7 @@ items:
     lore:
       - "{letters_black}Aperçu"
       - ""
-      - "{info}✎ Informations "
+      - "{info}✎ Informations"
       - " {letters}Joueurs connectés à ce serveur."
       - " {letters}Pour quelqu'un d'autre, utilise"
       - " {highlight}/gravesadmin list <player>"
@@ -87,7 +87,7 @@ items:
     lore:
       - "{letters_black}Réglages du plugin"
       - ""
-      - "{primary}✎ Informations "
+      - "{primary}✎ Informations"
       - " {letters}Modifiez les réglages du plugin"
       - " {letters}sans éditer ses {highlight}fichiers{letters}."
       - ""
