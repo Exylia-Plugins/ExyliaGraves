@@ -16,27 +16,27 @@ preview-title: '{primary}&lMEZAR {letters_black}» {highlight}%player%'
 cannot-preview: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Bu mezarın içine bakamazsın.'
 window-busy: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Bu mezarın içine zaten biri bakıyor.'
 inventory-full: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Envanterin dolu.'
-window-experience-name: '{primary}&lTECRÜBE &8[{info}%experience%&8]'
+window-experience-name: "{letters}Mezar {letters_black}▸ <gradient:{success}:{success_light}>Tecrübe</gradient> &8[{info}%experience%&8]"
 window-experience-lore:
-  - ''
-  - '{secondary}Bilgi:'
-  - ' {letters_black}▎ {letters}Bu mezarda saklanan tecrübe.'
-  - ''
-  - '{warning}➥ Tıkla {letters_black}» {letters}al'
-  - ''
-window-take-all-name: '{primary}&lHEPSİNİ AL'
+  - "{letters_black}Mezar eylemi"
+  - ""
+  - "{success}✎ Bilgi"
+  - " {letters}Bu mezarda saklanan tecrübe."
+  - ""
+  - "{success}» Tıkla {letters_black}· {letters}al"
+window-take-all-name: "{letters}Mezar {letters_black}▸ <gradient:{success}:{success_light}>Hepsini al</gradient>"
 window-take-all-lore:
-  - ''
-  - '{secondary}Bilgi:'
-  - ' {letters_black}▎ {letters}Bu mezarda kalan her şey,'
-  - ' {letters_black}▎ {letters}eşyalar ve tecrübe, tek seferde.'
-  - ''
-  - '{secondary}Durum:'
-  - ' {letters_black}▎ {letters}Eşyalar {letters_black}» {info}%items%'
-  - ' {letters_black}▎ {letters}Tecrübe {letters_black}» {info}%experience%'
-  - ''
-  - '{warning}➥ Tıkla {letters_black}» {letters}hepsini al'
-  - ''
+  - "{letters_black}Mezar eylemi"
+  - ""
+  - "{success}✎ Bilgi"
+  - " {letters}Bu mezarda kalan her şey,"
+  - " {letters}eşyalar ve tecrübe, tek seferde."
+  - ""
+  - "{success}✦ Durum"
+  - "  {letters_black}· {info}{icon:diamond} {letters}Eşyalar{letters_black}: {info}%items%"
+  - "  {letters_black}· {info}{icon:xp} {letters}Tecrübe{letters_black}: {info}%experience%"
+  - ""
+  - "{success}» Tıkla {letters_black}· {letters}hepsini al"
 teleported: '[sound:ENTITY_ENDERMAN_TELEPORT|1.0|1.2]%prefix% {success}Mezarına götürülüyorsun. {letters_black}Ücret: {highlight}%cost%{letters_black}.'
 teleport-disabled: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Mezara ışınlanamazsın; yürüyerek gitmelisin.'
 not-enough-money: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Mezara ışınlanmak {highlight}%cost% {error}tutar.'
@@ -54,10 +54,10 @@ hologram-lines:
   - '{primary}&lMEZAR {letters_black}» {highlight}%player%'
   - '{letters}%items% {letters_black}eşya {letters_black}· {info}%time_left% ⌚'
   - '%protection%'
-menu-teleport: '{warning}➥ Sol tık {letters_black}» {letters}ışınlan'
-menu-preview: '{warning}➥ Sağ tık {letters_black}» {letters}içine bak'
-menu-restore: '{warning}➥ Shift + sol tık {letters_black}» {letters}sahibine geri ver'
-menu-remove: '{error}➥ Shift + sağ tık {letters_black}» {letters}kaldır'
+menu-teleport: "{info}» Sol tık {letters_black}· {letters}ışınlan"
+menu-preview: "{info}» Sağ tık {letters_black}· {letters}içine bak"
+menu-restore: "{info}» Shift + sol tık {letters_black}· {letters}sahibine geri ver"
+menu-remove: "{error}» Shift + sağ tık {letters_black}· {letters}kaldır<nl>{letters_black}Onaylaman istenecek."
 admin-usage:
   - '%prefix% {letters}Kullanım{letters_black}:'
   - ' {letters_black}▎ {highlight}/gravesadmin list <player>'

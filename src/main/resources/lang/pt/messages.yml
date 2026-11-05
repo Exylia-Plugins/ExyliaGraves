@@ -16,27 +16,28 @@ preview-title: '{primary}&lTÚMULO {letters_black}» {highlight}%player%'
 cannot-preview: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Você não pode olhar dentro desse túmulo.'
 window-busy: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Alguém já está olhando dentro deste túmulo.'
 inventory-full: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Seu inventário está cheio.'
-window-experience-name: '{primary}&lEXPERIÊNCIA &8[{info}%experience%&8]'
+window-experience-name: "{letters}Túmulo {letters_black}▸ <gradient:{success}:{success_light}>Experiência</gradient> &8[{info}%experience%&8]"
 window-experience-lore:
-  - ''
-  - '{secondary}Informação:'
-  - ' {letters_black}▎ {letters}A experiência guardada neste túmulo.'
-  - ''
-  - '{warning}➥ Clique {letters_black}» {letters}pegá-la'
-  - ''
-window-take-all-name: '{primary}&lPEGAR TUDO'
+  - "{letters_black}Ação do túmulo"
+  - ""
+  - "{success}✎ Informação"
+  - " {letters}A experiência guardada"
+  - " {letters}neste túmulo."
+  - ""
+  - "{success}» Clique {letters_black}· {letters}pegá-la"
+window-take-all-name: "{letters}Túmulo {letters_black}▸ <gradient:{success}:{success_light}>Pegar tudo</gradient>"
 window-take-all-lore:
-  - ''
-  - '{secondary}Informação:'
-  - ' {letters_black}▎ {letters}Tudo o que resta neste túmulo,'
-  - ' {letters_black}▎ {letters}itens e experiência, de uma vez.'
-  - ''
-  - '{secondary}Status:'
-  - ' {letters_black}▎ {letters}Itens {letters_black}» {info}%items%'
-  - ' {letters_black}▎ {letters}Experiência {letters_black}» {info}%experience%'
-  - ''
-  - '{warning}➥ Clique {letters_black}» {letters}pegar tudo'
-  - ''
+  - "{letters_black}Ação do túmulo"
+  - ""
+  - "{success}✎ Informação"
+  - " {letters}Tudo o que resta neste túmulo,"
+  - " {letters}itens e experiência, de uma vez."
+  - ""
+  - "{success}✦ Status"
+  - "  {letters_black}· {info}{icon:diamond} {letters}Itens{letters_black}: {info}%items%"
+  - "  {letters_black}· {info}{icon:xp} {letters}Experiência{letters_black}: {info}%experience%"
+  - ""
+  - "{success}» Clique {letters_black}· {letters}pegar tudo"
 teleported: '[sound:ENTITY_ENDERMAN_TELEPORT|1.0|1.2]%prefix% {success}Levando você ao seu túmulo. {letters_black}Custo: {highlight}%cost%{letters_black}.'
 teleport-disabled: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Você não pode se teleportar para um túmulo; vá andando.'
 not-enough-money: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Teleportar para um túmulo custa {highlight}%cost%{error}.'
@@ -54,10 +55,10 @@ hologram-lines:
   - '{primary}&lTÚMULO {letters_black}» {highlight}%player%'
   - '{letters}%items% {letters_black}item(ns) {letters_black}· {info}%time_left% ⌚'
   - '%protection%'
-menu-teleport: '{warning}➥ Clique esquerdo {letters_black}» {letters}teleportar'
-menu-preview: '{warning}➥ Clique direito {letters_black}» {letters}olhar dentro'
-menu-restore: '{warning}➥ Shift + clique esquerdo {letters_black}» {letters}devolver ao dono'
-menu-remove: '{error}➥ Shift + clique direito {letters_black}» {letters}removê-lo'
+menu-teleport: "{info}» Clique esquerdo {letters_black}· {letters}teleportar"
+menu-preview: "{info}» Clique direito {letters_black}· {letters}olhar dentro"
+menu-restore: "{info}» Shift + clique esquerdo {letters_black}· {letters}devolver ao dono"
+menu-remove: "{error}» Shift + clique direito {letters_black}· {letters}removê-lo<nl>{letters_black}Você precisará confirmar."
 admin-usage:
   - '%prefix% {letters}Uso{letters_black}:'
   - ' {letters_black}▎ {highlight}/gravesadmin list <player>'

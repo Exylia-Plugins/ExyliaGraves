@@ -26,9 +26,7 @@ filler:
     material: LIGHT_GRAY_STAINED_GLASS_PANE
     name: "{muted}Больше игроков нет"
     lore:
-      - ""
-      - " {letters_black}▎ {letters}Больше никого нет на этом сервере."
-      - ""
+      - "{letters_black}Больше никого нет на этом сервере."
     hide_tooltip: false
 
 pagination:
@@ -36,15 +34,15 @@ pagination:
 
   item_template:
     material: 'playerhead-%player_name%'
-    name: "{primary}&l%player_name%"
+    name: "{letters}Игрок {letters_black}▸ <gradient:{info}:{info_light}>%player_name%</gradient>"
     lore:
+      - "{letters_black}Игрок в сети"
       - ""
-      - "{secondary}Информация:"
-      - " {letters_black}▎ {letters}Все могилы этого игрока"
-      - " {letters_black}▎ {letters}на любом сервере сети."
+      - "{info}✎ Информация"
+      - " {letters}Все могилы этого игрока"
+      - " {letters}на любом сервере сети."
       - ""
-      - "{warning}➥ Нажми, чтобы открыть его могилы"
-      - ""
+      - "{info}» Нажми, чтобы открыть его могилы"
     actions:
       - "exyliagraves:admin_graves %player_id% %player_name%"
 
@@ -53,22 +51,18 @@ pagination:
       slot: 48
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
-      name: '{error}&l← ПРЕДЫДУЩАЯ СТРАНИЦА'
+      name: "{letters}Страница {letters_black}▸ <gradient:{error}:{error_light}>← Предыдущая</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Страница {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Страница{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "previous_page"
     next:
       slot: 50
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
-      name: '{success}&lСЛЕДУЮЩАЯ СТРАНИЦА →'
+      name: "{letters}Страница {letters_black}▸ <gradient:{success}:{success_light}>Следующая →</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Страница {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Страница{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "next_page"
 
@@ -76,26 +70,26 @@ items:
   info:
     slot: 49
     material: BOOK
-    name: "{primary}&lИГРОКИ ОНЛАЙН"
+    name: "<gradient:{info}:{info_light}>Игроки онлайн</gradient>"
     lore:
+      - "{letters_black}Обзор"
       - ""
-      - "{secondary}Информация:"
-      - " {letters_black}▎ {letters}Игроки онлайн на этом сервере."
-      - " {letters_black}▎ {letters}Для остальных используй"
-      - " {letters_black}▎ {highlight}/gravesadmin list <player>"
-      - ""
+      - "{info}✎ Информация"
+      - " {letters}Игроки онлайн на этом сервере."
+      - " {letters}Для остальных используй"
+      - " {highlight}/gravesadmin list <player>"
 
   settings:
     slot: 45
     material: COMPARATOR
-    name: "{primary}&lНАСТРОЙКИ"
+    name: "{letters}Могилы {letters_black}▸ <gradient:{primary}:{secondary_light}>Настройки</gradient>"
     lore:
+      - "{letters_black}Настройки плагина"
       - ""
-      - "{secondary}Информация:"
-      - " {letters_black}▎ {letters}Меняйте настройки плагина"
-      - " {letters_black}▎ {letters}без правки его {highlight}файлов{letters}."
+      - "{primary}✎ Информация"
+      - " {letters}Меняйте настройки плагина"
+      - " {letters}без правки его {highlight}файлов{letters}."
       - ""
-      - "{warning}➥ Клик {letters_black}» {letters}Открыть настройки"
-      - ""
+      - "{primary}» Клик {letters_black}· {letters}Открыть настройки"
     actions:
       - "exyliagraves:settings"

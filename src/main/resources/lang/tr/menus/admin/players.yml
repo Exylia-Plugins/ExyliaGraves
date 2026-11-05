@@ -26,9 +26,7 @@ filler:
     material: LIGHT_GRAY_STAINED_GLASS_PANE
     name: "{muted}Başka oyuncu yok"
     lore:
-      - ""
-      - " {letters_black}▎ {letters}Bu sunucuda başka kimse çevrimiçi değil."
-      - ""
+      - "{letters_black}Bu sunucuda başka kimse çevrimiçi değil."
     hide_tooltip: false
 
 pagination:
@@ -36,15 +34,15 @@ pagination:
 
   item_template:
     material: 'playerhead-%player_name%'
-    name: "{primary}&l%player_name%"
+    name: "{letters}Oyuncu {letters_black}▸ <gradient:{info}:{info_light}>%player_name%</gradient>"
     lore:
+      - "{letters_black}Çevrimiçi oyuncu"
       - ""
-      - "{secondary}Bilgi:"
-      - " {letters_black}▎ {letters}Bu oyuncunun duran tüm mezarları,"
-      - " {letters_black}▎ {letters}ağdaki her sunucuda."
+      - "{info}✎ Bilgi"
+      - " {letters}Bu oyuncunun duran tüm"
+      - " {letters}mezarları, ağdaki her sunucuda."
       - ""
-      - "{warning}➥ Mezarlarını görmek için tıkla"
-      - ""
+      - "{info}» Mezarlarını görmek için tıkla"
     actions:
       - "exyliagraves:admin_graves %player_id% %player_name%"
 
@@ -53,22 +51,18 @@ pagination:
       slot: 48
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
-      name: '{error}&l← ÖNCEKİ SAYFA'
+      name: "{letters}Sayfa {letters_black}▸ <gradient:{error}:{error_light}>← Önceki</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Sayfa {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Sayfa{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "previous_page"
     next:
       slot: 50
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
-      name: '{success}&lSONRAKİ SAYFA →'
+      name: "{letters}Sayfa {letters_black}▸ <gradient:{success}:{success_light}>Sonraki →</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Sayfa {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Sayfa{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "next_page"
 
@@ -76,26 +70,26 @@ items:
   info:
     slot: 49
     material: BOOK
-    name: "{primary}&lÇEVRİMİÇİ OYUNCULAR"
+    name: "<gradient:{info}:{info_light}>Çevrimiçi oyuncular</gradient>"
     lore:
+      - "{letters_black}Genel bakış"
       - ""
-      - "{secondary}Bilgi:"
-      - " {letters_black}▎ {letters}Bu sunucudaki çevrimiçi oyuncular."
-      - " {letters_black}▎ {letters}Başka biri için şunu kullan:"
-      - " {letters_black}▎ {highlight}/gravesadmin list <player>"
-      - ""
+      - "{info}✎ Bilgi"
+      - " {letters}Bu sunucudaki çevrimiçi oyuncular."
+      - " {letters}Başka biri için şunu kullan:"
+      - " {highlight}/gravesadmin list <player>"
 
   settings:
     slot: 45
     material: COMPARATOR
-    name: "{primary}&lAYARLAR"
+    name: "{letters}Mezarlar {letters_black}▸ <gradient:{primary}:{secondary_light}>Ayarlar</gradient>"
     lore:
+      - "{letters_black}Eklenti ayarları"
       - ""
-      - "{secondary}Bilgi:"
-      - " {letters_black}▎ {letters}Eklentinin ayarlarını"
-      - " {letters_black}▎ {letters}{highlight}dosyalarını {letters}açmadan değiştirin."
+      - "{primary}✎ Bilgi"
+      - " {letters}Eklentinin ayarlarını"
+      - " {highlight}dosyalarını {letters}açmadan değiştirin."
       - ""
-      - "{warning}➥ Tık {letters_black}» {letters}Ayarları aç"
-      - ""
+      - "{primary}» Tık {letters_black}· {letters}Ayarları aç"
     actions:
       - "exyliagraves:settings"

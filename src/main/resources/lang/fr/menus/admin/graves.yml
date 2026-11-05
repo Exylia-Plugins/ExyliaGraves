@@ -30,9 +30,7 @@ filler:
     material: LIGHT_GRAY_STAINED_GLASS_PANE
     name: "{muted}Plus de tombes"
     lore:
-      - ""
-      - " {letters_black}▎ {letters}Ce joueur n'a aucune tombe sur pied."
-      - ""
+      - "{letters_black}Ce joueur n'a aucune tombe sur pied."
     hide_tooltip: false
 
 pagination:
@@ -40,21 +38,21 @@ pagination:
 
   item_template:
     material: 'playerhead-%grave_owner%'
-    name: "{primary}&lTOMBE {letters_black}» {highlight}%grave_world%"
+    name: "{letters}Tombe {letters_black}▸ <gradient:{info}:{info_light}>%grave_world%</gradient>"
     lore:
+      - "{letters_black}Tombe du joueur"
       - ""
-      - "{secondary}Informations :"
-      - " {letters_black}▎ {letters}Serveur {letters_black}» {info}%grave_server%"
-      - " {letters_black}▎ {letters}Position {letters_black}» {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
-      - " {letters_black}▎ {letters}Objets {letters_black}» {info}%grave_items%"
-      - " {letters_black}▎ {letters}Expérience {letters_black}» {info}%grave_experience%"
+      - "{info}✦ Informations "
+      - "  {letters_black}· {info}{icon:ping} {letters}Serveur{letters_black}: {info}%grave_server%"
+      - "  {letters_black}· {info}{icon:compass} {letters}Position{letters_black}: {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
+      - "  {letters_black}· {info}{icon:diamond} {letters}Objets{letters_black}: {info}%grave_items%"
+      - "  {letters_black}· {info}{icon:xp} {letters}Expérience{letters_black}: {info}%grave_experience%"
       - ""
-      - "{secondary}Statut :"
-      - " {letters_black}▎ {letters}Mort {letters_black}» {info}il y a %grave_age%"
-      - " {letters_black}▎ {letters}Expire dans {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%"
+      - "{info}✦ Statut "
+      - "  {letters_black}· {info}{icon:deaths} {letters}Mort{letters_black}: {info}il y a %grave_age%"
+      - "  {letters_black}· {info}{icon:clock} {letters}Expire dans{letters_black}: {info}%grave_time_left%"
+      - "  {letters_black}· {info}{icon:key} {letters}Accès{letters_black}: %grave_protection%"
       - "%grave_actions%"
-      - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"
       - "right: exyliagraves:preview %grave_id%"
@@ -66,22 +64,18 @@ pagination:
       slot: 48
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
-      name: '{error}&l← PAGE PRÉCÉDENTE'
+      name: "{letters}Page {letters_black}▸ <gradient:{error}:{error_light}>← Précédente</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Page {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Page{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "previous_page"
     next:
       slot: 50
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
-      name: '{success}&lPAGE SUIVANTE →'
+      name: "{letters}Page {letters_black}▸ <gradient:{success}:{success_light}>Suivante →</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Page {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Page{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "next_page"
 
@@ -89,30 +83,32 @@ items:
   header:
     slot: 49
     material: 'playerhead-%owner_name%'
-    name: "{primary}&l%owner_name%"
+    name: "<gradient:{primary}:{secondary_light}>%owner_name%</gradient>"
     lore:
+      - "{letters_black}Tombes du joueur"
       - ""
-      - "{secondary}Informations :"
-      - " {letters_black}▎ {letters}Toutes les tombes sur pied de ce joueur,"
-      - " {letters_black}▎ {letters}sur n'importe quel serveur du réseau."
+      - "{primary}✎ Informations "
+      - " {letters}Toutes les tombes sur pied"
+      - " {letters}de ce joueur, sur n'importe"
+      - " {letters}quel serveur du réseau."
       - ""
-      - "{secondary}Statut :"
-      - " {letters_black}▎ {letters}Sur pied {letters_black}» {info}%graves%"
-      - ""
+      - "{primary}✦ Statut "
+      - "  {letters_black}· {info}{icon:iron} {letters}Sur pied{letters_black}: {info}%graves%"
 
   restore-all:
     slot: 45
     material: TOTEM_OF_UNDYING
-    name: "{error}&lTOUT RENDRE"
+    name: "{letters}Tombes {letters_black}▸ <gradient:{error}:{error_light}>Tout rendre</gradient>"
     condition: "%restore_all%"
     lore:
+      - "{letters_black}Zone dangereuse"
       - ""
-      - "{secondary}Informations :"
-      - " {letters_black}▎ {letters}Rend toutes les tombes de {highlight}%owner_name%"
-      - " {letters_black}▎ {letters}à leur propriétaire, sur tous les serveurs."
+      - "{error}✎ Informations "
+      - " {letters}Rend toutes les tombes de"
+      - " {highlight}%owner_name% {letters}à leur propriétaire,"
+      - " {letters}sur tous les serveurs."
       - ""
-      - "{error}➥ Clique pour tout rendre"
+      - "{error}» Clique pour tout rendre"
       - "{letters_black}Une confirmation te sera demandée."
-      - ""
     actions:
       - "exyliagraves:restore_all %owner_id% %owner_name%"

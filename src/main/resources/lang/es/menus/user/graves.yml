@@ -10,7 +10,7 @@
 #             %grave_age% %grave_time_left% %grave_protection% y
 #             %grave_actions% (las acciones de clic que este jugador puede usar, de messages.yml)
 
-menu-version: 2
+menu-version: 3
 
 title: "{primary}&lTUMBAS {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
 size: 54
@@ -31,9 +31,7 @@ filler:
     material: LIGHT_GRAY_STAINED_GLASS_PANE
     name: "{muted}No hay más tumbas"
     lore:
-      - ""
-      - " {letters_black}▎ {letters}No tienes nada tirado por ahí."
-      - ""
+      - "{letters_black}No tienes nada tirado por ahí."
     hide_tooltip: false
 
 pagination:
@@ -41,21 +39,21 @@ pagination:
 
   item_template:
     material: 'playerhead-%grave_owner%'
-    name: "{primary}&lTUMBA {letters_black}» {highlight}%grave_world%"
+    name: "{letters}Tumba {letters_black}▸ <gradient:{info}:{info_light}>%grave_world%</gradient>"
     lore:
+      - "{letters_black}Tu tumba"
       - ""
-      - "{secondary}Información:"
-      - " {letters_black}▎ {letters}Servidor {letters_black}» {info}%grave_server%"
-      - " {letters_black}▎ {letters}Ubicación {letters_black}» {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
-      - " {letters_black}▎ {letters}Ítems {letters_black}» {info}%grave_items%"
-      - " {letters_black}▎ {letters}Experiencia {letters_black}» {info}%grave_experience%"
+      - "{info}✦ Información"
+      - "  {letters_black}· {info}{icon:ping} {letters}Servidor{letters_black}: {info}%grave_server%"
+      - "  {letters_black}· {info}{icon:compass} {letters}Ubicación{letters_black}: {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
+      - "  {letters_black}· {info}{icon:diamond} {letters}Ítems{letters_black}: {info}%grave_items%"
+      - "  {letters_black}· {info}{icon:xp} {letters}Experiencia{letters_black}: {info}%grave_experience%"
       - ""
-      - "{secondary}Estado:"
-      - " {letters_black}▎ {letters}Moriste {letters_black}» {info}hace %grave_age%"
-      - " {letters_black}▎ {letters}Expira en {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%"
+      - "{info}✦ Estado"
+      - "  {letters_black}· {info}{icon:deaths} {letters}Moriste{letters_black}: {info}hace %grave_age%"
+      - "  {letters_black}· {info}{icon:clock} {letters}Expira en{letters_black}: {info}%grave_time_left%"
+      - "  {letters_black}· {info}{icon:key} {letters}Acceso{letters_black}: %grave_protection%"
       - "%grave_actions%"
-      - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"
       - "right: exyliagraves:preview %grave_id%"
@@ -65,22 +63,18 @@ pagination:
       slot: 48
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
-      name: '{error}&l← PÁGINA ANTERIOR'
+      name: "{letters}Página {letters_black}▸ <gradient:{error}:{error_light}>← Anterior</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Página {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Página{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "previous_page"
     next:
       slot: 50
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
-      name: '{success}&lPÁGINA SIGUIENTE →'
+      name: "{letters}Página {letters_black}▸ <gradient:{success}:{success_light}>Siguiente →</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Página {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Página{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "next_page"
 
@@ -88,13 +82,13 @@ items:
   header:
     slot: 49
     material: 'playerhead-%owner_name%'
-    name: "{primary}&l%owner_name%"
+    name: "<gradient:{info}:{info_light}>%owner_name%</gradient>"
     lore:
+      - "{letters_black}Tus tumbas"
       - ""
-      - "{secondary}Información:"
-      - " {letters_black}▎ {letters}Acércate a una tumba y haz clic en la cabeza"
-      - " {letters_black}▎ {letters}para recuperarlo todo."
+      - "{info}✎ Información"
+      - " {letters}Acércate a una tumba y haz clic en"
+      - " {letters}la cabeza para recuperarlo todo."
       - ""
-      - "{secondary}Estado:"
-      - " {letters_black}▎ {letters}En pie {letters_black}» {info}%graves%"
-      - ""
+      - "{info}✦ Estado"
+      - "  {letters_black}· {info}{icon:iron} {letters}En pie{letters_black}: {info}%graves%"

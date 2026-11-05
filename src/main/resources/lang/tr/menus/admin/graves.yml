@@ -30,9 +30,7 @@ filler:
     material: LIGHT_GRAY_STAINED_GLASS_PANE
     name: "{muted}Başka mezar yok"
     lore:
-      - ""
-      - " {letters_black}▎ {letters}Bu oyuncunun duran mezarı yok."
-      - ""
+      - "{letters_black}Bu oyuncunun duran mezarı yok."
     hide_tooltip: false
 
 pagination:
@@ -40,21 +38,21 @@ pagination:
 
   item_template:
     material: 'playerhead-%grave_owner%'
-    name: "{primary}&lMEZAR {letters_black}» {highlight}%grave_world%"
+    name: "{letters}Mezar {letters_black}▸ <gradient:{info}:{info_light}>%grave_world%</gradient>"
     lore:
+      - "{letters_black}Oyuncu mezarı"
       - ""
-      - "{secondary}Bilgi:"
-      - " {letters_black}▎ {letters}Sunucu {letters_black}» {info}%grave_server%"
-      - " {letters_black}▎ {letters}Konum {letters_black}» {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
-      - " {letters_black}▎ {letters}Eşyalar {letters_black}» {info}%grave_items%"
-      - " {letters_black}▎ {letters}Tecrübe {letters_black}» {info}%grave_experience%"
+      - "{info}✦ Bilgi"
+      - "  {letters_black}· {info}{icon:ping} {letters}Sunucu{letters_black}: {info}%grave_server%"
+      - "  {letters_black}· {info}{icon:compass} {letters}Konum{letters_black}: {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
+      - "  {letters_black}· {info}{icon:diamond} {letters}Eşyalar{letters_black}: {info}%grave_items%"
+      - "  {letters_black}· {info}{icon:xp} {letters}Tecrübe{letters_black}: {info}%grave_experience%"
       - ""
-      - "{secondary}Durum:"
-      - " {letters_black}▎ {letters}Ölüm {letters_black}» {info}%grave_age% önce"
-      - " {letters_black}▎ {letters}Bitiş {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%"
+      - "{info}✦ Durum"
+      - "  {letters_black}· {info}{icon:deaths} {letters}Ölüm{letters_black}: {info}%grave_age% önce"
+      - "  {letters_black}· {info}{icon:clock} {letters}Bitiş{letters_black}: {info}%grave_time_left%"
+      - "  {letters_black}· {info}{icon:key} {letters}Erişim{letters_black}: %grave_protection%"
       - "%grave_actions%"
-      - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"
       - "right: exyliagraves:preview %grave_id%"
@@ -66,22 +64,18 @@ pagination:
       slot: 48
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
-      name: '{error}&l← ÖNCEKİ SAYFA'
+      name: "{letters}Sayfa {letters_black}▸ <gradient:{error}:{error_light}>← Önceki</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Sayfa {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Sayfa{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "previous_page"
     next:
       slot: 50
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
-      name: '{success}&lSONRAKİ SAYFA →'
+      name: "{letters}Sayfa {letters_black}▸ <gradient:{success}:{success_light}>Sonraki →</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Sayfa {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Sayfa{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "next_page"
 
@@ -89,30 +83,31 @@ items:
   header:
     slot: 49
     material: 'playerhead-%owner_name%'
-    name: "{primary}&l%owner_name%"
+    name: "<gradient:{primary}:{secondary_light}>%owner_name%</gradient>"
     lore:
+      - "{letters_black}Oyuncu mezarları"
       - ""
-      - "{secondary}Bilgi:"
-      - " {letters_black}▎ {letters}Bu oyuncunun duran tüm mezarları,"
-      - " {letters_black}▎ {letters}ağdaki her sunucuda."
+      - "{primary}✎ Bilgi"
+      - " {letters}Bu oyuncunun duran tüm"
+      - " {letters}mezarları, ağdaki her sunucuda."
       - ""
-      - "{secondary}Durum:"
-      - " {letters_black}▎ {letters}Duran {letters_black}» {info}%graves%"
-      - ""
+      - "{primary}✦ Durum"
+      - "  {letters_black}· {info}{icon:iron} {letters}Duran{letters_black}: {info}%graves%"
 
   restore-all:
     slot: 45
     material: TOTEM_OF_UNDYING
-    name: "{error}&lHEPSİNİ İADE ET"
+    name: "{letters}Mezarlar {letters_black}▸ <gradient:{error}:{error_light}>Hepsini iade et</gradient>"
     condition: "%restore_all%"
     lore:
+      - "{letters_black}Tehlikeli bölge"
       - ""
-      - "{secondary}Bilgi:"
-      - " {letters_black}▎ {highlight}%owner_name% {letters}oyuncusunun tüm mezarlarını"
-      - " {letters_black}▎ {letters}her sunucuda sahibine iade eder."
+      - "{error}✎ Bilgi"
+      - " {highlight}%owner_name% {letters}oyuncusunun tüm"
+      - " {letters}mezarlarını her sunucuda"
+      - " {letters}sahibine iade eder."
       - ""
-      - "{error}➥ Hepsini iade etmek için tıkla"
+      - "{error}» Hepsini iade etmek için tıkla"
       - "{letters_black}Onay istenecek."
-      - ""
     actions:
       - "exyliagraves:restore_all %owner_id% %owner_name%"

@@ -2,6 +2,7 @@ package net.exylia.exyliaGraves.config;
 
 import net.exylia.lib.config.Comment;
 import net.exylia.lib.config.ConfigFile;
+import net.exylia.lib.text.Lore;
 
 import java.util.List;
 
@@ -111,25 +112,22 @@ public record GraveMessages(
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}You cannot look inside that grave.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Somebody is already looking inside this grave.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Your inventory is full.",
-                "{primary}&lEXPERIENCE &8[{info}%experience%&8]",
-                List.of("",
-                        "{secondary}Information:",
-                        " {letters_black}▎ {letters}The experience kept in this grave.",
-                        "",
-                        "{warning}➥ Click {letters_black}» {letters}take it",
-                        ""),
-                "{primary}&lTAKE ALL",
-                List.of("",
-                        "{secondary}Information:",
-                        " {letters_black}▎ {letters}Everything left in this grave,",
-                        " {letters_black}▎ {letters}items and experience, in one go.",
-                        "",
-                        "{secondary}Status:",
-                        " {letters_black}▎ {letters}Items {letters_black}» {info}%items%",
-                        " {letters_black}▎ {letters}Experience {letters_black}» {info}%experience%",
-                        "",
-                        "{warning}➥ Click {letters_black}» {letters}take everything",
-                        ""),
+                "{letters}Grave {letters_black}▸ <gradient:{success}:{success_light}>Experience</gradient> &8[{info}%experience%&8]",
+                Lore.of(Lore.Tone.SUCCESS)
+                        .subtitle("Grave action")
+                        .section("Information").text("The experience kept in").text("this grave.")
+                        .click("Click", "take it")
+                        .lines(),
+                Lore.name(Lore.Tone.SUCCESS, "Grave", "Take all"),
+                Lore.of(Lore.Tone.SUCCESS)
+                        .subtitle("Grave action")
+                        .section("Information").text("Everything left in this grave,")
+                        .text("items and experience, in one go.")
+                        .section("✦", "Status")
+                        .stat("diamond", "info", "Items", "%items%")
+                        .stat("xp", "info", "Experience", "%experience%")
+                        .click("Click", "take everything")
+                        .lines(),
                 "[sound:ENTITY_ENDERMAN_TELEPORT|1.0|1.2]%prefix% {success}Taking you to your grave. {letters_black}Cost: {highlight}%cost%{letters_black}.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}You cannot teleport to a grave; you have to walk.",
                 "[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Teleporting to a grave costs {highlight}%cost%{error}.",
@@ -147,10 +145,10 @@ public record GraveMessages(
                         "{primary}&lGRAVE {letters_black}» {highlight}%player%",
                         "{letters}%items% {letters_black}item(s) {letters_black}· {info}%time_left% ⌚",
                         "%protection%"),
-                "{warning}➥ Left-click {letters_black}» {letters}teleport",
-                "{warning}➥ Right-click {letters_black}» {letters}look inside",
-                "{warning}➥ Shift-left-click {letters_black}» {letters}hand back to the owner",
-                "{error}➥ Shift-right-click {letters_black}» {letters}remove it",
+                "{info}» Left-click {letters_black}· {letters}teleport",
+                "{info}» Right-click {letters_black}· {letters}look inside",
+                "{info}» Shift-left-click {letters_black}· {letters}hand back to the owner",
+                "{error}» Shift-right-click {letters_black}· {letters}remove it<nl>{letters_black}You will be asked to confirm.",
                 List.of("%prefix% {letters}Usage{letters_black}:",
                         " {letters_black}▎ {highlight}/gravesadmin list <player>",
                         " {letters_black}▎ {highlight}/gravesadmin restore <player>",

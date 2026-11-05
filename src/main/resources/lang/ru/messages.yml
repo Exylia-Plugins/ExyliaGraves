@@ -16,27 +16,27 @@ preview-title: '{primary}&lМОГИЛА {letters_black}» {highlight}%player%'
 cannot-preview: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Ты не можешь заглянуть в эту могилу.'
 window-busy: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Кто-то уже смотрит в эту могилу.'
 inventory-full: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Твой инвентарь заполнен.'
-window-experience-name: '{primary}&lОПЫТ &8[{info}%experience%&8]'
+window-experience-name: "{letters}Могила {letters_black}▸ <gradient:{success}:{success_light}>Опыт</gradient> &8[{info}%experience%&8]"
 window-experience-lore:
-  - ''
-  - '{secondary}Информация:'
-  - ' {letters_black}▎ {letters}Опыт, хранящийся в этой могиле.'
-  - ''
-  - '{warning}➥ Клик {letters_black}» {letters}забрать'
-  - ''
-window-take-all-name: '{primary}&lЗАБРАТЬ ВСЁ'
+  - "{letters_black}Действие могилы"
+  - ""
+  - "{success}✎ Информация"
+  - " {letters}Опыт, хранящийся в этой могиле."
+  - ""
+  - "{success}» Клик {letters_black}· {letters}забрать"
+window-take-all-name: "{letters}Могила {letters_black}▸ <gradient:{success}:{success_light}>Забрать всё</gradient>"
 window-take-all-lore:
-  - ''
-  - '{secondary}Информация:'
-  - ' {letters_black}▎ {letters}Всё, что осталось в этой могиле,'
-  - ' {letters_black}▎ {letters}предметы и опыт, за один раз.'
-  - ''
-  - '{secondary}Статус:'
-  - ' {letters_black}▎ {letters}Предметы {letters_black}» {info}%items%'
-  - ' {letters_black}▎ {letters}Опыт {letters_black}» {info}%experience%'
-  - ''
-  - '{warning}➥ Клик {letters_black}» {letters}забрать всё'
-  - ''
+  - "{letters_black}Действие могилы"
+  - ""
+  - "{success}✎ Информация"
+  - " {letters}Всё, что осталось в этой могиле,"
+  - " {letters}предметы и опыт, за один раз."
+  - ""
+  - "{success}✦ Статус"
+  - "  {letters_black}· {info}{icon:diamond} {letters}Предметы{letters_black}: {info}%items%"
+  - "  {letters_black}· {info}{icon:xp} {letters}Опыт{letters_black}: {info}%experience%"
+  - ""
+  - "{success}» Клик {letters_black}· {letters}забрать всё"
 teleported: '[sound:ENTITY_ENDERMAN_TELEPORT|1.0|1.2]%prefix% {success}Телепортация к твоей могиле. {letters_black}Стоимость: {highlight}%cost%{letters_black}.'
 teleport-disabled: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}К могиле нельзя телепортироваться; иди пешком.'
 not-enough-money: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Телепортация к могиле стоит {highlight}%cost%{error}.'
@@ -54,10 +54,10 @@ hologram-lines:
   - '{primary}&lМОГИЛА {letters_black}» {highlight}%player%'
   - '{letters}%items% {letters_black}предм. {letters_black}· {info}%time_left% ⌚'
   - '%protection%'
-menu-teleport: '{warning}➥ ЛКМ {letters_black}» {letters}телепортироваться'
-menu-preview: '{warning}➥ ПКМ {letters_black}» {letters}заглянуть внутрь'
-menu-restore: '{warning}➥ Shift+ЛКМ {letters_black}» {letters}вернуть владельцу'
-menu-remove: '{error}➥ Shift+ПКМ {letters_black}» {letters}удалить её'
+menu-teleport: "{info}» ЛКМ {letters_black}· {letters}телепортироваться"
+menu-preview: "{info}» ПКМ {letters_black}· {letters}заглянуть внутрь"
+menu-restore: "{info}» Shift+ЛКМ {letters_black}· {letters}вернуть владельцу"
+menu-remove: "{error}» Shift+ПКМ {letters_black}· {letters}удалить её<nl>{letters_black}Потребуется подтверждение."
 admin-usage:
   - '%prefix% {letters}Использование{letters_black}:'
   - ' {letters_black}▎ {highlight}/gravesadmin list <player>'

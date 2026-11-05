@@ -10,7 +10,7 @@
 #             %grave_age% %grave_time_left% %grave_protection% и
 #             %grave_actions% (действия по клику, доступные этому игроку, из messages.yml)
 
-menu-version: 2
+menu-version: 3
 
 title: "{primary}&lМОГИЛЫ {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
 size: 54
@@ -31,9 +31,7 @@ filler:
     material: LIGHT_GRAY_STAINED_GLASS_PANE
     name: "{muted}Больше могил нет"
     lore:
-      - ""
-      - " {letters_black}▎ {letters}Нигде не лежит ничего твоего."
-      - ""
+      - "{letters_black}Нигде не лежит ничего твоего."
     hide_tooltip: false
 
 pagination:
@@ -41,21 +39,21 @@ pagination:
 
   item_template:
     material: 'playerhead-%grave_owner%'
-    name: "{primary}&lМОГИЛА {letters_black}» {highlight}%grave_world%"
+    name: "{letters}Могила {letters_black}▸ <gradient:{info}:{info_light}>%grave_world%</gradient>"
     lore:
+      - "{letters_black}Твоя могила"
       - ""
-      - "{secondary}Информация:"
-      - " {letters_black}▎ {letters}Сервер {letters_black}» {info}%grave_server%"
-      - " {letters_black}▎ {letters}Где {letters_black}» {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
-      - " {letters_black}▎ {letters}Предметы {letters_black}» {info}%grave_items%"
-      - " {letters_black}▎ {letters}Опыт {letters_black}» {info}%grave_experience%"
+      - "{info}✦ Информация"
+      - "  {letters_black}· {info}{icon:ping} {letters}Сервер{letters_black}: {info}%grave_server%"
+      - "  {letters_black}· {info}{icon:compass} {letters}Где{letters_black}: {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
+      - "  {letters_black}· {info}{icon:diamond} {letters}Предметы{letters_black}: {info}%grave_items%"
+      - "  {letters_black}· {info}{icon:xp} {letters}Опыт{letters_black}: {info}%grave_experience%"
       - ""
-      - "{secondary}Состояние:"
-      - " {letters_black}▎ {letters}Смерть {letters_black}» {info}%grave_age% назад"
-      - " {letters_black}▎ {letters}Истекает через {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%"
+      - "{info}✦ Состояние"
+      - "  {letters_black}· {info}{icon:deaths} {letters}Смерть{letters_black}: {info}%grave_age% назад"
+      - "  {letters_black}· {info}{icon:clock} {letters}Истекает через{letters_black}: {info}%grave_time_left%"
+      - "  {letters_black}· {info}{icon:key} {letters}Доступ{letters_black}: %grave_protection%"
       - "%grave_actions%"
-      - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"
       - "right: exyliagraves:preview %grave_id%"
@@ -65,22 +63,18 @@ pagination:
       slot: 48
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
-      name: '{error}&l← ПРЕДЫДУЩАЯ СТРАНИЦА'
+      name: "{letters}Страница {letters_black}▸ <gradient:{error}:{error_light}>← Предыдущая</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Страница {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Страница{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "previous_page"
     next:
       slot: 50
       sound: "minecraft:item.book.page_turn|1.0|1.0"
       material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
-      name: '{success}&lСЛЕДУЮЩАЯ СТРАНИЦА →'
+      name: "{letters}Страница {letters_black}▸ <gradient:{success}:{success_light}>Следующая →</gradient>"
       lore:
-        - ""
-        - " {letters_black}▎ {letters}Страница {info}%current_page%{letters_black}/{info}%total_pages%"
-        - ""
+        - "  {letters_black}· {letters}Страница{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
       actions:
         - "next_page"
 
@@ -88,13 +82,13 @@ items:
   header:
     slot: 49
     material: 'playerhead-%owner_name%'
-    name: "{primary}&l%owner_name%"
+    name: "<gradient:{info}:{info_light}>%owner_name%</gradient>"
     lore:
+      - "{letters_black}Твои могилы"
       - ""
-      - "{secondary}Информация:"
-      - " {letters_black}▎ {letters}Подойди к могиле и нажми на голову,"
-      - " {letters_black}▎ {letters}чтобы забрать всё обратно."
+      - "{info}✎ Информация"
+      - " {letters}Подойди к могиле и нажми на"
+      - " {letters}голову, чтобы забрать всё обратно."
       - ""
-      - "{secondary}Состояние:"
-      - " {letters_black}▎ {letters}Активных {letters_black}» {info}%graves%"
-      - ""
+      - "{info}✦ Состояние"
+      - "  {letters_black}· {info}{icon:iron} {letters}Активных{letters_black}: {info}%graves%"
