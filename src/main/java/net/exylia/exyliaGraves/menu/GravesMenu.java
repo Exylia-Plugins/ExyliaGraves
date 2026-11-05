@@ -6,6 +6,7 @@ import net.exylia.exyliaGraves.config.GraveMessages;
 import net.exylia.exyliaGraves.config.GraveSettings;
 import net.exylia.exyliaGraves.database.GraveEntity;
 import net.exylia.exyliaGraves.manager.GravesManager;
+import net.exylia.lib.text.Lines;
 import net.exylia.lib.text.Values;
 import net.exylia.lib.ui.UiEntry;
 import org.bukkit.entity.Player;
@@ -72,14 +73,18 @@ public final class GravesMenu {
                 .withFormatted("grave_x", grave.blockX())
                 .withFormatted("grave_y", grave.blockY())
                 .withFormatted("grave_z", grave.blockZ())
-                .with("grave_actions", actions)
+                // Both come from messages.yml and carry their own colours.
+                .withFormatted("grave_actions", actions)
                 .with("grave_time_left", () -> GravesManager.timeLeft(grave))
-                .with("grave_protection", () -> GravesManager.protection(grave))
+                .withFormatted("grave_protection", () -> GravesManager.protection(grave))
                 .with("grave_age", () -> GravesManager.time(System.currentTimeMillis() - grave.createdAt()))
                 .build();
     }
 
-    /** The click prompts this viewer gets, each on its own line, or nothing. */
+    /**
+     * The click prompts this viewer gets, each on its own line after a blank one,
+     * or {@link Lines#OMIT} so the template's line disappears when there are none.
+     */
     private static String actions(Player viewer, boolean admin) {
         GraveMessages text = GraveMessages.get();
         List<String> lines = new ArrayList<>();
@@ -90,6 +95,6 @@ public final class GravesMenu {
         if (admin && viewer.hasPermission(Permissions.ADMIN_RESTORE)) lines.add(text.menuRestore());
         if (admin && viewer.hasPermission(Permissions.ADMIN_REMOVE)) lines.add(text.menuRemove());
         lines.removeIf(line -> line == null || line.isBlank());
-        return lines.isEmpty() ? "" : "<nl><nl>" + String.join("<nl>", lines);
+        return lines.isEmpty() ? Lines.OMIT : Lines.NEWLINE + String.join(Lines.NEWLINE, lines);
     }
 }

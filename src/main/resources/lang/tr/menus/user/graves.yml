@@ -10,7 +10,7 @@
 #             %grave_age% %grave_time_left% %grave_protection% ve
 #             %grave_actions% (bu oyuncunun kullanabileceği tıklama eylemleri, messages.yml'den)
 
-menu-version: 1
+menu-version: 2
 
 title: "{primary}&lMEZARLAR {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
 size: 54
@@ -53,7 +53,8 @@ pagination:
       - "{secondary}Durum:"
       - " {letters_black}▎ {letters}Ölüm {letters_black}» {info}%grave_age% önce"
       - " {letters_black}▎ {letters}Bitiş {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - " {letters_black}▎ %grave_protection%"
+      - "%grave_actions%"
       - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"

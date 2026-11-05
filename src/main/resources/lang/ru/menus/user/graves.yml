@@ -10,7 +10,7 @@
 #             %grave_age% %grave_time_left% %grave_protection% и
 #             %grave_actions% (действия по клику, доступные этому игроку, из messages.yml)
 
-menu-version: 1
+menu-version: 2
 
 title: "{primary}&lМОГИЛЫ {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
 size: 54
@@ -53,7 +53,8 @@ pagination:
       - "{secondary}Состояние:"
       - " {letters_black}▎ {letters}Смерть {letters_black}» {info}%grave_age% назад"
       - " {letters_black}▎ {letters}Истекает через {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - " {letters_black}▎ %grave_protection%"
+      - "%grave_actions%"
       - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"

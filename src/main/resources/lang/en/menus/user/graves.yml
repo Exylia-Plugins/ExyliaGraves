@@ -10,7 +10,7 @@
 #             %grave_age% %grave_time_left% %grave_protection% and
 #             %grave_actions% (the click prompts this viewer may use, from messages.yml)
 
-menu-version: 1
+menu-version: 2
 
 title: "{primary}&lGRAVES {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
 size: 54
@@ -53,7 +53,8 @@ pagination:
       - "{secondary}Status:"
       - " {letters_black}▎ {letters}Died {letters_black}» {info}%grave_age% ago"
       - " {letters_black}▎ {letters}Expires in {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - " {letters_black}▎ %grave_protection%"
+      - "%grave_actions%"
       - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"

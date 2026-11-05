@@ -52,7 +52,8 @@ pagination:
       - "{secondary}Status:"
       - " {letters_black}▎ {letters}Died {letters_black}» {info}%grave_age% ago"
       - " {letters_black}▎ {letters}Expires in {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - " {letters_black}▎ %grave_protection%"
+      - "%grave_actions%"
       - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"

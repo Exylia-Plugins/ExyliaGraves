@@ -52,7 +52,8 @@ pagination:
       - "{secondary}Durum:"
       - " {letters_black}▎ {letters}Ölüm {letters_black}» {info}%grave_age% önce"
       - " {letters_black}▎ {letters}Bitiş {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - " {letters_black}▎ %grave_protection%"
+      - "%grave_actions%"
       - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"

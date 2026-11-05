@@ -52,7 +52,8 @@ pagination:
       - "{secondary}Состояние:"
       - " {letters_black}▎ {letters}Смерть {letters_black}» {info}%grave_age% назад"
       - " {letters_black}▎ {letters}Истекает через {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - " {letters_black}▎ %grave_protection%"
+      - "%grave_actions%"
       - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"

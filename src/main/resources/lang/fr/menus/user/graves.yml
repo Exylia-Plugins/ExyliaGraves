@@ -10,7 +10,7 @@
 #             %grave_age% %grave_time_left% %grave_protection% et
 #             %grave_actions% (les actions de clic que ce joueur peut utiliser, depuis messages.yml)
 
-menu-version: 1
+menu-version: 2
 
 title: "{primary}&lTOMBES {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
 size: 54
@@ -53,7 +53,8 @@ pagination:
       - "{secondary}Statut :"
       - " {letters_black}▎ {letters}Mort {letters_black}» {info}il y a %grave_age%"
       - " {letters_black}▎ {letters}Expire dans {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - " {letters_black}▎ %grave_protection%"
+      - "%grave_actions%"
       - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"

@@ -10,7 +10,7 @@
 #             %grave_age% %grave_time_left% %grave_protection% y
 #             %grave_actions% (las acciones de clic que este jugador puede usar, de messages.yml)
 
-menu-version: 1
+menu-version: 2
 
 title: "{primary}&lTUMBAS {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
 size: 54
@@ -53,7 +53,8 @@ pagination:
       - "{secondary}Estado:"
       - " {letters_black}▎ {letters}Moriste {letters_black}» {info}hace %grave_age%"
       - " {letters_black}▎ {letters}Expira en {letters_black}» {info}%grave_time_left% ⌚"
-      - " {letters_black}▎ %grave_protection%%grave_actions%"
+      - " {letters_black}▎ %grave_protection%"
+      - "%grave_actions%"
       - ""
     actions:
       - "left: exyliagraves:teleport %grave_id%"
