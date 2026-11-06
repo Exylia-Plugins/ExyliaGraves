@@ -24,7 +24,7 @@ window-experience-lore:
   - " {letters}La experiencia guardada"
   - " {letters}en esta tumba."
   - ""
-  - "{success}» Clic {letters_black}· {letters}tomarla"
+  - "{success}{icon:click} Clic {letters_black}· {letters}tomarla"
 window-take-all-name: "{letters}Tumba {letters_black}▸ <gradient:{success}:{success_light}>Tomar todo</gradient>"
 window-take-all-lore:
   - "{letters_black}Acción de la tumba"
@@ -37,7 +37,7 @@ window-take-all-lore:
   - "  {letters_black}· {info}{icon:diamond} {letters}Ítems{letters_black}: {info}%items%"
   - "  {letters_black}· {info}{icon:xp} {letters}Experiencia{letters_black}: {info}%experience%"
   - ""
-  - "{success}» Clic {letters_black}· {letters}tomarlo todo"
+  - "{success}{icon:click} Clic {letters_black}· {letters}tomarlo todo"
 teleported: '[sound:ENTITY_ENDERMAN_TELEPORT|1.0|1.2]%prefix% {success}Llevándote a tu tumba. {letters_black}Costo: {highlight}%cost%{letters_black}.'
 teleport-disabled: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}No puedes teletransportarte a una tumba; tienes que ir caminando.'
 not-enough-money: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Teletransportarte a una tumba cuesta {highlight}%cost%{error}.'
@@ -55,10 +55,10 @@ hologram-lines:
   - '{primary}&lTUMBA {letters_black}» {highlight}%player%'
   - '{letters}%items% {letters_black}ítem(s) {letters_black}· {info}%time_left% ⌚'
   - '%protection%'
-menu-teleport: "{info}» Clic izquierdo {letters_black}· {letters}teletransportarte"
-menu-preview: "{info}» Clic derecho {letters_black}· {letters}mirar dentro"
-menu-restore: "{info}» Shift + clic izquierdo {letters_black}· {letters}devolver al dueño"
-menu-remove: "{error}» Shift + clic derecho {letters_black}· {letters}eliminarla<nl>{letters_black}Se te pedirá confirmación."
+menu-teleport: "{info}{icon:click} Clic izquierdo {letters_black}· {letters}teletransportarte"
+menu-preview: "{info}{icon:right_click} Clic derecho {letters_black}· {letters}mirar dentro"
+menu-restore: "{info}{icon:click} Shift + clic izquierdo {letters_black}· {letters}devolver al dueño"
+menu-remove: "{error}{icon:right_click} Shift + clic derecho {letters_black}· {letters}eliminarla<nl>{letters_black}Se te pedirá confirmación."
 admin-usage:
   - '%prefix% {letters}Uso{letters_black}:'
   - ' {letters_black}▎ {highlight}/gravesadmin list <player>'

@@ -32,6 +32,15 @@ filler:
     lore:
       - "{letters_black}У этого игрока нет могил."
     hide_tooltip: false
+  custom:
+    page_first:
+      slots: '48'
+      material: GRAY_DYE
+      name: "{muted}← Первая страница"
+    page_last:
+      slots: '50'
+      material: GRAY_DYE
+      name: "{muted}Последняя страница →"
 
 pagination:
   slots: '0-35'
@@ -107,7 +116,7 @@ items:
       - " {highlight}%owner_name% {letters}владельцу, на"
       - " {letters}всех серверах."
       - ""
-      - "{error}» Нажми, чтобы вернуть все"
+      - "{error}{icon:click} Нажми, чтобы вернуть все"
       - "{letters_black}Потребуется подтверждение."
     actions:
       - "exyliagraves:restore_all %owner_id% %owner_name%"

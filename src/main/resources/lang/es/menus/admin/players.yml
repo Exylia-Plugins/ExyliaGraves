@@ -28,6 +28,15 @@ filler:
     lore:
       - "{letters_black}No hay nadie más conectado aquí."
     hide_tooltip: false
+  custom:
+    page_first:
+      slots: '48'
+      material: GRAY_DYE
+      name: "{muted}← Primera página"
+    page_last:
+      slots: '50'
+      material: GRAY_DYE
+      name: "{muted}Última página →"
 
 pagination:
   slots: '0-35'
@@ -43,7 +52,7 @@ pagination:
       - " {letters}este jugador, en cualquier"
       - " {letters}servidor de la red."
       - ""
-      - "{info}» Clic para ver sus tumbas"
+      - "{info}{icon:click} Clic para ver sus tumbas"
     actions:
       - "exyliagraves:admin_graves %player_id% %player_name%"
 
@@ -91,6 +100,6 @@ items:
       - " {letters}Cambia los ajustes del plugin"
       - " {letters}sin editar sus {highlight}archivos{letters}."
       - ""
-      - "{primary}» Clic {letters_black}· {letters}Abrir ajustes"
+      - "{primary}{icon:click} Clic {letters_black}· {letters}Abrir ajustes"
     actions:
       - "exyliagraves:settings"

@@ -32,6 +32,15 @@ filler:
     lore:
       - "{letters_black}Este jogador não tem túmulos ativos."
     hide_tooltip: false
+  custom:
+    page_first:
+      slots: '48'
+      material: GRAY_DYE
+      name: "{muted}← Primeira página"
+    page_last:
+      slots: '50'
+      material: GRAY_DYE
+      name: "{muted}Última página →"
 
 pagination:
   slots: '0-35'
@@ -108,7 +117,7 @@ items:
       - " {letters}de {highlight}%owner_name% {letters}ao dono,"
       - " {letters}em todos os servidores."
       - ""
-      - "{error}» Clique para devolver todos"
+      - "{error}{icon:click} Clique para devolver todos"
       - "{letters_black}Será pedida uma confirmação."
     actions:
       - "exyliagraves:restore_all %owner_id% %owner_name%"

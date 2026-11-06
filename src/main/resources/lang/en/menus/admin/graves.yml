@@ -32,6 +32,15 @@ filler:
     lore:
       - "{letters_black}This player has no graves standing."
     hide_tooltip: false
+  custom:
+    page_first:
+      slots: '48'
+      material: GRAY_DYE
+      name: "{muted}← First page"
+    page_last:
+      slots: '50'
+      material: GRAY_DYE
+      name: "{muted}Last page →"
 
 pagination:
   slots: '0-35'
@@ -107,7 +116,7 @@ items:
       - " {letters}Hands every grave of {highlight}%owner_name%"
       - " {letters}back to them, on every server."
       - ""
-      - "{error}» Click to restore all"
+      - "{error}{icon:click} Click to restore all"
       - "{letters_black}You will be asked to confirm."
     actions:
       - "exyliagraves:restore_all %owner_id% %owner_name%"

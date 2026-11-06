@@ -10,7 +10,7 @@
 #             %grave_age% %grave_time_left% %grave_protection% и
 #             %grave_actions% (действия по клику, доступные этому игроку, из messages.yml)
 
-menu-version: 3
+menu-version: 4
 
 title: "{primary}&lМОГИЛЫ {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
 size: 54
@@ -33,9 +33,18 @@ filler:
     lore:
       - "{letters_black}Нигде не лежит ничего твоего."
     hide_tooltip: false
+  custom:
+    page_first:
+      slots: '48'
+      material: GRAY_DYE
+      name: "{muted}← Первая страница"
+    page_last:
+      slots: '50'
+      material: GRAY_DYE
+      name: "{muted}Последняя страница →"
 
 pagination:
-  slots: '0-35'
+  slots: '10-16,19-25,28-34,37-43'
 
   item_template:
     material: 'playerhead-%grave_owner%'

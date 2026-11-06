@@ -32,6 +32,15 @@ filler:
     lore:
       - "{letters_black}Este jugador no tiene tumbas en pie."
     hide_tooltip: false
+  custom:
+    page_first:
+      slots: '48'
+      material: GRAY_DYE
+      name: "{muted}← Primera página"
+    page_last:
+      slots: '50'
+      material: GRAY_DYE
+      name: "{muted}Última página →"
 
 pagination:
   slots: '0-35'
@@ -108,7 +117,7 @@ items:
       - " {letters}de {highlight}%owner_name% {letters}a su dueño,"
       - " {letters}en todos los servidores."
       - ""
-      - "{error}» Clic para devolver todas"
+      - "{error}{icon:click} Clic para devolver todas"
       - "{letters_black}Se te pedirá confirmación."
     actions:
       - "exyliagraves:restore_all %owner_id% %owner_name%"

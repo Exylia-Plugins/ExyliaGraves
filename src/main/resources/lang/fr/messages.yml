@@ -24,7 +24,7 @@ window-experience-lore:
   - " {letters}L'expérience gardée"
   - " {letters}dans cette tombe."
   - ""
-  - "{success}» Clic {letters_black}· {letters}la prendre"
+  - "{success}{icon:click} Clic {letters_black}· {letters}la prendre"
 window-take-all-name: "{letters}Tombe {letters_black}▸ <gradient:{success}:{success_light}>Tout prendre</gradient>"
 window-take-all-lore:
   - "{letters_black}Action de la tombe"
@@ -38,7 +38,7 @@ window-take-all-lore:
   - "  {letters_black}· {info}{icon:diamond} {letters}Objets{letters_black}: {info}%items%"
   - "  {letters_black}· {info}{icon:xp} {letters}Expérience{letters_black}: {info}%experience%"
   - ""
-  - "{success}» Clic {letters_black}· {letters}tout prendre"
+  - "{success}{icon:click} Clic {letters_black}· {letters}tout prendre"
 teleported: '[sound:ENTITY_ENDERMAN_TELEPORT|1.0|1.2]%prefix% {success}Téléportation vers ta tombe. {letters_black}Coût : {highlight}%cost%{letters_black}.'
 teleport-disabled: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Tu ne peux pas te téléporter à une tombe ; tu dois y aller à pied.'
 not-enough-money: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Se téléporter à une tombe coûte {highlight}%cost%{error}.'
@@ -56,10 +56,10 @@ hologram-lines:
   - '{primary}&lTOMBE {letters_black}» {highlight}%player%'
   - '{letters}%items% {letters_black}objet(s) {letters_black}· {info}%time_left% ⌚'
   - '%protection%'
-menu-teleport: "{info}» Clic gauche {letters_black}· {letters}se téléporter"
-menu-preview: "{info}» Clic droit {letters_black}· {letters}regarder dedans"
-menu-restore: "{info}» Shift + clic gauche {letters_black}· {letters}rendre au propriétaire"
-menu-remove: "{error}» Shift + clic droit {letters_black}· {letters}la supprimer<nl>{letters_black}Une confirmation te sera demandée."
+menu-teleport: "{info}{icon:click} Clic gauche {letters_black}· {letters}se téléporter"
+menu-preview: "{info}{icon:right_click} Clic droit {letters_black}· {letters}regarder dedans"
+menu-restore: "{info}{icon:click} Shift + clic gauche {letters_black}· {letters}rendre au propriétaire"
+menu-remove: "{error}{icon:right_click} Shift + clic droit {letters_black}· {letters}la supprimer<nl>{letters_black}Une confirmation te sera demandée."
 admin-usage:
   - '%prefix% {letters}Utilisation{letters_black}:'
   - ' {letters_black}▎ {highlight}/gravesadmin list <player>'
