@@ -185,6 +185,11 @@ public final class GravesListener implements Listener {
                 && event.getPlayer() instanceof Player player) {
             service.windows().closed(player, window);
         }
+        if (event.getInventory().getHolder() instanceof PreviewHolder preview
+                && event.getPlayer() instanceof Player player
+                && event.getReason() == InventoryCloseEvent.Reason.PLAYER) {
+            core.getTasks().runAtEntityLater(player, 1L, preview.back());
+        }
     }
 
     private static boolean isGraveView(Inventory top) {

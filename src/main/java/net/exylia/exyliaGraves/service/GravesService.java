@@ -7,6 +7,7 @@ import net.exylia.exyliaGraves.config.GraveSettings;
 import net.exylia.exyliaGraves.database.GraveEntity;
 import net.exylia.exyliaGraves.manager.GravesManager;
 import net.exylia.exyliaGraves.manager.PreviewHolder;
+import net.exylia.exyliaGraves.menu.GravesMenu;
 import net.exylia.lib.economy.Economy;
 import net.exylia.lib.economy.Transaction;
 import net.exylia.lib.log.Logs;
@@ -338,7 +339,9 @@ public final class GravesService {
             return;
         }
         PreviewHolder.open(player, core.getMessages().item(GraveMessages.get().previewTitle(),
-                Values.of().put("player", grave.ownerName())), grave.items());
+                Values.of().put("player", grave.ownerName())), grave.items(),
+                () -> GravesMenu.open(player, grave.owner(), grave.ownerName(),
+                        !grave.owner().equals(player.getUniqueId())));
     }
 
     /**

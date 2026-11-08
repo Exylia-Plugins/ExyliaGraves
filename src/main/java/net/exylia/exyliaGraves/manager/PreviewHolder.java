@@ -22,6 +22,7 @@ public final class PreviewHolder implements InventoryHolder {
     private static final int SIZE = 54;
 
     private Inventory inventory;
+    private Runnable back;
 
     private PreviewHolder() {
     }
@@ -31,9 +32,15 @@ public final class PreviewHolder implements InventoryHolder {
         return inventory;
     }
 
+    /** Where the viewer returns when they close it themselves. */
+    public Runnable back() {
+        return back;
+    }
+
     /** Opens a read-only copy of these contents, on the viewer's thread. */
-    public static void open(Player viewer, Component title, ItemStack[] contents) {
+    public static void open(Player viewer, Component title, ItemStack[] contents, Runnable back) {
         PreviewHolder holder = new PreviewHolder();
+        holder.back = back;
         holder.inventory = Bukkit.createInventory(holder, SIZE, title);
         if (contents != null) {
             int slot = 0;
