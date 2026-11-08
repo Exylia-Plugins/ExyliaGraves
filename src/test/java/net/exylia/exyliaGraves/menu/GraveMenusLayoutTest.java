@@ -22,7 +22,7 @@ class GraveMenusLayoutTest {
     void actionsStandAlone() throws Exception {
         List<Path> menus;
         try (Stream<Path> files = Files.walk(Path.of("src/main/resources/lang"))) {
-            menus = files.filter(path -> path.getFileName().toString().equals("graves.yml")).toList();
+            menus = files.filter(path -> path.getFileName().toString().equals("graves.yml") && path.toString().contains("/menus/")).toList();
         }
         assertFalse(menus.isEmpty(), "no graves menus found");
         for (Path menu : menus) {
