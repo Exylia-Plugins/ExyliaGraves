@@ -1,0 +1,17 @@
+# Mezar ekranının metinleri (screens/graves.html), her t="anahtar" için bir tane. {info} gibi renkler
+# burada çalışır; %placeholders% olduğu gibi kalsın. Bir ipucunun satırları <nl> ile ayrılır.
+title: '{highlight}Mezarlar'
+subtitle: '{letters_black}Düşürdüklerin · süresi dolmadan geri al'
+tooltip: '{info}%grave_world%<nl>{letters_black}Sunucu {info}%grave_server%<nl>{info}%grave_age%{letters_black} önce öldün<nl>{letters_black}Erişim %grave_protection%'
+items: '{letters}Eşyalar'
+experience: '{letters}Deneyim'
+expires: '{letters}Kalan süre'
+teleport: '{info}Tıkla · ışınlan'
+preview: '{info}Sağ tık · içine bak'
+empty:
+  title: 'Mezar yok'
+  hint: 'Ortada senin hiçbir şeyin yok'
+foot: '{letters_black}Bir mezara yaklaş ve her şeyi geri almak için kafaya tıkla'
+owner: '{letters_black}Mezarların'
+standing: '{letters}Duran'
+hint: '{letters_black}Mezar, süresi dolana kadar eşyalarını ve deneyimini saklar.'

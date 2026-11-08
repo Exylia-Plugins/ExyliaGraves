@@ -1,0 +1,17 @@
+# Textos de la pantalla de tumbas (screens/graves.html), uno por cada t="clave". Los colores como {info}
+# funcionan aquí; conserva los %placeholders%. Las líneas de un tooltip se separan con <nl>.
+title: '{highlight}Tumbas'
+subtitle: '{letters_black}Lo que soltaste · recupéralo antes de que caduque'
+tooltip: '{info}%grave_world%<nl>{letters_black}Servidor {info}%grave_server%<nl>{letters_black}Moriste hace {info}%grave_age%<nl>{letters_black}Acceso %grave_protection%'
+items: '{letters}Objetos'
+experience: '{letters}Experiencia'
+expires: '{letters}Caduca en'
+teleport: '{info}Clic · teletransportarse'
+preview: '{info}Clic derecho · ver dentro'
+empty:
+  title: 'No hay tumbas'
+  hint: 'No tienes nada tirado por ahí'
+foot: '{letters_black}Acércate a una tumba y haz clic en la cabeza para recuperarlo todo'
+owner: '{letters_black}Tus tumbas'
+standing: '{letters}En pie'
+hint: '{letters_black}Una tumba guarda tus objetos y experiencia hasta que caduca.'

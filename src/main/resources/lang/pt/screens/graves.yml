@@ -1,0 +1,17 @@
+# Textos da tela de túmulos (screens/graves.html), um por t="chave". Cores como {info} funcionam aqui;
+# mantenha os %placeholders%. As linhas de uma dica são separadas por <nl>.
+title: '{highlight}Túmulos'
+subtitle: '{letters_black}O que você deixou cair · recupere antes que expire'
+tooltip: '{info}%grave_world%<nl>{letters_black}Servidor {info}%grave_server%<nl>{letters_black}Morreu há {info}%grave_age%<nl>{letters_black}Acesso %grave_protection%'
+items: '{letters}Itens'
+experience: '{letters}Experiência'
+expires: '{letters}Expira em'
+teleport: '{info}Clique · teleportar'
+preview: '{info}Clique direito · ver dentro'
+empty:
+  title: 'Nenhum túmulo'
+  hint: 'Nada seu está largado por aí'
+foot: '{letters_black}Chegue perto de um túmulo e clique na cabeça para recuperar tudo'
+owner: '{letters_black}Seus túmulos'
+standing: '{letters}De pé'
+hint: '{letters_black}Um túmulo guarda seus itens e experiência até expirar.'

@@ -1,0 +1,17 @@
+# Тексты экрана могил (screens/graves.html), по одному на каждый t="ключ". Цвета вроде {info} здесь
+# работают; сохраняйте %placeholders%. Строки подсказки разделяются <nl>.
+title: '{highlight}Могилы'
+subtitle: '{letters_black}Что вы потеряли · заберите до истечения срока'
+tooltip: '{info}%grave_world%<nl>{letters_black}Сервер {info}%grave_server%<nl>{letters_black}Смерть {info}%grave_age%{letters_black} назад<nl>{letters_black}Доступ %grave_protection%'
+items: '{letters}Предметы'
+experience: '{letters}Опыт'
+expires: '{letters}Исчезнет через'
+teleport: '{info}Клик · телепорт'
+preview: '{info}ПКМ · заглянуть внутрь'
+empty:
+  title: 'Могил нет'
+  hint: 'Ничего вашего не валяется'
+foot: '{letters_black}Подойдите к могиле и кликните по голове, чтобы всё вернуть'
+owner: '{letters_black}Ваши могилы'
+standing: '{letters}Стоит'
+hint: '{letters_black}Могила хранит ваши предметы и опыт до истечения срока.'

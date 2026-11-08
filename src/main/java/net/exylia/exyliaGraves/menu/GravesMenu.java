@@ -55,7 +55,10 @@ public final class GravesMenu {
                     .put("owner_name", ownerName)
                     .put("owner_id", owner.toString())
                     .put("graves", graves.size())
-                    .put("restore_all", admin && !graves.isEmpty() && viewer.hasPermission(Permissions.ADMIN_RESTORE));
+                    .put("restore_all", admin && !graves.isEmpty() && viewer.hasPermission(Permissions.ADMIN_RESTORE))
+                    // For the screen menu, which shows the clicks this viewer may use on each card.
+                    .put("can_teleport", admin || canTeleport(viewer))
+                    .put("can_preview", admin || viewer.hasPermission(Permissions.PREVIEW));
             core.getMenus().open(viewer, admin ? ADMIN_ID : ID, context.map(), rows);
         }));
     }
@@ -88,7 +91,7 @@ public final class GravesMenu {
     private static String actions(Player viewer, boolean admin) {
         GraveMessages text = GraveMessages.get();
         List<String> lines = new ArrayList<>();
-        if (admin || (GraveSettings.get().teleport().enabled() && viewer.hasPermission(Permissions.TELEPORT))) {
+        if (admin || canTeleport(viewer)) {
             lines.add(text.menuTeleport());
         }
         if (admin || viewer.hasPermission(Permissions.PREVIEW)) lines.add(text.menuPreview());
@@ -96,5 +99,9 @@ public final class GravesMenu {
         if (admin && viewer.hasPermission(Permissions.ADMIN_REMOVE)) lines.add(text.menuRemove());
         lines.removeIf(line -> line == null || line.isBlank());
         return lines.isEmpty() ? Lines.OMIT : Lines.NEWLINE + String.join(Lines.NEWLINE, lines);
+    }
+
+    private static boolean canTeleport(Player viewer) {
+        return GraveSettings.get().teleport().enabled() && viewer.hasPermission(Permissions.TELEPORT);
     }
 }

@@ -1,0 +1,17 @@
+# Words of the grave list screen (screens/graves.html), one per t="key" there. Colour tokens such as {info} work
+# here; keep the %placeholders%. Lines of a tooltip are split by <nl>. Edits show on open screens within seconds.
+title: '{highlight}Graves'
+subtitle: '{letters_black}What you dropped · get it back before it expires'
+tooltip: '{info}%grave_world%<nl>{letters_black}Server {info}%grave_server%<nl>{letters_black}Died {info}%grave_age%{letters_black} ago<nl>{letters_black}Access %grave_protection%'
+items: '{letters}Items'
+experience: '{letters}Experience'
+expires: '{letters}Expires in'
+teleport: '{info}Click · teleport'
+preview: '{info}Right-click · look inside'
+empty:
+  title: 'No graves'
+  hint: 'Nothing of yours is lying around'
+foot: '{letters_black}Walk up to a grave and click the head to get everything back'
+owner: '{letters_black}Your graves'
+standing: '{letters}Standing'
+hint: '{letters_black}A grave keeps your items and experience until it expires.'

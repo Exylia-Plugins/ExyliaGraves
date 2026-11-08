@@ -2,6 +2,8 @@ package net.exylia.exyliaGraves.menu;
 
 import net.exylia.exyliaGraves.ExyliaGraves;
 import net.exylia.lib.config.Languages;
+import net.exylia.lib.screen.ScreenSet;
+import net.exylia.lib.screen.Screens;
 import net.exylia.lib.ui.Menus;
 import net.exylia.lib.ui.PluginMenus;
 import net.exylia.lib.ui.UiDefinition;
@@ -39,6 +41,7 @@ public final class GraveMenus {
 
     /** Writes the packaged screens out and compiles every one. */
     public void load() {
+        loadScreens();
         Languages.replace(core.getPlugin(), ExyliaGraves.class, "menus/admin");
         Languages.refresh(core.getPlugin(), ExyliaGraves.class, "menus/user");
         for (String id : IDS) {
@@ -67,6 +70,20 @@ public final class GraveMenus {
     }
 
     /** Forgets every compiled screen and reads them all again. */
+    /**
+     * The grave list drawn on a full screen, for the SCREEN menu style: it routes the list's menu id, so opening
+     * the list opens it with no other code. A file the owner broke keeps the chest menu, and says why.
+     */
+    private void loadScreens() {
+        ScreenSet screens = Screens.of(core.getPlugin()).files(ExyliaGraves.class, "screens");
+        screens.reload();
+        try {
+            screens.markup("graves").problems().forEach(problem -> core.getDebug().warn("Screen " + problem));
+        } catch (IllegalArgumentException broken) {
+            core.getDebug().warn("Screen graves could not be read, its chest menu opens instead: " + broken.getMessage());
+        }
+    }
+
     public void reload() {
         menus.unload();
         load();

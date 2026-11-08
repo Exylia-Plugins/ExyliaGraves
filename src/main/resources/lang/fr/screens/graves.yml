@@ -1,0 +1,17 @@
+# Textes de l'écran des tombes (screens/graves.html), un par t="clé". Les couleurs comme {info} fonctionnent
+# ici ; gardez les %placeholders%. Les lignes d'une infobulle sont séparées par <nl>.
+title: '{highlight}Tombes'
+subtitle: '{letters_black}Ce que vous avez perdu · à récupérer avant expiration'
+tooltip: '{info}%grave_world%<nl>{letters_black}Serveur {info}%grave_server%<nl>{letters_black}Mort il y a {info}%grave_age%<nl>{letters_black}Accès %grave_protection%'
+items: '{letters}Objets'
+experience: '{letters}Expérience'
+expires: '{letters}Expire dans'
+teleport: '{info}Clic · se téléporter'
+preview: '{info}Clic droit · voir dedans'
+empty:
+  title: 'Aucune tombe'
+  hint: 'Rien à vous ne traîne'
+foot: '{letters_black}Approchez une tombe et cliquez sur la tête pour tout récupérer'
+owner: '{letters_black}Vos tombes'
+standing: '{letters}Debout'
+hint: '{letters_black}Une tombe garde vos objets et votre expérience jusqu''à expiration.'
