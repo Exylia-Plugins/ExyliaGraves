@@ -15,3 +15,4 @@ foot: '{letters_black}Подойдите к могиле и кликните п�
 owner: '{letters_black}Ваши могилы'
 standing: '{letters}Стоит'
 hint: '{letters_black}Могила хранит ваши предметы и опыт до истечения срока.'
+access: '{letters}Доступ'

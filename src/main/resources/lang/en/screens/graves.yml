@@ -15,3 +15,4 @@ foot: '{letters_black}Walk up to a grave and click the head to get everything ba
 owner: '{letters_black}Your graves'
 standing: '{letters}Standing'
 hint: '{letters_black}A grave keeps your items and experience until it expires.'
+access: '{letters}Access'

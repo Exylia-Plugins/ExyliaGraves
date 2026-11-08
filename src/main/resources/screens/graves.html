@@ -1,6 +1,6 @@
 <!--
-  Your graves in the SCREEN menu style: every grave as a card with where it lies, what it holds and how long it has
-  left, the clicks you may use on it, and your count beside them. It stands for the chest menu
+  Your graves in the SCREEN menu style: every grave as a card with where it lies, what it holds, who may take it and how
+  long it has left, your count beside them. What a grave holds stays a chest window. It stands for the chest menu
   lang/<code>/menus/user/graves.yml and reads that menu's values and rows, so it needs no code of its own.
 
   One file for every language: the words come from lang/<code>/screens/graves.yml (t="key"). The look is in
@@ -12,56 +12,51 @@
   grave_y, grave_z, grave_age, grave_time_left, grave_protection (a message with its own colours).
   Actions: exyliagraves:teleport <grave>, exyliagraves:preview <grave>.
 -->
-<screen backdrop="linear-gradient(to bottom, {info}14, {primary}06)" routes="menus/user/graves">
-  <row class="frame">
-    <column class="main">
-      <row class="head">
-        <item material="skeleton_skull" class="head-icon"/>
-        <column class="heading">
-          <h1 t="title">{highlight}Graves</h1>
-          <small t="subtitle">{letters_black}What you dropped · get it back before it expires</small>
-        </column>
-      </row>
-
-      <grid source="main" columns="3" rows="2" class="fill">
-        <card class="grave" action="exyliagraves:teleport %grave_id%" action-right="exyliagraves:preview %grave_id%"
-              t-tooltip="tooltip">
-          <row class="where">
-            <item row material="player_head" class="grave-icon"/>
-            <column class="place">
-              <b>{info}%grave_world%</b>
-              <small>{letters_black}%grave_x%, %grave_y%, %grave_z%</small>
-            </column>
-          </row>
-          <row class="line"><small t="items">{letters}Items</small><box class="spacer"/><small>{info}%grave_items%</small></row>
-          <row class="line"><small t="experience">{letters}Experience</small><box class="spacer"/><small>{success}%grave_experience%</small></row>
-          <row class="line"><small t="expires">{letters}Expires in</small><box class="spacer"/><small>{warning}%grave_time_left%</small></row>
-          <box class="spacer"/>
-          <small if="can_teleport" class="prompt" t="teleport">{info}Click · teleport</small>
-          <small if="can_preview" class="prompt" t="preview">{info}Right-click · look inside</small>
-        </card>
-        <empty><text t="empty.title">No graves</text><small t="empty.hint">Nothing of yours is lying around</small></empty>
-      </grid>
-
-      <row class="foot">
-        <small t="foot">{letters_black}Walk up to a grave and click the head to get everything back</small>
-        <box class="spacer"/>
-        <pager for="main" keys="a d"/>
-      </row>
-    </column>
-
+<screen version="2" backdrop="linear-gradient(to bottom, {info}14, {primary}06)" routes="menus/user/graves">
+  <row class="app">
     <column class="side">
-      <row class="owner">
-        <img face="%owner_name%" class="face"/>
-        <column class="who">
-          <b>{info}%owner_name%</b>
-          <small t="owner">{letters_black}Your graves</small>
-        </column>
+      <row class="ident">
+        <img face="%owner_name%" class="ident-icon"/>
+        <column class="tight"><b class="ident-name">{info}%owner_name%</b><small t="owner">{letters_black}Your graves</small></column>
       </row>
       <box class="rule"/>
       <row class="stat"><small t="standing">{letters}Standing</small><box class="spacer"/><b>{info}%graves%</b></row>
       <box class="spacer"/>
       <p class="note" t="hint">{letters_black}A grave keeps your items and experience until it expires.</p>
+      <p class="note" t="foot">{letters_black}Walk up to a grave and click the head to get everything back</p>
+    </column>
+
+    <column class="main">
+      <row class="head">
+        <item material="skeleton_skull" class="head-icon"/>
+        <column class="title"><h1 t="title">{highlight}Graves</h1>
+          <small t="subtitle">{letters_black}What you dropped · get it back before it expires</small></column>
+      </row>
+
+      <grid source="main" columns="2" rows="3" class="fill" track="%grave_id%">
+        <column class="grave" action="exyliagraves:teleport %grave_id%" action-right="exyliagraves:preview %grave_id%"
+                t-tooltip="tooltip">
+          <row class="where">
+            <item row material="player_head" class="grave-icon"/>
+            <column class="tight grow">
+              <b>{info}%grave_world%</b>
+              <small>{letters_black}%grave_x%, %grave_y%, %grave_z%</small>
+            </column>
+          </row>
+          <row class="line"><small t="access">{letters}Access</small><box class="spacer"/><small>%grave_protection%</small></row>
+          <row class="line"><small t="items">{letters}Items</small><box class="spacer"/><small>{info}%grave_items%</small></row>
+          <row class="line"><small t="experience">{letters}Experience</small><box class="spacer"/><small>{success}%grave_experience%</small></row>
+          <row class="line"><small t="expires">{letters}Expires in</small><box class="spacer"/><small>{warning}%grave_time_left%</small></row>
+        </column>
+        <empty><text t="empty.title">No graves</text><small t="empty.hint">Nothing of yours is lying around</small></empty>
+      </grid>
+
+      <row class="foot">
+        <small if="can_teleport" class="keys" t="teleport">{info}Click · teleport</small>
+        <small if="can_preview" class="keys" t="preview">{info}Right-click · look inside</small>
+        <box class="spacer"/>
+        <pager for="main" keys="a d"/>
+      </row>
     </column>
   </row>
 </screen>

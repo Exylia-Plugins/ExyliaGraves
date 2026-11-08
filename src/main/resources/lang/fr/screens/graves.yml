@@ -15,3 +15,4 @@ foot: '{letters_black}Approchez une tombe et cliquez sur la tête pour tout réc
 owner: '{letters_black}Vos tombes'
 standing: '{letters}Debout'
 hint: '{letters_black}Une tombe garde vos objets et votre expérience jusqu''à expiration.'
+access: '{letters}Accès'
