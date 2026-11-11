@@ -1,0 +1,155 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# Going back to a grave, the floating text and the respawn help.
+
+title: "{primary}&lНАСТРОЙКИ {letters_black}» {highlight}Дополнительно"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: COMPASS
+    name: "<gradient:{primary}:{secondary_light}>Дополнительно</gradient>"
+    lore:
+      - "{letters_black}Настройки · Дополнительно"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Возврат к могиле, её текст и"
+      - " {letters}помощь после возрождения."
+
+  teleport-enabled:
+    slot: 10
+    material: ENDER_PEARL
+    name: "{letters}Дополнительно {letters_black}▸ <gradient:{primary}:{secondary_light}>Телепорт</gradient>"
+    lore:
+      - "{letters_black}Настройка · Дополнительно"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Позволяет ли /graves вернуться к"
+      - " {letters}своей могиле."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Состояние{letters_black}: %more_teleport_enabled%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %more_teleport_enabled_default%"
+      - ""
+      - "%more_teleport_enabled_click%"
+    actions:
+      - "exyliagraves:setting more teleport.enabled"
+
+  teleport-cost:
+    slot: 11
+    material: GOLD_INGOT
+    name: "{letters}Дополнительно {letters_black}▸ <gradient:{primary}:{secondary_light}>Цена телепорта</gradient>"
+    lore:
+      - "{letters_black}Настройка · Дополнительно"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Сколько стоит этот телепорт. {highlight}0"
+      - " {letters}бесплатно."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:gold} {letters}Цена{letters_black}: %more_teleport_cost%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %more_teleport_cost_default%"
+      - ""
+      - "%more_teleport_cost_click%"
+    actions:
+      - "exyliagraves:setting more teleport.cost"
+
+  teleport-currency:
+    slot: 12
+    material: SUNFLOWER
+    name: "{letters}Дополнительно {letters_black}▸ <gradient:{primary}:{secondary_light}>Валюта</gradient>"
+    lore:
+      - "{letters_black}Настройка · Дополнительно"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Валюта, в которой платится"
+      - " {letters}стоимость."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:gold} {letters}Валюта{letters_black}: %more_teleport_currency%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %more_teleport_currency_default%"
+      - ""
+      - "%more_teleport_currency_click%"
+    actions:
+      - "exyliagraves:setting more teleport.currency"
+
+  hologram-enabled:
+    slot: 14
+    material: NAME_TAG
+    name: "{letters}Дополнительно {letters_black}▸ <gradient:{primary}:{secondary_light}>Голограмма</gradient>"
+    lore:
+      - "{letters_black}Настройка · Дополнительно"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Есть ли над могилой плавающий"
+      - " {letters}текст."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Состояние{letters_black}: %more_hologram_enabled%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %more_hologram_enabled_default%"
+      - ""
+      - "%more_hologram_enabled_click%"
+    actions:
+      - "exyliagraves:setting more hologram.enabled"
+
+  respawn-point-compass:
+    slot: 15
+    material: COMPASS
+    name: "{letters}Дополнительно {letters_black}▸ <gradient:{primary}:{secondary_light}>Компас</gradient>"
+    lore:
+      - "{letters_black}Настройка · Дополнительно"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Направляет компас к новой могиле"
+      - " {letters}после возрождения."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Состояние{letters_black}: %more_respawn_point_compass%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %more_respawn_point_compass_default%"
+      - ""
+      - "%more_respawn_point_compass_click%"
+    actions:
+      - "exyliagraves:setting more respawn.point-compass"
+
+  respawn-remind:
+    slot: 16
+    material: BELL
+    name: "{letters}Дополнительно {letters_black}▸ <gradient:{primary}:{secondary_light}>Напоминание</gradient>"
+    lore:
+      - "{letters_black}Настройка · Дополнительно"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Напоминает игроку, где его новая"
+      - " {letters}могила."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Состояние{letters_black}: %more_respawn_remind%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %more_respawn_remind_default%"
+      - ""
+      - "%more_respawn_remind_click%"
+    actions:
+      - "exyliagraves:setting more respawn.remind"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Назад {letters_black}▸ <gradient:{error}:{error_light}>Настройки</gradient>"
+    lore:
+      - "{error}{icon:click} Нажмите, чтобы вернуться"
+    actions:
+      - "exyliagraves:settings_hub"

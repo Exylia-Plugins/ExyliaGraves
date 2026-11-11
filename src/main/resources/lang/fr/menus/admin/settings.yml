@@ -1,0 +1,120 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# Settings an admin tunes, one card per module. Everything else stays in the files.
+
+title: "{primary}&lGRAVES {letters_black}» {highlight}Réglages"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: COMPARATOR
+    name: "<gradient:{primary}:{secondary_light}>Réglages</gradient>"
+    lore:
+      - "{letters_black}Réglages · Tombes"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Les réglages utiles en jeu,"
+      - " {letters}groupés par thème. Le reste reste"
+      - " {letters}dans les fichiers."
+
+  graves:
+    slot: 11
+    material: SKELETON_SKULL
+    name: "{letters}Réglages {letters_black}▸ <gradient:{primary}:{secondary_light}>Tombes</gradient>"
+    lore:
+      - "{letters_black}Page de réglages"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Durée, protection et limite par"
+      - " {letters}joueur."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:clock} {letters}Dure{letters_black}: %graves_graves_expire_time%"
+      - "  {letters_black}· {info}{icon:star} {letters}Limite{letters_black}: %graves_graves_max_per_player%"
+      - ""
+      - "{primary}{icon:click} Cliquez pour ouvrir"
+      - "{letters_black}Chaque réglage, expliqué."
+    actions:
+      - "exyliagraves:settings_page graves"
+
+  contents:
+    slot: 12
+    material: ENDER_CHEST
+    name: "{letters}Réglages {letters_black}▸ <gradient:{primary}:{secondary_light}>Contenu</gradient>"
+    lore:
+      - "{letters_black}Page de réglages"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Règles d'expérience et d'objets."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:star} {letters}Expérience{letters_black}: %contents_contents_experience%"
+      - "  {letters_black}· {info}{icon:gold} {letters}Gardée{letters_black}: %contents_contents_experience_percent%"
+      - ""
+      - "{primary}{icon:click} Cliquez pour ouvrir"
+      - "{letters_black}Chaque réglage, expliqué."
+    actions:
+      - "exyliagraves:settings_page contents"
+
+  collect:
+    slot: 14
+    material: CHEST_MINECART
+    name: "{letters}Réglages {letters_black}▸ <gradient:{primary}:{secondary_light}>Récupération</gradient>"
+    lore:
+      - "{letters_black}Page de réglages"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Clics et fenêtre de la tombe."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:click} {letters}Clic droit{letters_black}: %collect_collect_right_click%"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Partagée{letters_black}: %collect_collect_shared_window%"
+      - ""
+      - "{primary}{icon:click} Cliquez pour ouvrir"
+      - "{letters_black}Chaque réglage, expliqué."
+    actions:
+      - "exyliagraves:settings_page collect"
+
+  more:
+    slot: 15
+    material: COMPASS
+    name: "{letters}Réglages {letters_black}▸ <gradient:{primary}:{secondary_light}>Extras</gradient>"
+    lore:
+      - "{letters_black}Page de réglages"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Téléportation, hologramme et"
+      - " {letters}réapparition."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Téléportation{letters_black}: %more_teleport_enabled%"
+      - "  {letters_black}· {info}{icon:gold} {letters}Coût{letters_black}: %more_teleport_cost%"
+      - ""
+      - "{primary}{icon:click} Cliquez pour ouvrir"
+      - "{letters_black}Chaque réglage, expliqué."
+    actions:
+      - "exyliagraves:settings_page more"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Retour {letters_black}▸ <gradient:{error}:{error_light}>Admin des tombes</gradient>"
+    lore:
+      - "{error}{icon:click} Cliquez pour revenir"
+    actions:
+      - "exyliagraves:admin_players"

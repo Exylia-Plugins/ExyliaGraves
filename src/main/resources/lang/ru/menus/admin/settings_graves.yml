@@ -1,0 +1,161 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# How long a grave stands, who may open it and how many
+# a player may have. Everything else is in config.yml.
+
+title: "{primary}&lНАСТРОЙКИ {letters_black}» {highlight}Могилы"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: SKELETON_SKULL
+    name: "<gradient:{primary}:{secondary_light}>Могилы</gradient>"
+    lore:
+      - "{letters_black}Настройки · Могилы"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Как долго держится могила, кто её"
+      - " {letters}откроет и сколько их может быть у"
+      - " {letters}игрока."
+
+  graves-expire-time:
+    slot: 10
+    material: CLOCK
+    name: "{letters}Могилы {letters_black}▸ <gradient:{primary}:{secondary_light}>Срок</gradient>"
+    lore:
+      - "{letters_black}Настройка · Могилы"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Как долго могила держится до"
+      - " {letters}конца. {highlight}-1 {letters}хранит её, пока не"
+      - " {letters}заберут."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:clock} {letters}Срок{letters_black}: %graves_graves_expire_time%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %graves_graves_expire_time_default%"
+      - ""
+      - "%graves_graves_expire_time_click%"
+    actions:
+      - "exyliagraves:setting graves graves.expire-time"
+
+  graves-on-expire:
+    slot: 11
+    material: HOPPER
+    name: "{letters}Могилы {letters_black}▸ <gradient:{primary}:{secondary_light}>По истечении</gradient>"
+    lore:
+      - "{letters_black}Настройка · Могилы"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Что станет с содержимым при"
+      - " {letters}истечении: выпадет на месте или"
+      - " {letters}удалится."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:hopper} {letters}Затем{letters_black}: %graves_graves_on_expire%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %graves_graves_on_expire_default%"
+      - ""
+      - "%graves_graves_on_expire_click%"
+    actions:
+      - "exyliagraves:setting graves graves.on-expire"
+
+  graves-protection-time:
+    slot: 12
+    material: SHIELD
+    name: "{letters}Могилы {letters_black}▸ <gradient:{primary}:{secondary_light}>Защита</gradient>"
+    lore:
+      - "{letters_black}Настройка · Могилы"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Сколько времени её открывает"
+      - " {letters}только владелец. {highlight}0 {letters}открыта сразу,"
+      - " {letters}{highlight}-1 {letters}только владелец."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:clock} {letters}Только владелец{letters_black}: %graves_graves_protection_time%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %graves_graves_protection_time_default%"
+      - ""
+      - "%graves_graves_protection_time_click%"
+    actions:
+      - "exyliagraves:setting graves graves.protection-time"
+
+  graves-killer-can-loot:
+    slot: 14
+    material: IRON_SWORD
+    name: "{letters}Могилы {letters_black}▸ <gradient:{primary}:{secondary_light}>Добыча убийцы</gradient>"
+    lore:
+      - "{letters_black}Настройка · Могилы"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Может ли убийца открыть могилу,"
+      - " {letters}пока она защищена."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Состояние{letters_black}: %graves_graves_killer_can_loot%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %graves_graves_killer_can_loot_default%"
+      - ""
+      - "%graves_graves_killer_can_loot_click%"
+    actions:
+      - "exyliagraves:setting graves graves.killer-can-loot"
+
+  graves-max-per-player:
+    slot: 15
+    material: CHEST
+    name: "{letters}Могилы {letters_black}▸ <gradient:{primary}:{secondary_light}>Могил на игрока</gradient>"
+    lore:
+      - "{letters_black}Настройка · Могилы"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Сколько могил может быть у игрока."
+      - " {letters}Старейшая пропадает. {highlight}-1 {letters}снимает"
+      - " {letters}лимит."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:star} {letters}Лимит{letters_black}: %graves_graves_max_per_player%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %graves_graves_max_per_player_default%"
+      - ""
+      - "%graves_graves_max_per_player_click%"
+    actions:
+      - "exyliagraves:setting graves graves.max-per-player"
+
+  graves-disabled-worlds:
+    slot: 16
+    material: BARRIER
+    name: "{letters}Могилы {letters_black}▸ <gradient:{primary}:{secondary_light}>Отключённые миры</gradient>"
+    lore:
+      - "{letters_black}Настройка · Могилы"
+      - ""
+      - "{primary}✎ Информация"
+      - " {letters}Миры, где могилы не появляются, по"
+      - " {letters}имени."
+      - ""
+      - "{primary}✦ Статус"
+      - "  {letters_black}· {info}{icon:book} {letters}Миры{letters_black}: %graves_graves_disabled_worlds%"
+      - "  {letters_black}· {info}{icon:book} {letters}По умолчанию{letters_black}: %graves_graves_disabled_worlds_default%"
+      - ""
+      - "%graves_graves_disabled_worlds_click%"
+    actions:
+      - "exyliagraves:setting graves graves.disabled-worlds"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Назад {letters_black}▸ <gradient:{error}:{error_light}>Настройки</gradient>"
+    lore:
+      - "{error}{icon:click} Нажмите, чтобы вернуться"
+    actions:
+      - "exyliagraves:settings_hub"

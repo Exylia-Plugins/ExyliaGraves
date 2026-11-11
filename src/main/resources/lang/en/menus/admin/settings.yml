@@ -1,0 +1,119 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# Settings an admin tunes, one card per module. Everything else stays in the files.
+
+title: "{primary}&lGRAVES {letters_black}» {highlight}Settings"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: COMPARATOR
+    name: "<gradient:{primary}:{secondary_light}>Settings</gradient>"
+    lore:
+      - "{letters_black}Graves settings"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}The settings worth changing in"
+      - " {letters}game, grouped by theme. The"
+      - " {letters}rest stays in the files."
+
+  graves:
+    slot: 11
+    material: SKELETON_SKULL
+    name: "{letters}Settings {letters_black}▸ <gradient:{primary}:{secondary_light}>Graves</gradient>"
+    lore:
+      - "{letters_black}Settings page"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Lifetime, protection and the"
+      - " {letters}limit per player."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:clock} {letters}Lasts{letters_black}: %graves_graves_expire_time%"
+      - "  {letters_black}· {info}{icon:star} {letters}Limit{letters_black}: %graves_graves_max_per_player%"
+      - ""
+      - "{primary}{icon:click} Click to open"
+      - "{letters_black}Each setting, explained."
+    actions:
+      - "exyliagraves:settings_page graves"
+
+  contents:
+    slot: 12
+    material: ENDER_CHEST
+    name: "{letters}Settings {letters_black}▸ <gradient:{primary}:{secondary_light}>Contents</gradient>"
+    lore:
+      - "{letters_black}Settings page"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Experience and item rules."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:star} {letters}Experience{letters_black}: %contents_contents_experience%"
+      - "  {letters_black}· {info}{icon:gold} {letters}Kept{letters_black}: %contents_contents_experience_percent%"
+      - ""
+      - "{primary}{icon:click} Click to open"
+      - "{letters_black}Each setting, explained."
+    actions:
+      - "exyliagraves:settings_page contents"
+
+  collect:
+    slot: 14
+    material: CHEST_MINECART
+    name: "{letters}Settings {letters_black}▸ <gradient:{primary}:{secondary_light}>Collecting</gradient>"
+    lore:
+      - "{letters_black}Settings page"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Clicks and the grave window."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:click} {letters}Right-click{letters_black}: %collect_collect_right_click%"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Shared{letters_black}: %collect_collect_shared_window%"
+      - ""
+      - "{primary}{icon:click} Click to open"
+      - "{letters_black}Each setting, explained."
+    actions:
+      - "exyliagraves:settings_page collect"
+
+  more:
+    slot: 15
+    material: COMPASS
+    name: "{letters}Settings {letters_black}▸ <gradient:{primary}:{secondary_light}>Extras</gradient>"
+    lore:
+      - "{letters_black}Settings page"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Teleport, hologram and respawn."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Teleport{letters_black}: %more_teleport_enabled%"
+      - "  {letters_black}· {info}{icon:gold} {letters}Cost{letters_black}: %more_teleport_cost%"
+      - ""
+      - "{primary}{icon:click} Click to open"
+      - "{letters_black}Each setting, explained."
+    actions:
+      - "exyliagraves:settings_page more"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Back {letters_black}▸ <gradient:{error}:{error_light}>Graves admin</gradient>"
+    lore:
+      - "{error}{icon:click} Click to go back"
+    actions:
+      - "exyliagraves:admin_players"

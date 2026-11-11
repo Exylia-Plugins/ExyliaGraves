@@ -1,0 +1,172 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# What a click on a grave does and how its window works.
+
+title: "{primary}&lDEFINIÇÕES {letters_black}» {highlight}Recolha"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: CHEST_MINECART
+    name: "<gradient:{primary}:{secondary_light}>Recolha</gradient>"
+    lore:
+      - "{letters_black}Definições · Recolha"
+      - ""
+      - "{primary}✎ Informação"
+      - " {letters}O que cada clique numa sepultura"
+      - " {letters}faz e como a janela se comporta."
+
+  collect-right-click:
+    slot: 10
+    material: STICK
+    name: "{letters}Recolha {letters_black}▸ <gradient:{primary}:{secondary_light}>Clique direito</gradient>"
+    lore:
+      - "{letters_black}Definição · Recolha"
+      - ""
+      - "{primary}✎ Informação"
+      - " {letters}Abrir a janela, levar tudo, ver"
+      - " {letters}uma cópia, ou nada."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:click} {letters}Faz{letters_black}: %collect_collect_right_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Padrão{letters_black}: %collect_collect_right_click_default%"
+      - ""
+      - "%collect_collect_right_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.right-click"
+
+  collect-sneak-right-click:
+    slot: 11
+    material: LEATHER_BOOTS
+    name: "{letters}Recolha {letters_black}▸ <gradient:{primary}:{secondary_light}>Clique direito agachado</gradient>"
+    lore:
+      - "{letters_black}Definição · Recolha"
+      - ""
+      - "{primary}✎ Informação"
+      - " {letters}O mesmo, agachado."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:click} {letters}Faz{letters_black}: %collect_collect_sneak_right_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Padrão{letters_black}: %collect_collect_sneak_right_click_default%"
+      - ""
+      - "%collect_collect_sneak_right_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.sneak-right-click"
+
+  collect-left-click:
+    slot: 12
+    material: WOODEN_SWORD
+    name: "{letters}Recolha {letters_black}▸ <gradient:{primary}:{secondary_light}>Clique esquerdo</gradient>"
+    lore:
+      - "{letters_black}Definição · Recolha"
+      - ""
+      - "{primary}✎ Informação"
+      - " {letters}O que faz um clique esquerdo numa"
+      - " {letters}sepultura."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:click} {letters}Faz{letters_black}: %collect_collect_left_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Padrão{letters_black}: %collect_collect_left_click_default%"
+      - ""
+      - "%collect_collect_left_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.left-click"
+
+  collect-sneak-left-click:
+    slot: 13
+    material: IRON_BOOTS
+    name: "{letters}Recolha {letters_black}▸ <gradient:{primary}:{secondary_light}>Clique esquerdo agachado</gradient>"
+    lore:
+      - "{letters_black}Definição · Recolha"
+      - ""
+      - "{primary}✎ Informação"
+      - " {letters}O mesmo, agachado."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:click} {letters}Faz{letters_black}: %collect_collect_sneak_left_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Padrão{letters_black}: %collect_collect_sneak_left_click_default%"
+      - ""
+      - "%collect_collect_sneak_left_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.sneak-left-click"
+
+  collect-auto-equip:
+    slot: 14
+    material: IRON_CHESTPLATE
+    name: "{letters}Recolha {letters_black}▸ <gradient:{primary}:{secondary_light}>Equipar sozinho</gradient>"
+    lore:
+      - "{letters_black}Definição · Recolha"
+      - ""
+      - "{primary}✎ Informação"
+      - " {letters}Devolve a armadura ao dono quando"
+      - " {letters}ele próprio a recolhe."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Estado{letters_black}: %collect_collect_auto_equip%"
+      - "  {letters_black}· {info}{icon:book} {letters}Padrão{letters_black}: %collect_collect_auto_equip_default%"
+      - ""
+      - "%collect_collect_auto_equip_click%"
+    actions:
+      - "exyliagraves:setting collect collect.auto-equip"
+
+  collect-shared-window:
+    slot: 15
+    material: ENDER_EYE
+    name: "{letters}Recolha {letters_black}▸ <gradient:{primary}:{secondary_light}>Janela partilhada</gradient>"
+    lore:
+      - "{letters_black}Definição · Recolha"
+      - ""
+      - "{primary}✎ Informação"
+      - " {letters}Se vários jogadores podem ter uma"
+      - " {letters}sepultura aberta ao mesmo tempo."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Estado{letters_black}: %collect_collect_shared_window%"
+      - "  {letters_black}· {info}{icon:book} {letters}Padrão{letters_black}: %collect_collect_shared_window_default%"
+      - ""
+      - "%collect_collect_shared_window_click%"
+    actions:
+      - "exyliagraves:setting collect collect.shared-window"
+
+  collect-take-all-button:
+    slot: 16
+    material: HOPPER
+    name: "{letters}Recolha {letters_black}▸ <gradient:{primary}:{secondary_light}>Botão levar tudo</gradient>"
+    lore:
+      - "{letters_black}Definição · Recolha"
+      - ""
+      - "{primary}✎ Informação"
+      - " {letters}Se a janela tem um botão que leva"
+      - " {letters}tudo de uma vez."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Estado{letters_black}: %collect_collect_take_all_button%"
+      - "  {letters_black}· {info}{icon:book} {letters}Padrão{letters_black}: %collect_collect_take_all_button_default%"
+      - ""
+      - "%collect_collect_take_all_button_click%"
+    actions:
+      - "exyliagraves:setting collect collect.take-all-button"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Voltar {letters_black}▸ <gradient:{error}:{error_light}>Definições</gradient>"
+    lore:
+      - "{error}{icon:click} Clique para voltar"
+    actions:
+      - "exyliagraves:settings_hub"

@@ -1,0 +1,117 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# What goes into a grave and what stays with the player.
+
+title: "{primary}&lSETTINGS {letters_black}» {highlight}Contents"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: ENDER_CHEST
+    name: "<gradient:{primary}:{secondary_light}>Contents</gradient>"
+    lore:
+      - "{letters_black}Contents settings"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}What a grave keeps: experience,"
+      - " {letters}and which items stay out of it."
+
+  contents-experience:
+    slot: 11
+    material: EXPERIENCE_BOTTLE
+    name: "{letters}Contents {letters_black}▸ <gradient:{primary}:{secondary_light}>Experience</gradient>"
+    lore:
+      - "{letters_black}Contents setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}None, what vanilla would drop,"
+      - " {letters}or every point the player had."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:star} {letters}Mode{letters_black}: %contents_contents_experience%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %contents_contents_experience_default%"
+      - ""
+      - "%contents_contents_experience_click%"
+    actions:
+      - "exyliagraves:setting contents contents.experience"
+
+  contents-experience-percent:
+    slot: 12
+    material: ENCHANTED_BOOK
+    name: "{letters}Contents {letters_black}▸ <gradient:{primary}:{secondary_light}>Experience kept</gradient>"
+    lore:
+      - "{letters_black}Contents setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}The share of that experience"
+      - " {letters}the grave keeps. Rest is lost."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:star} {letters}Kept{letters_black}: %contents_contents_experience_percent%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %contents_contents_experience_percent_default%"
+      - ""
+      - "%contents_contents_experience_percent_click%"
+    actions:
+      - "exyliagraves:setting contents contents.experience-percent"
+
+  contents-ignored-materials:
+    slot: 14
+    material: TNT
+    name: "{letters}Contents {letters_black}▸ <gradient:{primary}:{secondary_light}>Ignored items</gradient>"
+    lore:
+      - "{letters_black}Contents setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Items that never go into a"
+      - " {letters}grave: they drop as usual."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:book} {letters}Items{letters_black}: %contents_contents_ignored_materials%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %contents_contents_ignored_materials_default%"
+      - ""
+      - "%contents_contents_ignored_materials_click%"
+    actions:
+      - "exyliagraves:setting contents contents.ignored-materials"
+
+  contents-kept-materials:
+    slot: 15
+    material: TOTEM_OF_UNDYING
+    name: "{letters}Contents {letters_black}▸ <gradient:{primary}:{secondary_light}>Kept items</gradient>"
+    lore:
+      - "{letters_black}Contents setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Items the player keeps in their"
+      - " {letters}inventory through death."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:book} {letters}Items{letters_black}: %contents_contents_kept_materials%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %contents_contents_kept_materials_default%"
+      - ""
+      - "%contents_contents_kept_materials_click%"
+    actions:
+      - "exyliagraves:setting contents contents.kept-materials"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Back {letters_black}▸ <gradient:{error}:{error_light}>Settings</gradient>"
+    lore:
+      - "{error}{icon:click} Click to go back"
+    actions:
+      - "exyliagraves:settings_hub"

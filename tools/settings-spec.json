@@ -1,0 +1,407 @@
+{
+ "namespace": "exyliagraves",
+ "menu": "menus/admin/settings",
+ "title": "GRAVES",
+ "back": {
+  "label": "Graves admin",
+  "action": "exyliagraves:admin_players"
+ },
+ "hub": {
+  "about": [
+   "The settings worth changing in",
+   "game, grouped by theme. The",
+   "rest stays in the files."
+  ]
+ },
+ "pages": [
+  {
+   "id": "graves",
+   "title": "Graves",
+   "context": "Graves",
+   "icon": "SKELETON_SKULL",
+   "comment": [
+    "How long a grave stands, who may open it and how many",
+    "a player may have. Everything else is in config.yml."
+   ],
+   "about": [
+    "How long a grave stands, who",
+    "may open it, and how many a",
+    "player can have."
+   ],
+   "hub": {
+    "about": [
+     "Lifetime, protection and the",
+     "limit per player."
+    ],
+    "stats": [
+     [
+      "clock",
+      "Lasts",
+      "graves.expire-time"
+     ],
+     [
+      "star",
+      "Limit",
+      "graves.max-per-player"
+     ]
+    ],
+    "next": "Each setting, explained."
+   },
+   "cards": [
+    [
+     "graves.expire-time",
+     "Lifetime",
+     "CLOCK",
+     "clock",
+     "Lasts",
+     [
+      "How long a grave stands before",
+      "it is over. {highlight}-1 {letters}keeps it",
+      "until collected."
+     ]
+    ],
+    [
+     "graves.on-expire",
+     "On expiry",
+     "HOPPER",
+     "hopper",
+     "Then",
+     [
+      "What happens to the contents",
+      "when a grave expires: dropped",
+      "where it stood, or deleted."
+     ]
+    ],
+    [
+     "graves.protection-time",
+     "Protection",
+     "SHIELD",
+     "clock",
+     "Owner only",
+     [
+      "How long only the owner may",
+      "open it. {highlight}0 {letters}is open at once,",
+      "{highlight}-1 {letters}is owner only."
+     ]
+    ],
+    [
+     "graves.killer-can-loot",
+     "Killer loot",
+     "IRON_SWORD",
+     "redstone",
+     "State",
+     [
+      "Whether the killer may open a",
+      "grave while it is protected."
+     ]
+    ],
+    [
+     "graves.max-per-player",
+     "Graves per player",
+     "CHEST",
+     "star",
+     "Limit",
+     [
+      "How many graves one player may",
+      "have. The oldest tips out.",
+      "{highlight}-1 {letters}removes the limit."
+     ]
+    ],
+    [
+     "graves.disabled-worlds",
+     "Disabled worlds",
+     "BARRIER",
+     "book",
+     "Worlds",
+     [
+      "Worlds where nobody gets a",
+      "grave, by name."
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "contents",
+   "title": "Contents",
+   "context": "Contents",
+   "icon": "ENDER_CHEST",
+   "comment": [
+    "What goes into a grave and what stays with the player."
+   ],
+   "about": [
+    "What a grave keeps: experience,",
+    "and which items stay out of it."
+   ],
+   "hub": {
+    "about": [
+     "Experience and item rules."
+    ],
+    "stats": [
+     [
+      "star",
+      "Experience",
+      "contents.experience"
+     ],
+     [
+      "gold",
+      "Kept",
+      "contents.experience-percent"
+     ]
+    ],
+    "next": "Each setting, explained."
+   },
+   "cards": [
+    [
+     "contents.experience",
+     "Experience",
+     "EXPERIENCE_BOTTLE",
+     "star",
+     "Mode",
+     [
+      "None, what vanilla would drop,",
+      "or every point the player had."
+     ]
+    ],
+    [
+     "contents.experience-percent",
+     "Experience kept",
+     "ENCHANTED_BOOK",
+     "star",
+     "Kept",
+     [
+      "The share of that experience",
+      "the grave keeps. Rest is lost."
+     ]
+    ],
+    [
+     "contents.ignored-materials",
+     "Ignored items",
+     "TNT",
+     "book",
+     "Items",
+     [
+      "Items that never go into a",
+      "grave: they drop as usual."
+     ]
+    ],
+    [
+     "contents.kept-materials",
+     "Kept items",
+     "TOTEM_OF_UNDYING",
+     "book",
+     "Items",
+     [
+      "Items the player keeps in their",
+      "inventory through death."
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "collect",
+   "title": "Collecting",
+   "context": "Collecting",
+   "icon": "CHEST_MINECART",
+   "comment": [
+    "What a click on a grave does and how its window works."
+   ],
+   "about": [
+    "What each click on a grave does",
+    "and how its window behaves."
+   ],
+   "hub": {
+    "about": [
+     "Clicks and the grave window."
+    ],
+    "stats": [
+     [
+      "click",
+      "Right-click",
+      "collect.right-click"
+     ],
+     [
+      "redstone",
+      "Shared",
+      "collect.shared-window"
+     ]
+    ],
+    "next": "Each setting, explained."
+   },
+   "cards": [
+    [
+     "collect.right-click",
+     "Right-click",
+     "STICK",
+     "click",
+     "Does",
+     [
+      "Open its window, take it all,",
+      "preview a copy, or nothing."
+     ]
+    ],
+    [
+     "collect.sneak-right-click",
+     "Sneak right-click",
+     "LEATHER_BOOTS",
+     "click",
+     "Does",
+     [
+      "The same, while sneaking."
+     ]
+    ],
+    [
+     "collect.left-click",
+     "Left-click",
+     "WOODEN_SWORD",
+     "click",
+     "Does",
+     [
+      "What a left click on a grave",
+      "does."
+     ]
+    ],
+    [
+     "collect.sneak-left-click",
+     "Sneak left-click",
+     "IRON_BOOTS",
+     "click",
+     "Does",
+     [
+      "The same, while sneaking."
+     ]
+    ],
+    [
+     "collect.auto-equip",
+     "Auto-equip",
+     "IRON_CHESTPLATE",
+     "redstone",
+     "State",
+     [
+      "Puts the owner's armour back on",
+      "when they collect it themselves."
+     ]
+    ],
+    [
+     "collect.shared-window",
+     "Shared window",
+     "ENDER_EYE",
+     "redstone",
+     "State",
+     [
+      "Whether several players may have",
+      "a grave open at once."
+     ]
+    ],
+    [
+     "collect.take-all-button",
+     "Take-all button",
+     "HOPPER",
+     "redstone",
+     "State",
+     [
+      "Whether the window has a button",
+      "that takes everything at once."
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "more",
+   "title": "Extras",
+   "context": "Extras",
+   "icon": "COMPASS",
+   "comment": [
+    "Going back to a grave, the floating text and the respawn help."
+   ],
+   "about": [
+    "Going back to a grave, its text",
+    "and the help after respawning."
+   ],
+   "hub": {
+    "about": [
+     "Teleport, hologram and respawn."
+    ],
+    "stats": [
+     [
+      "redstone",
+      "Teleport",
+      "teleport.enabled"
+     ],
+     [
+      "gold",
+      "Cost",
+      "teleport.cost"
+     ]
+    ],
+    "next": "Each setting, explained."
+   },
+   "cards": [
+    [
+     "teleport.enabled",
+     "Teleport",
+     "ENDER_PEARL",
+     "redstone",
+     "State",
+     [
+      "Whether /graves lets a player",
+      "go back to one of theirs."
+     ]
+    ],
+    [
+     "teleport.cost",
+     "Teleport cost",
+     "GOLD_INGOT",
+     "gold",
+     "Cost",
+     [
+      "What that teleport costs.",
+      "{highlight}0 {letters}is free."
+     ]
+    ],
+    [
+     "teleport.currency",
+     "Currency",
+     "SUNFLOWER",
+     "gold",
+     "Currency",
+     [
+      "What the cost is paid in."
+     ]
+    ],
+    [
+     "hologram.enabled",
+     "Hologram",
+     "NAME_TAG",
+     "redstone",
+     "State",
+     [
+      "Whether a grave has floating",
+      "text above it."
+     ]
+    ],
+    [
+     "respawn.point-compass",
+     "Compass",
+     "COMPASS",
+     "redstone",
+     "State",
+     [
+      "Points the compass to the newest",
+      "grave after respawning."
+     ]
+    ],
+    [
+     "respawn.remind",
+     "Reminder",
+     "BELL",
+     "redstone",
+     "State",
+     [
+      "Reminds the player where their",
+      "newest grave is."
+     ]
+    ]
+   ]
+  }
+ ]
+}

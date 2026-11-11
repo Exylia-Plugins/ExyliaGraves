@@ -1,0 +1,172 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# What a click on a grave does and how its window works.
+
+title: "{primary}&lAJUSTES {letters_black}» {highlight}Recogida"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: CHEST_MINECART
+    name: "<gradient:{primary}:{secondary_light}>Recogida</gradient>"
+    lore:
+      - "{letters_black}Ajustes · Recogida"
+      - ""
+      - "{primary}✎ Información"
+      - " {letters}Qué hace cada clic en una tumba y"
+      - " {letters}cómo se comporta su ventana."
+
+  collect-right-click:
+    slot: 10
+    material: STICK
+    name: "{letters}Recogida {letters_black}▸ <gradient:{primary}:{secondary_light}>Clic derecho</gradient>"
+    lore:
+      - "{letters_black}Ajuste · Recogida"
+      - ""
+      - "{primary}✎ Información"
+      - " {letters}Abrir su ventana, tomarlo todo,"
+      - " {letters}ver una copia, o nada."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:click} {letters}Hace{letters_black}: %collect_collect_right_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Por defecto{letters_black}: %collect_collect_right_click_default%"
+      - ""
+      - "%collect_collect_right_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.right-click"
+
+  collect-sneak-right-click:
+    slot: 11
+    material: LEATHER_BOOTS
+    name: "{letters}Recogida {letters_black}▸ <gradient:{primary}:{secondary_light}>Clic derecho agachado</gradient>"
+    lore:
+      - "{letters_black}Ajuste · Recogida"
+      - ""
+      - "{primary}✎ Información"
+      - " {letters}Lo mismo, agachado."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:click} {letters}Hace{letters_black}: %collect_collect_sneak_right_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Por defecto{letters_black}: %collect_collect_sneak_right_click_default%"
+      - ""
+      - "%collect_collect_sneak_right_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.sneak-right-click"
+
+  collect-left-click:
+    slot: 12
+    material: WOODEN_SWORD
+    name: "{letters}Recogida {letters_black}▸ <gradient:{primary}:{secondary_light}>Clic izquierdo</gradient>"
+    lore:
+      - "{letters_black}Ajuste · Recogida"
+      - ""
+      - "{primary}✎ Información"
+      - " {letters}Qué hace un clic izquierdo en una"
+      - " {letters}tumba."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:click} {letters}Hace{letters_black}: %collect_collect_left_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Por defecto{letters_black}: %collect_collect_left_click_default%"
+      - ""
+      - "%collect_collect_left_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.left-click"
+
+  collect-sneak-left-click:
+    slot: 13
+    material: IRON_BOOTS
+    name: "{letters}Recogida {letters_black}▸ <gradient:{primary}:{secondary_light}>Clic izquierdo agachado</gradient>"
+    lore:
+      - "{letters_black}Ajuste · Recogida"
+      - ""
+      - "{primary}✎ Información"
+      - " {letters}Lo mismo, agachado."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:click} {letters}Hace{letters_black}: %collect_collect_sneak_left_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Por defecto{letters_black}: %collect_collect_sneak_left_click_default%"
+      - ""
+      - "%collect_collect_sneak_left_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.sneak-left-click"
+
+  collect-auto-equip:
+    slot: 14
+    material: IRON_CHESTPLATE
+    name: "{letters}Recogida {letters_black}▸ <gradient:{primary}:{secondary_light}>Equipar solo</gradient>"
+    lore:
+      - "{letters_black}Ajuste · Recogida"
+      - ""
+      - "{primary}✎ Información"
+      - " {letters}Devuelve la armadura al dueño"
+      - " {letters}cuando recoge la tumba él mismo."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Estado{letters_black}: %collect_collect_auto_equip%"
+      - "  {letters_black}· {info}{icon:book} {letters}Por defecto{letters_black}: %collect_collect_auto_equip_default%"
+      - ""
+      - "%collect_collect_auto_equip_click%"
+    actions:
+      - "exyliagraves:setting collect collect.auto-equip"
+
+  collect-shared-window:
+    slot: 15
+    material: ENDER_EYE
+    name: "{letters}Recogida {letters_black}▸ <gradient:{primary}:{secondary_light}>Ventana compartida</gradient>"
+    lore:
+      - "{letters_black}Ajuste · Recogida"
+      - ""
+      - "{primary}✎ Información"
+      - " {letters}Si varios jugadores pueden tener"
+      - " {letters}una tumba abierta a la vez."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Estado{letters_black}: %collect_collect_shared_window%"
+      - "  {letters_black}· {info}{icon:book} {letters}Por defecto{letters_black}: %collect_collect_shared_window_default%"
+      - ""
+      - "%collect_collect_shared_window_click%"
+    actions:
+      - "exyliagraves:setting collect collect.shared-window"
+
+  collect-take-all-button:
+    slot: 16
+    material: HOPPER
+    name: "{letters}Recogida {letters_black}▸ <gradient:{primary}:{secondary_light}>Botón tomar todo</gradient>"
+    lore:
+      - "{letters_black}Ajuste · Recogida"
+      - ""
+      - "{primary}✎ Información"
+      - " {letters}Si la ventana tiene un botón que"
+      - " {letters}toma todo de una vez."
+      - ""
+      - "{primary}✦ Estado"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Estado{letters_black}: %collect_collect_take_all_button%"
+      - "  {letters_black}· {info}{icon:book} {letters}Por defecto{letters_black}: %collect_collect_take_all_button_default%"
+      - ""
+      - "%collect_collect_take_all_button_click%"
+    actions:
+      - "exyliagraves:setting collect collect.take-all-button"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Volver {letters_black}▸ <gradient:{error}:{error_light}>Ajustes</gradient>"
+    lore:
+      - "{error}{icon:click} Clic para volver"
+    actions:
+      - "exyliagraves:settings_hub"

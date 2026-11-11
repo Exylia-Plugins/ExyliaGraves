@@ -1,0 +1,162 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# How long a grave stands, who may open it and how many
+# a player may have. Everything else is in config.yml.
+
+title: "{primary}&lRÉGLAGES {letters_black}» {highlight}Tombes"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: SKELETON_SKULL
+    name: "<gradient:{primary}:{secondary_light}>Tombes</gradient>"
+    lore:
+      - "{letters_black}Réglages · Tombes"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Combien de temps une tombe tient,"
+      - " {letters}qui peut l'ouvrir et combien un"
+      - " {letters}joueur peut en avoir."
+
+  graves-expire-time:
+    slot: 10
+    material: CLOCK
+    name: "{letters}Tombes {letters_black}▸ <gradient:{primary}:{secondary_light}>Durée</gradient>"
+    lore:
+      - "{letters_black}Réglage · Tombes"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Combien de temps une tombe tient"
+      - " {letters}avant la fin. {highlight}-1 {letters}la garde jusqu'à"
+      - " {letters}sa récupération."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:clock} {letters}Dure{letters_black}: %graves_graves_expire_time%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %graves_graves_expire_time_default%"
+      - ""
+      - "%graves_graves_expire_time_click%"
+    actions:
+      - "exyliagraves:setting graves graves.expire-time"
+
+  graves-on-expire:
+    slot: 11
+    material: HOPPER
+    name: "{letters}Tombes {letters_black}▸ <gradient:{primary}:{secondary_light}>À l'expiration</gradient>"
+    lore:
+      - "{letters_black}Réglage · Tombes"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Ce qui arrive au contenu quand la"
+      - " {letters}tombe expire : lâché sur place ou"
+      - " {letters}supprimé."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:hopper} {letters}Ensuite{letters_black}: %graves_graves_on_expire%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %graves_graves_on_expire_default%"
+      - ""
+      - "%graves_graves_on_expire_click%"
+    actions:
+      - "exyliagraves:setting graves graves.on-expire"
+
+  graves-protection-time:
+    slot: 12
+    material: SHIELD
+    name: "{letters}Tombes {letters_black}▸ <gradient:{primary}:{secondary_light}>Protection</gradient>"
+    lore:
+      - "{letters_black}Réglage · Tombes"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Combien de temps seul le"
+      - " {letters}propriétaire peut l'ouvrir. {highlight}0"
+      - " {letters}ouverte aussitôt, {highlight}-1 {letters}propriétaire"
+      - " {letters}seul."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:clock} {letters}Propriétaire seul{letters_black}: %graves_graves_protection_time%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %graves_graves_protection_time_default%"
+      - ""
+      - "%graves_graves_protection_time_click%"
+    actions:
+      - "exyliagraves:setting graves graves.protection-time"
+
+  graves-killer-can-loot:
+    slot: 14
+    material: IRON_SWORD
+    name: "{letters}Tombes {letters_black}▸ <gradient:{primary}:{secondary_light}>Butin du tueur</gradient>"
+    lore:
+      - "{letters_black}Réglage · Tombes"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Si le tueur peut ouvrir une tombe"
+      - " {letters}tant qu'elle est protégée."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:redstone} {letters}État{letters_black}: %graves_graves_killer_can_loot%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %graves_graves_killer_can_loot_default%"
+      - ""
+      - "%graves_graves_killer_can_loot_click%"
+    actions:
+      - "exyliagraves:setting graves graves.killer-can-loot"
+
+  graves-max-per-player:
+    slot: 15
+    material: CHEST
+    name: "{letters}Tombes {letters_black}▸ <gradient:{primary}:{secondary_light}>Tombes par joueur</gradient>"
+    lore:
+      - "{letters_black}Réglage · Tombes"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Combien de tombes un joueur peut"
+      - " {letters}avoir. La plus ancienne tombe. {highlight}-1"
+      - " {letters}supprime la limite."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:star} {letters}Limite{letters_black}: %graves_graves_max_per_player%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %graves_graves_max_per_player_default%"
+      - ""
+      - "%graves_graves_max_per_player_click%"
+    actions:
+      - "exyliagraves:setting graves graves.max-per-player"
+
+  graves-disabled-worlds:
+    slot: 16
+    material: BARRIER
+    name: "{letters}Tombes {letters_black}▸ <gradient:{primary}:{secondary_light}>Mondes désactivés</gradient>"
+    lore:
+      - "{letters_black}Réglage · Tombes"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Mondes où personne n'a de tombe,"
+      - " {letters}par nom."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:book} {letters}Mondes{letters_black}: %graves_graves_disabled_worlds%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %graves_graves_disabled_worlds_default%"
+      - ""
+      - "%graves_graves_disabled_worlds_click%"
+    actions:
+      - "exyliagraves:setting graves graves.disabled-worlds"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Retour {letters_black}▸ <gradient:{error}:{error_light}>Réglages</gradient>"
+    lore:
+      - "{error}{icon:click} Cliquez pour revenir"
+    actions:
+      - "exyliagraves:settings_hub"

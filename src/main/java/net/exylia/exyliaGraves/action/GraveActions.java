@@ -6,7 +6,8 @@ import net.exylia.exyliaGraves.config.GraveMessages;
 import net.exylia.exyliaGraves.database.GraveEntity;
 import net.exylia.exyliaGraves.menu.AdminPlayersMenu;
 import net.exylia.exyliaGraves.menu.GravesMenu;
-import net.exylia.lib.config.ConfigMenus;
+import net.exylia.exyliaGraves.menu.SettingsMenus;
+import net.exylia.lib.ui.UiKeys;
 import net.exylia.lib.action.ActionResult;
 import net.exylia.lib.action.PluginActions;
 import net.exylia.lib.text.Values;
@@ -64,8 +65,23 @@ public final class GraveActions {
             return ActionResult.success();
         });
         actions.registerSync("settings", Permissions.ADMIN, (ctx, args) -> {
-            ConfigMenus.of(core.getPlugin()).permission(Permissions.ADMIN)
-                    .back(AdminPlayersMenu::open).open(ctx.player());
+            SettingsMenus.openHub(ctx.player());
+            return ActionResult.success();
+        });
+        actions.registerSync("settings_hub", Permissions.ADMIN, (ctx, args) -> {
+            SettingsMenus.openHub(ctx.player());
+            return ActionResult.success();
+        });
+        actions.registerSync("admin_players", Permissions.ADMIN, (ctx, args) -> {
+            AdminPlayersMenu.open(ctx.player());
+            return ActionResult.success();
+        });
+        actions.registerSync("settings_page", Permissions.ADMIN, (ctx, args) -> {
+            SettingsMenus.openPage(ctx.player(), args.string(0, ""));
+            return ActionResult.success();
+        });
+        actions.registerSync("setting", Permissions.ADMIN, (ctx, args) -> {
+            SettingsMenus.click(ctx.player(), args.string(0, ""), args.string(1, ""), ctx.get(UiKeys.CLICK).orElse(null));
             return ActionResult.success();
         });
         actions.registerSync("admin_graves", Permissions.ADMIN_VIEW, (ctx, args) -> {

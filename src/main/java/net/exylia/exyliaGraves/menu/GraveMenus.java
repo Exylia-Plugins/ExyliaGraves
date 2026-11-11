@@ -29,7 +29,9 @@ import java.util.function.Supplier;
  */
 public final class GraveMenus {
 
-    private static final List<String> IDS = List.of(GravesMenu.ID, GravesMenu.ADMIN_ID, AdminPlayersMenu.ID);
+    private static final List<String> IDS = List.of(GravesMenu.ID, GravesMenu.ADMIN_ID, AdminPlayersMenu.ID,
+            SettingsMenus.HUB, SettingsMenus.HUB + "_graves", SettingsMenus.HUB + "_contents",
+            SettingsMenus.HUB + "_collect", SettingsMenus.HUB + "_more");
 
     private final ExyliaGraves core;
     private final PluginMenus menus;
@@ -106,6 +108,11 @@ public final class GraveMenus {
             return;
         }
         core.getTasks().runAtEntity(player, () -> menus.openNow(player, definition.get(), context, sections));
+    }
+
+    /** Opens a menu with no list. */
+    public void open(Player player, String id, Map<String, Object> context) {
+        menus.open(player, id, context);
     }
 
     /** Opens a menu whose list is read again on every redraw, from any thread. */

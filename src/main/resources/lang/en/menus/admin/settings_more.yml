@@ -1,0 +1,154 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# Going back to a grave, the floating text and the respawn help.
+
+title: "{primary}&lSETTINGS {letters_black}» {highlight}Extras"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: COMPASS
+    name: "<gradient:{primary}:{secondary_light}>Extras</gradient>"
+    lore:
+      - "{letters_black}Extras settings"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Going back to a grave, its text"
+      - " {letters}and the help after respawning."
+
+  teleport-enabled:
+    slot: 10
+    material: ENDER_PEARL
+    name: "{letters}Extras {letters_black}▸ <gradient:{primary}:{secondary_light}>Teleport</gradient>"
+    lore:
+      - "{letters_black}Extras setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Whether /graves lets a player"
+      - " {letters}go back to one of theirs."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:redstone} {letters}State{letters_black}: %more_teleport_enabled%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %more_teleport_enabled_default%"
+      - ""
+      - "%more_teleport_enabled_click%"
+    actions:
+      - "exyliagraves:setting more teleport.enabled"
+
+  teleport-cost:
+    slot: 11
+    material: GOLD_INGOT
+    name: "{letters}Extras {letters_black}▸ <gradient:{primary}:{secondary_light}>Teleport cost</gradient>"
+    lore:
+      - "{letters_black}Extras setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}What that teleport costs."
+      - " {letters}{highlight}0 {letters}is free."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:gold} {letters}Cost{letters_black}: %more_teleport_cost%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %more_teleport_cost_default%"
+      - ""
+      - "%more_teleport_cost_click%"
+    actions:
+      - "exyliagraves:setting more teleport.cost"
+
+  teleport-currency:
+    slot: 12
+    material: SUNFLOWER
+    name: "{letters}Extras {letters_black}▸ <gradient:{primary}:{secondary_light}>Currency</gradient>"
+    lore:
+      - "{letters_black}Extras setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}What the cost is paid in."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:gold} {letters}Currency{letters_black}: %more_teleport_currency%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %more_teleport_currency_default%"
+      - ""
+      - "%more_teleport_currency_click%"
+    actions:
+      - "exyliagraves:setting more teleport.currency"
+
+  hologram-enabled:
+    slot: 14
+    material: NAME_TAG
+    name: "{letters}Extras {letters_black}▸ <gradient:{primary}:{secondary_light}>Hologram</gradient>"
+    lore:
+      - "{letters_black}Extras setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Whether a grave has floating"
+      - " {letters}text above it."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:redstone} {letters}State{letters_black}: %more_hologram_enabled%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %more_hologram_enabled_default%"
+      - ""
+      - "%more_hologram_enabled_click%"
+    actions:
+      - "exyliagraves:setting more hologram.enabled"
+
+  respawn-point-compass:
+    slot: 15
+    material: COMPASS
+    name: "{letters}Extras {letters_black}▸ <gradient:{primary}:{secondary_light}>Compass</gradient>"
+    lore:
+      - "{letters_black}Extras setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Points the compass to the newest"
+      - " {letters}grave after respawning."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:redstone} {letters}State{letters_black}: %more_respawn_point_compass%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %more_respawn_point_compass_default%"
+      - ""
+      - "%more_respawn_point_compass_click%"
+    actions:
+      - "exyliagraves:setting more respawn.point-compass"
+
+  respawn-remind:
+    slot: 16
+    material: BELL
+    name: "{letters}Extras {letters_black}▸ <gradient:{primary}:{secondary_light}>Reminder</gradient>"
+    lore:
+      - "{letters_black}Extras setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Reminds the player where their"
+      - " {letters}newest grave is."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:redstone} {letters}State{letters_black}: %more_respawn_remind%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %more_respawn_remind_default%"
+      - ""
+      - "%more_respawn_remind_click%"
+    actions:
+      - "exyliagraves:setting more respawn.remind"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Back {letters_black}▸ <gradient:{error}:{error_light}>Settings</gradient>"
+    lore:
+      - "{error}{icon:click} Click to go back"
+    actions:
+      - "exyliagraves:settings_hub"

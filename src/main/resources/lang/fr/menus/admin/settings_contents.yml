@@ -1,0 +1,119 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# What goes into a grave and what stays with the player.
+
+title: "{primary}&lRÉGLAGES {letters_black}» {highlight}Contenu"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: ENDER_CHEST
+    name: "<gradient:{primary}:{secondary_light}>Contenu</gradient>"
+    lore:
+      - "{letters_black}Réglages · Contenu"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Ce que garde une tombe :"
+      - " {letters}l'expérience, et les objets"
+      - " {letters}exclus."
+
+  contents-experience:
+    slot: 11
+    material: EXPERIENCE_BOTTLE
+    name: "{letters}Contenu {letters_black}▸ <gradient:{primary}:{secondary_light}>Expérience</gradient>"
+    lore:
+      - "{letters_black}Réglage · Contenu"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Rien, ce que vanilla lâcherait, ou"
+      - " {letters}tous les points du joueur."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:star} {letters}Mode{letters_black}: %contents_contents_experience%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %contents_contents_experience_default%"
+      - ""
+      - "%contents_contents_experience_click%"
+    actions:
+      - "exyliagraves:setting contents contents.experience"
+
+  contents-experience-percent:
+    slot: 12
+    material: ENCHANTED_BOOK
+    name: "{letters}Contenu {letters_black}▸ <gradient:{primary}:{secondary_light}>Expérience gardée</gradient>"
+    lore:
+      - "{letters_black}Réglage · Contenu"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}La part de cette expérience que"
+      - " {letters}garde la tombe. Le reste est"
+      - " {letters}perdu."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:star} {letters}Gardée{letters_black}: %contents_contents_experience_percent%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %contents_contents_experience_percent_default%"
+      - ""
+      - "%contents_contents_experience_percent_click%"
+    actions:
+      - "exyliagraves:setting contents contents.experience-percent"
+
+  contents-ignored-materials:
+    slot: 14
+    material: TNT
+    name: "{letters}Contenu {letters_black}▸ <gradient:{primary}:{secondary_light}>Objets ignorés</gradient>"
+    lore:
+      - "{letters_black}Réglage · Contenu"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Objets qui n'entrent jamais dans"
+      - " {letters}une tombe : ils tombent au sol."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:book} {letters}Objets{letters_black}: %contents_contents_ignored_materials%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %contents_contents_ignored_materials_default%"
+      - ""
+      - "%contents_contents_ignored_materials_click%"
+    actions:
+      - "exyliagraves:setting contents contents.ignored-materials"
+
+  contents-kept-materials:
+    slot: 15
+    material: TOTEM_OF_UNDYING
+    name: "{letters}Contenu {letters_black}▸ <gradient:{primary}:{secondary_light}>Objets gardés</gradient>"
+    lore:
+      - "{letters_black}Réglage · Contenu"
+      - ""
+      - "{primary}✎ Informations"
+      - " {letters}Objets que le joueur garde dans"
+      - " {letters}son inventaire à la mort."
+      - ""
+      - "{primary}✦ Statut"
+      - "  {letters_black}· {info}{icon:book} {letters}Objets{letters_black}: %contents_contents_kept_materials%"
+      - "  {letters_black}· {info}{icon:book} {letters}Par défaut{letters_black}: %contents_contents_kept_materials_default%"
+      - ""
+      - "%contents_contents_kept_materials_click%"
+    actions:
+      - "exyliagraves:setting contents contents.kept-materials"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Retour {letters_black}▸ <gradient:{error}:{error_light}>Réglages</gradient>"
+    lore:
+      - "{error}{icon:click} Cliquez pour revenir"
+    actions:
+      - "exyliagraves:settings_hub"

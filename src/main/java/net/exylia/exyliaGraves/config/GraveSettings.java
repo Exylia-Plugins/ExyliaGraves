@@ -3,6 +3,7 @@ package net.exylia.exyliaGraves.config;
 import net.exylia.lib.config.Comment;
 import net.exylia.lib.config.ConfigFile;
 import net.exylia.lib.config.Languages;
+import net.exylia.lib.config.Menu;
 import net.exylia.lib.config.Time;
 import org.bukkit.Material;
 
@@ -66,14 +67,15 @@ public record GraveSettings(
     public record Graves(
             @Comment("How long a grave stands before it is over: 30m, 2h, 1d. -1 = until collected.")
             @Comment("exyliagraves.expire.<minutes> gives a rank longer; the largest number a player holds wins.")
-            @Time(Time.Unit.MINUTES) int expireTime,
+            @Time(Time.Unit.MINUTES) @Menu.Range(min = 1, max = 525600, none = -1) int expireTime,
 
             @Comment("What happens to the contents when a grave expires: DROP them where it stood, or DELETE them.")
+            @Menu.Choices(value = {"DROP", "DELETE"}, labels = {"Drop", "Delete"})
             String onExpire,
 
             @Comment("How long only the owner may open it. 0 = anybody from the start, -1 = only ever the owner.")
             @Comment("exyliagraves.protection.<minutes> gives a rank longer; the largest number a player holds wins.")
-            @Time(Time.Unit.MINUTES) int protectionTime,
+            @Time(Time.Unit.MINUTES) @Menu.Range(min = 0, max = 525600, none = -1) int protectionTime,
 
             @Comment("Whether the player who made the kill may open it while it is protected.")
             boolean killerCanLoot,
@@ -81,6 +83,7 @@ public record GraveSettings(
             @Comment("How many graves one player may have standing on this server. Dying with this")
             @Comment("many tips the oldest one out where it stands. -1 = no limit.")
             @Comment("exyliagraves.limit.<number> raises it; the largest number a player holds wins.")
+            @Menu.Range(min = 1, max = 1000, none = -1)
             int maxPerPlayer,
 
             @Comment("Worlds where nobody gets a grave, by name.")
@@ -106,16 +109,20 @@ public record GraveSettings(
     /** The {@code contents} section. */
     public record Contents(
             @Comment("NONE, VANILLA (what would have dropped as orbs) or ALL (every point the player had).")
+            @Menu.Choices(value = {"NONE", "VANILLA", "ALL"}, labels = {"None", "Vanilla", "All"})
             String experience,
 
             @Comment("Of that experience, the percentage the grave keeps (0-100). The rest is lost.")
             @Comment("exyliagraves.experience.<percent> gives a rank more; the largest number a player holds wins.")
+            @Menu.Range(preset = Menu.Preset.HUNDRED)
             int experiencePercent,
 
             @Comment("Materials that never go into a grave: they drop on the floor as usual.")
+            @Menu.Material
             List<String> ignoredMaterials,
 
             @Comment("Materials the player keeps through death, in their inventory.")
+            @Menu.Material
             List<String> keptMaterials) {
 
         public Contents() {
@@ -179,9 +186,13 @@ public record GraveSettings(
             @Comment("  COLLECT everything at once")
             @Comment("  PREVIEW a copy nothing can leave (needs exyliagraves.preview)")
             @Comment("  NONE    nothing")
+            @Menu.Choices(value = {"OPEN", "COLLECT", "PREVIEW", "NONE"}, labels = {"Open", "Collect", "Preview", "Nothing"})
             String rightClick,
+            @Menu.Choices(value = {"OPEN", "COLLECT", "PREVIEW", "NONE"}, labels = {"Open", "Collect", "Preview", "Nothing"})
             String sneakRightClick,
+            @Menu.Choices(value = {"OPEN", "COLLECT", "PREVIEW", "NONE"}, labels = {"Open", "Collect", "Preview", "Nothing"})
             String leftClick,
+            @Menu.Choices(value = {"OPEN", "COLLECT", "PREVIEW", "NONE"}, labels = {"Open", "Collect", "Preview", "Nothing"})
             String sneakLeftClick,
 
             @Comment("Whether several players may have the same grave open at once, all seeing the same")
@@ -209,10 +220,12 @@ public record GraveSettings(
 
             @Comment("What that teleport costs. 0 = free. exyliagraves.teleport.free skips it.")
             @Comment("exyliagraves.teleport.cost.<amount> makes it cheaper for a rank; the smallest number a player holds wins.")
+            @Menu.Format(value = Menu.Style.MONEY, currency = "currency") @Menu.Range(min = 0, max = 1e12)
             double cost,
 
             @Comment("The ExyliaLib currency id the cost is paid in (vault, gems, an item or xp currency...).")
             @Comment("Empty = ExyliaLib's default currency.")
+            @Menu.Currency
             String currency) {
 
         public Teleport() {
@@ -256,6 +269,11 @@ public record GraveSettings(
     /** Keeps the loaded file so the accessors read the current snapshot. */
     public static void install(ConfigFile<GraveSettings> loaded) {
         file = loaded;
+    }
+
+    /** The loaded file, for the settings screens; {@code null} before it loaded. */
+    public static ConfigFile<GraveSettings> file() {
+        return file;
     }
 
     /** The current snapshot, or the defaults before the file loaded: never {@code null}. */

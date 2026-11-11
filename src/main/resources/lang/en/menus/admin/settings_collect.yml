@@ -1,0 +1,172 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# What a click on a grave does and how its window works.
+
+title: "{primary}&lSETTINGS {letters_black}» {highlight}Collecting"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: CHEST_MINECART
+    name: "<gradient:{primary}:{secondary_light}>Collecting</gradient>"
+    lore:
+      - "{letters_black}Collecting settings"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}What each click on a grave does"
+      - " {letters}and how its window behaves."
+
+  collect-right-click:
+    slot: 10
+    material: STICK
+    name: "{letters}Collecting {letters_black}▸ <gradient:{primary}:{secondary_light}>Right-click</gradient>"
+    lore:
+      - "{letters_black}Collecting setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Open its window, take it all,"
+      - " {letters}preview a copy, or nothing."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:click} {letters}Does{letters_black}: %collect_collect_right_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %collect_collect_right_click_default%"
+      - ""
+      - "%collect_collect_right_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.right-click"
+
+  collect-sneak-right-click:
+    slot: 11
+    material: LEATHER_BOOTS
+    name: "{letters}Collecting {letters_black}▸ <gradient:{primary}:{secondary_light}>Sneak right-click</gradient>"
+    lore:
+      - "{letters_black}Collecting setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}The same, while sneaking."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:click} {letters}Does{letters_black}: %collect_collect_sneak_right_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %collect_collect_sneak_right_click_default%"
+      - ""
+      - "%collect_collect_sneak_right_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.sneak-right-click"
+
+  collect-left-click:
+    slot: 12
+    material: WOODEN_SWORD
+    name: "{letters}Collecting {letters_black}▸ <gradient:{primary}:{secondary_light}>Left-click</gradient>"
+    lore:
+      - "{letters_black}Collecting setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}What a left click on a grave"
+      - " {letters}does."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:click} {letters}Does{letters_black}: %collect_collect_left_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %collect_collect_left_click_default%"
+      - ""
+      - "%collect_collect_left_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.left-click"
+
+  collect-sneak-left-click:
+    slot: 13
+    material: IRON_BOOTS
+    name: "{letters}Collecting {letters_black}▸ <gradient:{primary}:{secondary_light}>Sneak left-click</gradient>"
+    lore:
+      - "{letters_black}Collecting setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}The same, while sneaking."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:click} {letters}Does{letters_black}: %collect_collect_sneak_left_click%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %collect_collect_sneak_left_click_default%"
+      - ""
+      - "%collect_collect_sneak_left_click_click%"
+    actions:
+      - "exyliagraves:setting collect collect.sneak-left-click"
+
+  collect-auto-equip:
+    slot: 14
+    material: IRON_CHESTPLATE
+    name: "{letters}Collecting {letters_black}▸ <gradient:{primary}:{secondary_light}>Auto-equip</gradient>"
+    lore:
+      - "{letters_black}Collecting setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Puts the owner's armour back on"
+      - " {letters}when they collect it themselves."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:redstone} {letters}State{letters_black}: %collect_collect_auto_equip%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %collect_collect_auto_equip_default%"
+      - ""
+      - "%collect_collect_auto_equip_click%"
+    actions:
+      - "exyliagraves:setting collect collect.auto-equip"
+
+  collect-shared-window:
+    slot: 15
+    material: ENDER_EYE
+    name: "{letters}Collecting {letters_black}▸ <gradient:{primary}:{secondary_light}>Shared window</gradient>"
+    lore:
+      - "{letters_black}Collecting setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Whether several players may have"
+      - " {letters}a grave open at once."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:redstone} {letters}State{letters_black}: %collect_collect_shared_window%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %collect_collect_shared_window_default%"
+      - ""
+      - "%collect_collect_shared_window_click%"
+    actions:
+      - "exyliagraves:setting collect collect.shared-window"
+
+  collect-take-all-button:
+    slot: 16
+    material: HOPPER
+    name: "{letters}Collecting {letters_black}▸ <gradient:{primary}:{secondary_light}>Take-all button</gradient>"
+    lore:
+      - "{letters_black}Collecting setting"
+      - ""
+      - "{primary}✎ Information"
+      - " {letters}Whether the window has a button"
+      - " {letters}that takes everything at once."
+      - ""
+      - "{primary}✦ Status"
+      - "  {letters_black}· {info}{icon:redstone} {letters}State{letters_black}: %collect_collect_take_all_button%"
+      - "  {letters_black}· {info}{icon:book} {letters}Default{letters_black}: %collect_collect_take_all_button_default%"
+      - ""
+      - "%collect_collect_take_all_button_click%"
+    actions:
+      - "exyliagraves:setting collect collect.take-all-button"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Back {letters_black}▸ <gradient:{error}:{error_light}>Settings</gradient>"
+    lore:
+      - "{error}{icon:click} Click to go back"
+    actions:
+      - "exyliagraves:settings_hub"

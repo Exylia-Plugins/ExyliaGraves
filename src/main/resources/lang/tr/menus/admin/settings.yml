@@ -1,0 +1,120 @@
+# DO NOT EDIT — REGENERATED ON EVERY STARTUP.
+#
+# Settings an admin tunes, one card per module. Everything else stays in the files.
+
+title: "{primary}&lGRAVES {letters_black}» {highlight}Ayarlar"
+size: 27
+type: SIMPLE
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+
+items:
+  header:
+    slot: 4
+    material: COMPARATOR
+    name: "<gradient:{primary}:{secondary_light}>Ayarlar</gradient>"
+    lore:
+      - "{letters_black}Ayarlar · Mezarlar"
+      - ""
+      - "{primary}✎ Bilgi"
+      - " {letters}Oyunda değiştirmeye değer ayarlar,"
+      - " {letters}konuya göre. Gerisi dosyalarda"
+      - " {letters}kalır."
+
+  graves:
+    slot: 11
+    material: SKELETON_SKULL
+    name: "{letters}Ayarlar {letters_black}▸ <gradient:{primary}:{secondary_light}>Mezarlar</gradient>"
+    lore:
+      - "{letters_black}Ayar sayfası"
+      - ""
+      - "{primary}✎ Bilgi"
+      - " {letters}Süre, koruma ve oyuncu başına"
+      - " {letters}sınır."
+      - ""
+      - "{primary}✦ Durum"
+      - "  {letters_black}· {info}{icon:clock} {letters}Süre{letters_black}: %graves_graves_expire_time%"
+      - "  {letters_black}· {info}{icon:star} {letters}Sınır{letters_black}: %graves_graves_max_per_player%"
+      - ""
+      - "{primary}{icon:click} Açmak için tıkla"
+      - "{letters_black}Her ayar, açıklamalı."
+    actions:
+      - "exyliagraves:settings_page graves"
+
+  contents:
+    slot: 12
+    material: ENDER_CHEST
+    name: "{letters}Ayarlar {letters_black}▸ <gradient:{primary}:{secondary_light}>İçerik</gradient>"
+    lore:
+      - "{letters_black}Ayar sayfası"
+      - ""
+      - "{primary}✎ Bilgi"
+      - " {letters}Deneyim ve eşya kuralları."
+      - ""
+      - "{primary}✦ Durum"
+      - "  {letters_black}· {info}{icon:star} {letters}Deneyim{letters_black}: %contents_contents_experience%"
+      - "  {letters_black}· {info}{icon:gold} {letters}Tutulan{letters_black}: %contents_contents_experience_percent%"
+      - ""
+      - "{primary}{icon:click} Açmak için tıkla"
+      - "{letters_black}Her ayar, açıklamalı."
+    actions:
+      - "exyliagraves:settings_page contents"
+
+  collect:
+    slot: 14
+    material: CHEST_MINECART
+    name: "{letters}Ayarlar {letters_black}▸ <gradient:{primary}:{secondary_light}>Toplama</gradient>"
+    lore:
+      - "{letters_black}Ayar sayfası"
+      - ""
+      - "{primary}✎ Bilgi"
+      - " {letters}Tıklamalar ve mezar penceresi."
+      - ""
+      - "{primary}✦ Durum"
+      - "  {letters_black}· {info}{icon:click} {letters}Sağ tık{letters_black}: %collect_collect_right_click%"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Ortak{letters_black}: %collect_collect_shared_window%"
+      - ""
+      - "{primary}{icon:click} Açmak için tıkla"
+      - "{letters_black}Her ayar, açıklamalı."
+    actions:
+      - "exyliagraves:settings_page collect"
+
+  more:
+    slot: 15
+    material: COMPASS
+    name: "{letters}Ayarlar {letters_black}▸ <gradient:{primary}:{secondary_light}>Ekstralar</gradient>"
+    lore:
+      - "{letters_black}Ayar sayfası"
+      - ""
+      - "{primary}✎ Bilgi"
+      - " {letters}Işınlanma, hologram ve yeniden"
+      - " {letters}doğma."
+      - ""
+      - "{primary}✦ Durum"
+      - "  {letters_black}· {info}{icon:redstone} {letters}Işınlanma{letters_black}: %more_teleport_enabled%"
+      - "  {letters_black}· {info}{icon:gold} {letters}Maliyet{letters_black}: %more_teleport_cost%"
+      - ""
+      - "{primary}{icon:click} Açmak için tıkla"
+      - "{letters_black}Her ayar, açıklamalı."
+    actions:
+      - "exyliagraves:settings_page more"
+
+  back:
+    slot: 22
+    sound: "minecraft:item.bundle.remove_one|1.0|0.5"
+    material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjIzZmI2NzQyOTcxNmIyMWJjNmU4ZTdkNjY5Y2VkZGY2NWIxM2UwNzkwYTVjZTU1YjJlMDc3YjgyZDE5ZTEyNCJ9fX0='
+    name: "{letters}Geri {letters_black}▸ <gradient:{error}:{error_light}>Mezar yönetimi</gradient>"
+    lore:
+      - "{error}{icon:click} Geri dönmek için tıkla"
+    actions:
+      - "exyliagraves:admin_players"
