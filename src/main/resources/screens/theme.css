@@ -8,20 +8,20 @@ small { font-size: 7px; }
 .fill, .grow { flex-grow: 1; }
 .tight { gap: 1px; }
 
-.app { flex-direction: row; gap: 0px; width: 400px; height: 225px; outline: 1px {info}40;
-       background: linear-gradient(to bottom, {info}0c, {primary}05); }
+.app { flex-direction: row; gap: 0px; width: 400px; height: 225px; outline: 1px var(--info)40;
+       background: linear-gradient(to bottom, var(--info)0c, var(--primary)05); }
 
 /* Side bar */
-.side { width: 108px; padding: 9px 7px; gap: 5px; align-items: stretch; background: {info}0a; }
+.side { width: 108px; padding: 9px 7px; gap: 5px; align-items: stretch; background: var(--info)0a; }
 .ident { flex-direction: row; align-items: center; gap: 4px; }
 .ident-icon { width: 14px; height: 14px; }
 .ident-name { font-size: 7px; }
 .ident small { font-size: 6px; }
-.stat { flex-direction: row; align-items: center; gap: 3px; padding: 2px 5px; background: {letters_black}0c; }
+.stat { flex-direction: row; align-items: center; gap: 3px; padding: 2px 5px; background: var(--letters-black)0c; }
 .stat small { font-size: 6px; }
 .stat b { font-size: 7px; }
 .note { font-size: 6px; max-width: 92px; }
-.rule { height: 1px; background: {letters_black}30; margin: 2px 0px; }
+.rule { height: 1px; background: var(--letters-black)30; margin: 2px 0px; }
 
 /* The open page */
 .main { flex-grow: 1; padding: 9px 10px 5px 10px; gap: 4px; }
@@ -35,11 +35,11 @@ small { font-size: 7px; }
 grid { gap: 3px; }
 
 button.small { padding: 3px 6px; font-size: 7px; justify-content: center; }
-.ghost { background: {letters_black}14; }
-.ghost:hover { background: {info}40; }
+.ghost { background: var(--letters-black)14; }
+.ghost:hover { background: var(--info)40; }
 
-.grave { gap: 0px; padding: 3px 6px; align-items: stretch; background: {info}0c; }
-.grave:hover { background: {info}26; outline: 1px {info}; }
+.grave { gap: 0px; padding: 3px 6px; align-items: stretch; background: var(--info)0c; }
+.grave:hover { background: var(--info)26; outline: 1px var(--info); }
 .where { flex-direction: row; align-items: center; gap: 4px; margin: 0px 0px 1px 0px; }
 .grave-icon { width: 13px; height: 13px; }
 .where b { font-size: 7px; }
