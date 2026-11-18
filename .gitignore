@@ -34,3 +34,8 @@ Thumbs.db
 *.jks
 *.keystore
 *.p12
+
+# Local tooling and build output
+.orca/
+.playwright-mcp/
+.claude/settings.local.json
