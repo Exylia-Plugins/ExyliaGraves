@@ -1,0 +1,18 @@
+# Wörter des Grab-Listen-Screens (screens/graves.html), eins pro t="key" dort. Farb-Tokens wie {info} funktionieren
+# hier; die %Platzhalter% bleiben erhalten. Zeilen eines Tooltips werden durch <nl> getrennt. Änderungen erscheinen innerhalb von Sekunden auf geöffneten Screens.
+title: '{highlight}Gräber'
+subtitle: '{letters_black}Was du fallen gelassen hast · hol es dir zurück, bevor es verfällt'
+tooltip: '{info}%grave_world%<nl>{letters_black}Server {info}%grave_server%<nl>{letters_black}Gestorben vor {info}%grave_age%{letters_black}<nl>{letters_black}Zugriff %grave_protection%'
+items: '{letters}Items'
+experience: '{letters}Erfahrung'
+expires: '{letters}Verfällt in'
+teleport: '{info}Klick · teleportieren'
+preview: '{info}Rechtsklick · hineinschauen'
+empty:
+  title: 'Keine Gräber'
+  hint: 'Nichts von dir liegt irgendwo herum'
+foot: '{letters_black}Geh zu einem Grab und klicke auf den Kopf, um alles zurückzubekommen'
+owner: '{letters_black}Deine Gräber'
+standing: '{letters}Bestehend'
+hint: '{letters_black}Ein Grab bewahrt deine Items und Erfahrung, bis es verfällt.'
+access: '{letters}Zugriff'

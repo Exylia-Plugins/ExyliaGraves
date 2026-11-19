@@ -1,0 +1,73 @@
+prefix: '{primary}&lTUMBAS {letters_black}•<reset>'
+created: '[hud:grave-new;sound:BLOCK_BELL_RESONATE|0.8|0.6]%prefix% {letters}Deine Sachen liegen in einem Grab bei {highlight}%x%, %y%, %z% {letters_black}({letters}%world%{letters_black}) {letters}für {highlight}%time_left% ⌚{letters}.'
+collected: '[hud:grave-take;sound:BLOCK_CHEST_OPEN|1.0|1.2]%prefix% {success}Grab eingesammelt{letters_black}: {highlight}%items% {letters}Item(s) und {highlight}%experience% {letters}Erfahrung.'
+looted: '[hud:grave-take;sound:BLOCK_CHEST_OPEN|1.0|1.2]%prefix% {success}Du hast das Grab von {highlight}%player%{success} geplündert{letters_black}: {highlight}%items% {letters}Item(s).'
+protected-grave: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Das ist das Grab von {highlight}%player%{error}. {letters}Es ist für alle offen in {highlight}%time_left% ⌚{letters}.'
+protected-grave-forever: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Das ist das Grab von {highlight}%player%{error}. {letters}Nur der Besitzer kann es öffnen.'
+gone: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Dieses Grab existiert nicht mehr.'
+cannot-break: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Klicke auf das Grab, um es zu öffnen; es kann nicht abgebaut werden.'
+claim-failed: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Das Grab konnte gerade nicht geöffnet werden. {letters}Es ist noch da; versuch es gleich nochmal.'
+rewards-delivered: '[hud:grave-reward;sound:ENTITY_EXPERIENCE_ORB_PICKUP|1.0|1.2]%prefix% {success}%amount% {letters}Item(s) aus deinen Gräbern wurden dir zurückgegeben.'
+respawn-reminder: '%prefix% {letters}Dein Grab liegt bei {highlight}%x%, %y%, %z% {letters_black}({letters}%world%{letters_black}){letters}. {letters_black}Dein Kompass zeigt darauf.'
+looted-notice: '%prefix% {warning}%player% {letters}hat dein Grab in {highlight}%world%{letters} geplündert: {highlight}%items% {letters}Item(s).'
+expired-dropped: '%prefix% {warning}Eines deiner Gräber ist abgelaufen und seine {highlight}%items% {warning}Item(s) liegen am Boden, wo es war.'
+expired-deleted: '%prefix% {warning}Eines deiner Gräber ist abgelaufen und seine {highlight}%items% {warning}Item(s) sind verloren gegangen.'
+preview-title: '{primary}&lGRAB {letters_black}» {highlight}%player%'
+cannot-preview: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Du kannst nicht in dieses Grab schauen.'
+window-busy: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Jemand schaut gerade in dieses Grab.'
+inventory-full: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Dein Inventar ist voll.'
+window-experience-name: "{letters}Grab {letters_black}▸ <gradient:{success}:{success_light}>Erfahrung</gradient> &8[{info}%experience%&8]"
+window-experience-lore:
+  - "{letters_black}Grab-Aktion"
+  - ""
+  - "{success}✎ Information"
+  - " {letters}Die Erfahrung, die in"
+  - " {letters}diesem Grab liegt."
+  - ""
+  - "{success}{icon:click} Klick {letters_black}· {letters}nehmen"
+window-take-all-name: "{letters}Grab {letters_black}▸ <gradient:{success}:{success_light}>Alles nehmen</gradient>"
+window-take-all-lore:
+  - "{letters_black}Grab-Aktion"
+  - ""
+  - "{success}✎ Information"
+  - " {letters}Alles, was im Grab übrig ist,"
+  - " {letters}Items und Erfahrung, auf einmal."
+  - ""
+  - "{success}✦ Status"
+  - "  {letters_black}· {info}{icon:diamond} {letters}Items{letters_black}: {info}%items%"
+  - "  {letters_black}· {info}{icon:xp} {letters}Erfahrung{letters_black}: {info}%experience%"
+  - ""
+  - "{success}{icon:click} Klick {letters_black}· {letters}alles nehmen"
+teleported: '[sound:ENTITY_ENDERMAN_TELEPORT|1.0|1.2]%prefix% {success}Du wirst zu deinem Grab gebracht. {letters_black}Kosten: {highlight}%cost%{letters_black}.'
+teleport-disabled: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Du kannst dich nicht zu einem Grab teleportieren; du musst laufen.'
+not-enough-money: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Ein Teleport zu einem Grab kostet {highlight}%cost%{error}.'
+teleport-refunded: '%prefix% {warning}Der Teleport wurde nicht durchgeführt, daher wurden dir {highlight}%cost%{warning} erstattet.'
+in-combat: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Im Kampf kannst du dich nicht teleportieren. {letters}Warte {highlight}%time% ⌚{letters}.'
+server-unreachable: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Dieser Server ist gerade nicht erreichbar.'
+world-not-loaded: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Diese Welt ist nicht geladen.'
+teleport-failed: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Der Teleport ist fehlgeschlagen.'
+no-permission: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {error}Dafür hast du keine Berechtigung.'
+hologram-protected: '{error}Nur der Besitzer kann es öffnen'
+hologram-open: '{success}Jeder kann es öffnen'
+hologram-forever: '{info}für immer'
+hologram-protected-for: '{warning}Geschützt {letters_black}» {info}%time_left% ⌚'
+hologram-lines:
+  - '{primary}&lGRAB {letters_black}» {highlight}%player%'
+  - '{letters}%items% {letters_black}Item(s) {letters_black}· {info}%time_left% ⌚'
+  - '%protection%'
+menu-teleport: "{info}{icon:click} Linksklick {letters_black}· {letters}teleportieren"
+menu-preview: "{info}{icon:right_click} Rechtsklick {letters_black}· {letters}hineinschauen"
+menu-restore: "{info}{icon:click} Shift + Linksklick {letters_black}· {letters}dem Besitzer zurückgeben"
+menu-remove: "{error}{icon:right_click} Shift + Rechtsklick {letters_black}· {letters}löschen<nl>{letters_black}Du musst es bestätigen."
+admin-usage:
+  - '%prefix% {letters}Verwendung{letters_black}:'
+  - ' {letters_black}▎ {highlight}/gravesadmin list <player>'
+  - ' {letters_black}▎ {highlight}/gravesadmin restore <player>'
+  - ' {letters_black}▎ {highlight}/gravesadmin reload'
+restore-prompt: '{warning}%count% Grab/Gräber an %player% zurückgeben?'
+restored: '[sound:ENTITY_EXPERIENCE_ORB_PICKUP|1.0|1.2]%prefix% {success}Grab an {highlight}%player%{success} zurückgegeben.'
+restored-all: '[sound:ENTITY_EXPERIENCE_ORB_PICKUP|1.0|1.2]%prefix% {success}%count% {letters}Grab/Gräber an {highlight}%player%{letters} zurückgegeben.'
+remove-prompt: '{error}Grab von %player% und den gesamten Inhalt löschen?'
+removed: '[sound:ENTITY_EXPERIENCE_ORB_PICKUP|1.0|1.2]%prefix% {letters}Das Grab von %player% wurde gelöscht{letters}.'
+no-graves: '[sound:ENTITY_VILLAGER_NO|1.0|1.0]%prefix% {highlight}%player% {error}hat keine bestehenden Gräber.'
+reloaded: '[sound:ENTITY_EXPERIENCE_ORB_PICKUP|1.0|1.2]%prefix% {success}Config, Nachrichten und Menüs neu geladen.'

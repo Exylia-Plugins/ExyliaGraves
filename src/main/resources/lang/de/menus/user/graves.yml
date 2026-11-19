@@ -1,0 +1,103 @@
+# Deine Gräber im gesamten Netzwerk. /graves
+#
+# Frei anpassbar: Änderungen bleiben bei Updates erhalten. Muss ein Release
+# das Layout ändern, wird menu-version unten erhöht; die Datei wird dann
+# ersetzt und deine bisherige daneben aufbewahrt.
+#
+# Werte: %owner_name% %graves%
+# Pro Grab: %grave_id% %grave_owner% %grave_items% %grave_experience%
+#           %grave_server% %grave_world% %grave_x% %grave_y% %grave_z%
+#           %grave_age% %grave_time_left% %grave_protection% und
+#           %grave_actions% (die Klick-Hinweise, die dieser Spieler nutzen darf, aus messages.yml)
+
+menu-version: 4
+
+title: "{primary}&lGRÄBER {letters_black}» {highlight}%owner_name% {muted}%current_page%/%total_pages%"
+size: 54
+type: PAGINATION
+
+open_sounds:
+  - "minecraft:block.ender_chest.open|1.0|1.4"
+click_sounds:
+  - "minecraft:block.note_block.hat|1.0|1.0"
+close_sounds:
+  - "minecraft:block.barrel.close|1.0|0.7"
+
+filler:
+  global:
+    material: GRAY_STAINED_GLASS_PANE
+    hide_tooltip: true
+  pagination:
+    material: LIGHT_GRAY_STAINED_GLASS_PANE
+    name: "{muted}Keine Gräber mehr"
+    lore:
+      - "{letters_black}Nichts von dir liegt noch herum."
+    hide_tooltip: false
+  custom:
+    page_first:
+      slots: '48'
+      material: GRAY_DYE
+      name: "{muted}← Erste Seite"
+    page_last:
+      slots: '50'
+      material: GRAY_DYE
+      name: "{muted}Letzte Seite →"
+
+pagination:
+  slots: '10-16,19-25,28-34,37-43'
+
+  item_template:
+    material: 'playerhead-%grave_owner%'
+    name: "{letters}Grab {letters_black}▸ <gradient:{info}:{info_light}>%grave_world%</gradient>"
+    lore:
+      - "{letters_black}Dein Grab"
+      - ""
+      - "{info}✦ Informationen"
+      - "  {letters_black}· {info}{icon:ping} {letters}Server{letters_black}: {info}%grave_server%"
+      - "  {letters_black}· {info}{icon:compass} {letters}Ort{letters_black}: {info}%grave_x%{letters_black}, {info}%grave_y%{letters_black}, {info}%grave_z%"
+      - "  {letters_black}· {info}{icon:diamond} {letters}Items{letters_black}: {info}%grave_items%"
+      - "  {letters_black}· {info}{icon:xp} {letters}Erfahrung{letters_black}: {info}%grave_experience%"
+      - ""
+      - "{info}✦ Status"
+      - "  {letters_black}· {info}{icon:deaths} {letters}Gestorben{letters_black}: {info}vor %grave_age%"
+      - "  {letters_black}· {info}{icon:clock} {letters}Läuft ab in{letters_black}: {info}%grave_time_left%"
+      - "  {letters_black}· {info}{icon:key} {letters}Zugriff{letters_black}: %grave_protection%"
+      - "%grave_actions%"
+    actions:
+      - "left: exyliagraves:teleport %grave_id%"
+      - "right: exyliagraves:preview %grave_id%"
+
+  navigation:
+    previous:
+      slot: 48
+      sound: "minecraft:item.book.page_turn|1.0|1.0"
+      material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGExZDU1YjNmOTg5NDEwYTM0NzUyNjUwZTI0OGM5YjZjMTc4M2E3ZWMyYWEzZmQ3Nzg3YmRjNGQwZTYzN2QzOSJ9fX0='
+      name: "{letters}Seite {letters_black}▸ <gradient:{error}:{error_light}>← Zurück</gradient>"
+      lore:
+        - "  {letters_black}· {letters}Seite{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
+      actions:
+        - "previous_page"
+    next:
+      slot: 50
+      sound: "minecraft:item.book.page_turn|1.0|1.0"
+      material: 'basehead-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmE4N2UzZDk2ZTFjZmViOWNjZmIzYmE1M2EyMTdmYWY1MjQ5ZTI4NTUzM2IyNzFhMmZiMjg0YzMwZGJkOTgyOSJ9fX0='
+      name: "{letters}Seite {letters_black}▸ <gradient:{success}:{success_light}>Weiter →</gradient>"
+      lore:
+        - "  {letters_black}· {letters}Seite{letters_black}: {info}%current_page%{letters_black}/{info}%total_pages%"
+      actions:
+        - "next_page"
+
+items:
+  header:
+    slot: 49
+    material: 'playerhead-%owner_name%'
+    name: "<gradient:{info}:{info_light}>%owner_name%</gradient>"
+    lore:
+      - "{letters_black}Deine Gräber"
+      - ""
+      - "{info}✎ Informationen"
+      - " {letters}Geh zu einem Grab und klick auf"
+      - " {letters}den Kopf, um alles zurückzuholen."
+      - ""
+      - "{info}✦ Status"
+      - "  {letters_black}· {info}{icon:iron} {letters}Bestand{letters_black}: {info}%graves%"
