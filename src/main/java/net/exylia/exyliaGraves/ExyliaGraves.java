@@ -165,7 +165,13 @@ public final class ExyliaGraves {
      * menus come from.
      */
     private void loadConfigs() {
-        GraveSettings.install(Configs.define(plugin, "config", GraveSettings.class).version(1).load());
+        var settings = Configs.define(plugin, "config", GraveSettings.class).version(1).load();
+        GraveSettings.install(settings);
+        net.exylia.lib.web.WebEditor.of(plugin).subject("config", settings)
+                .group("settings")
+                .title("Grave settings")
+                .permission("exyliagraves.admin")
+                .onApplied(() -> reloads.run());
         GraveMessages.install(Configs.define(plugin, "messages", GraveMessages.class).translated().load());
         applyConfigs();
     }
